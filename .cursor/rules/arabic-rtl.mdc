@@ -1,0 +1,99 @@
+---
+description: Arabic language and RTL implementation rules
+alwaysApply: true
+---
+
+# Arabic / RTL
+
+The website is Arabic-first and RTL.
+
+## HTML
+
+The application should use:
+
+dir="rtl"
+
+and:
+
+lang="ar"
+
+where appropriate.
+
+## CSS
+
+Prefer logical CSS properties.
+
+Use:
+
+margin-inline
+padding-inline
+inset-inline
+border-start-start-radius
+border-start-end-radius
+
+Avoid unnecessary:
+
+margin-left
+margin-right
+padding-left
+padding-right
+
+unless direction-specific behavior is explicitly required.
+
+## Icons
+
+Icons must respect RTL direction.
+
+Directional icons such as:
+- arrows
+- chevrons
+- navigation icons
+
+should visually communicate the correct direction.
+
+Do not blindly mirror every icon.
+
+Icons such as:
+- search
+- phone
+- mail
+- settings
+
+normally do not need mirroring.
+
+## Typography
+
+Arabic typography must be readable and professional.
+
+Choose an Arabic font deliberately.
+
+Avoid mixing many fonts.
+
+Maintain consistent:
+- font weights
+- line heights
+- heading sizes
+
+## Text
+
+Do not alter official company content casually.
+
+Preserve the meaning of the source material.
+
+Correct obvious OCR errors when converting the PDF content into website content, but do not invent new claims.
+
+## Layout
+
+Ensure:
+
+- text alignment is correct
+- navigation works correctly
+- cards work correctly in RTL
+- grids do not visually break
+- icons do not point in the wrong direction
+
+## Accessibility
+
+Arabic screen-reader content must remain meaningful.
+
+Do not replace text with icons alone.

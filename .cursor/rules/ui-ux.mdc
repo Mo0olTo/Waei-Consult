@@ -1,0 +1,124 @@
+---
+description: UI and UX rules for the Waei Consult website
+alwaysApply: true
+---
+
+# UI / UX
+
+## Design Direction
+use tailwind classes for ui classes as much as you can 
+The website represents a professional consulting company.
+
+The visual language should feel:
+
+- Premium
+- Professional
+- Calm
+- Trustworthy
+- Modern
+- Strategic
+- Clean
+
+Avoid:
+- flashy startup aesthetics
+- excessive gradients
+- excessive animations
+- childish illustrations
+- generic AI-generated visual patterns
+- overcrowded sections
+
+## Layout
+
+Use a strong visual hierarchy.
+
+Each section should have:
+
+1. Clear purpose
+2. Section heading
+3. Supporting content
+4. Primary action where appropriate
+
+Use consistent:
+- spacing
+- container widths
+- typography
+- border radius
+- shadows
+- buttons
+
+## Hero
+
+The hero should immediately communicate:
+
+- Who Waei is
+- What Waei does
+- Why it matters
+
+The primary CTA should be obvious.
+
+Do not overload the hero with paragraphs.
+
+## Cards
+
+Cards should be used intentionally.
+
+Services, values, and client segments can use cards.
+
+Avoid turning every piece of content into a card.
+
+## Animation
+
+Animations should be subtle.
+
+Use animation to support:
+- page transitions
+- section reveal
+- hover feedback
+- navigation
+
+Avoid:
+- excessive motion
+- long delays
+- distracting parallax
+- animations that interfere with reading
+
+Respect prefers-reduced-motion.
+
+## Responsive Design
+
+Design mobile-first.
+
+Required breakpoints should be tested on:
+
+- mobile
+- tablet
+- laptop
+- large desktop
+
+Do not simply shrink desktop layouts.
+
+Mobile layouts should be intentionally designed.
+
+## Images
+
+Use meaningful images.
+
+Do not use generic stock imagery when it conflicts with the brand.
+
+Optimize images.
+
+Use modern formats where possible.
+
+Do not place large unoptimized images in the critical rendering path.
+
+## CTA
+
+Calls to action should be clear and consistent.
+
+Examples:
+
+- تواصل معنا
+- احجز استشارتك
+- اكتشف خدماتنا
+
+Only use CTA wording that matches the actual available action.

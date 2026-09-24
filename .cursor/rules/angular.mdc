@@ -1,0 +1,108 @@
+---
+description: Angular 21 development standards
+alwaysApply: true
+---
+
+# Angular 21 Rules
+
+## General
+
+Use modern Angular 21 patterns.
+
+Prefer:
+
+- Standalone components
+- Signals when appropriate
+- computed()
+- modern control flow
+- @if
+- @for
+- @switch
+- inject()
+- lazy-loaded routes
+
+Avoid legacy Angular patterns when a modern equivalent is appropriate.
+
+## Components
+
+Components should have one clear responsibility.
+
+Avoid components with excessive:
+- template size
+- business logic
+- state
+- DOM manipulation
+
+## Inputs and Outputs
+
+Use modern Angular APIs when appropriate.
+
+Prefer clear component contracts.
+
+Do not pass large unrelated objects when only a few fields are required.
+
+## Signals
+
+Use signals for local reactive UI state.
+
+Example:
+
+const isMenuOpen = signal(false);
+
+Use computed() for derived state.
+
+Do not use effect() for ordinary derived values.
+
+## Control Flow
+
+Prefer Angular's modern control flow:
+
+@if
+@else
+@for
+@switch
+
+Avoid introducing unnecessary structural complexity.
+
+## Templates
+
+Keep templates readable.
+
+Avoid large inline expressions.
+
+Move complex logic into:
+- computed signals
+- component methods when appropriate
+- helper functions
+
+## Routing
+
+Use lazy loading for feature routes where beneficial.
+
+Do not lazy-load every tiny component.
+
+## Performance
+
+Avoid:
+- unnecessary subscriptions
+- repeated expensive calculations
+- large initial bundles
+- unnecessary third-party libraries
+
+Use:
+- lazy loading
+- image optimization
+- defer loading where appropriate
+- semantic HTML
+
+## Angular CLI
+
+Use Angular CLI for generating:
+
+- components
+- services
+- directives
+- pipes
+- guards
+
+Do not manually duplicate Angular-generated boilerplate.

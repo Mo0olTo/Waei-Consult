@@ -1,0 +1,103 @@
+---
+description: General coding standards for the Waei Angular project
+alwaysApply: true
+---
+
+# Coding Standards
+
+## TypeScript
+
+Use strict typing.
+
+Avoid:
+
+any
+
+unless there is a documented technical reason.
+
+Prefer interfaces/types with meaningful names.
+
+## Naming
+
+Use descriptive names.
+
+Examples:
+
+ServiceCardComponent
+TargetClientComponent
+SectionHeadingComponent
+
+Avoid:
+
+Comp1
+DataCard2
+Helper
+Utils
+
+unless the name is genuinely appropriate.
+
+## Files
+
+Use Angular naming conventions.
+
+Examples:
+
+hero.component.ts
+hero.component.html
+hero.component.scss
+
+Use kebab-case filenames.
+
+## Functions
+
+Functions should have one clear responsibility.
+
+Avoid huge methods.
+
+## Comments
+
+Do not comment obvious code.
+
+Use comments only when explaining:
+- business decisions
+- unusual technical behavior
+- non-obvious constraints
+
+## Styling
+
+Prefer the project's existing styling system.
+
+Do not introduce another CSS framework.
+
+Do not mix multiple styling methodologies unnecessarily.
+
+## Dependencies
+
+Before adding a package:
+
+1. Check whether Angular provides the functionality.
+2. Check whether the project already has an equivalent.
+3. Consider bundle size.
+4. Consider maintenance.
+5. Add the dependency only when justified.
+
+## Refactoring
+
+Do not rewrite unrelated code.
+
+When fixing a specific issue:
+- change the minimum necessary code
+- preserve existing behavior
+- verify the affected area
+
+## Generated Code
+
+Do not blindly accept AI-generated code.
+
+Verify:
+- Angular APIs
+- TypeScript types
+- accessibility
+- performance
+- browser behavior
+- responsive behavior

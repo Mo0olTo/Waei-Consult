@@ -1,0 +1,109 @@
+---
+description: Core project context and business rules for the Waei Consult website
+alwaysApply: true
+---
+
+# Waei Consult Website
+
+## Project Identity
+
+Project name: Waei Consult
+Arabic brand name: واعي
+
+Waei is a consulting company / business advisory firm.
+
+The website is a professional corporate website whose primary purpose is to:
+
+- Introduce Waei
+- Explain its consulting services
+- Communicate its values and methodology
+- Build trust
+- Present target clients
+- Encourage visitors to contact Waei
+
+The website is NOT an e-commerce application.
+The website is NOT a dashboard.
+The website does NOT have a backend.
+
+## Technology
+
+- Angular 21
+- TypeScript
+- Standalone Angular components
+- Tailwind CSS if already configured in the project
+- Responsive design
+- Arabic-first
+- RTL
+- SEO-focused
+- Static content
+
+## Business Content Rule
+
+All business information must come from:
+
+`docs/content.md`
+
+Never invent:
+
+- Services
+- Statistics
+- Client names
+- Testimonials
+- Awards
+- Certifications
+- Team members
+- Offices
+- Partners
+- Financial information
+- Claims about market position
+
+If required content does not exist, ask for it or use a clearly marked placeholder.
+
+Never present placeholder content as real company information.
+
+## Language
+
+The primary website language is Arabic.
+
+UI text should be Arabic unless there is a strong technical reason otherwise.
+
+English may be used for:
+- Code
+- Technical identifiers
+- SEO technical fields when appropriate
+- Established business abbreviations such as KPI, BCP
+
+## Brand Positioning
+
+Waei should communicate:
+
+- Professionalism
+- Trust
+- Accuracy
+- Confidentiality
+- Strategic partnership
+- Data-driven decision making
+- Practical experience
+- Long-term growth
+
+Avoid exaggerated marketing claims.
+
+## Main Message
+
+The core communication concept from the company profile is:
+
+"نحن لا نقدم تقارير... نحن نبني قرارات."
+
+Use this concept consistently without overusing it.
+
+## Development Principle
+
+Prefer simple, maintainable solutions.
+
+Do not introduce unnecessary:
+- libraries
+- state-management solutions
+- abstractions
+- services
+- dependencies
+- architectural complexity

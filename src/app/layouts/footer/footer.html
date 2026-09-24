@@ -1,0 +1,40 @@
+<footer class="border-t border-border bg-background-soft">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-2">
+    <a
+      routerLink="/"
+      class="inline-flex max-w-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+    >
+      <img
+        src="/images/Footer/Footer-waei.png"
+        alt="واعي، مختبر الشركات"
+        width="2245"
+        height="1587"
+        decoding="async"
+        loading="lazy"
+        class="h-auto w-66 max-w-full object-cover sm:w-66 md:w-52 lg:w-64 "
+      />
+    </a>
+    
+
+    <nav aria-label="روابط التذييل">
+      <ul class="grid gap-2 sm:grid-cols-2">
+        @for (link of links; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              class="font-body inline-flex min-h-11 items-center text-sm text-gray-700 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="border-t border-border">
+    <p class="font-body mx-auto max-w-6xl px-4 py-4 text-sm text-muted">
+      © {{ currentYear }} واعي. جميع الحقوق محفوظة.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,119 @@
+---
+description: SEO rules for the Waei Consult website
+alwaysApply: true
+---
+
+# SEO
+
+This is a corporate consulting website.
+
+SEO is an important requirement.
+
+## Metadata
+
+Every important route must have:
+
+- unique title
+- unique meta description
+- canonical URL where appropriate
+- Open Graph metadata
+
+Do not duplicate titles and descriptions across pages.
+
+## Language
+
+Use:
+
+lang="ar"
+
+and RTL.
+
+## Semantic HTML
+
+Prefer:
+
+<header>
+<nav>
+<main>
+<section>
+<article>
+<footer>
+
+Use headings in a logical hierarchy.
+
+Each page should have one primary H1 unless there is a specific valid reason otherwise.
+
+## Content
+
+Important business content must exist in crawlable HTML.
+
+Do not hide important SEO content behind:
+- click-only interactions
+- client-only rendering
+- unnecessary tabs
+- JavaScript-only UI
+
+## URLs
+
+Use clean routes.
+
+Examples:
+
+/about
+/services
+/services/business-consulting
+/services/governance
+/why-waei
+/clients
+/contact
+
+Avoid query-heavy URLs for static pages.
+
+## Sitemap
+
+Generate and maintain:
+
+sitemap.xml
+
+Include public indexable routes.
+
+Do not include:
+- admin
+- private routes
+- duplicate URLs
+
+## Robots
+
+Provide a correct robots.txt.
+
+Do not accidentally block the entire site.
+
+## Structured Data
+
+Use structured data only when it accurately represents the business.
+
+Do not invent:
+- ratings
+- reviews
+- addresses
+- social profiles
+- business facts
+
+## Images
+
+Images should have meaningful Arabic alt text when informative.
+
+Decorative images should use appropriate empty alt behavior.
+
+## Performance
+
+SEO and performance are connected.
+
+Prioritize:
+- fast LCP
+- optimized images
+- reduced JavaScript
+- lazy loading
+- minimal third-party scripts
+
+Do not sacrifice accessibility or semantic HTML for superficial Lighthouse scores.

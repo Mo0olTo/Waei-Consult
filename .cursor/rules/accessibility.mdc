@@ -1,0 +1,77 @@
+---
+description: Accessibility standards for the Waei website
+alwaysApply: true
+---
+
+# Accessibility
+
+Follow WCAG-oriented accessibility practices.
+
+## Keyboard
+
+Every interactive element must be keyboard accessible.
+
+Do not use clickable divs when a button or link is appropriate.
+
+## Focus
+
+Maintain visible focus states.
+
+Do not remove browser focus indicators without providing an accessible replacement.
+
+## Buttons and Links
+
+Use:
+
+<button>
+
+for actions.
+
+Use:
+
+<a>
+
+for navigation.
+
+Do not use one instead of the other.
+
+## Images
+
+Every meaningful image needs useful alt text.
+
+Decorative images should not create unnecessary screen-reader noise.
+
+## Forms
+
+Forms must have:
+
+- labels
+- meaningful error messages
+- keyboard accessibility
+- clear required-field indication
+
+## Contrast
+
+Text and controls must have sufficient contrast.
+
+## Motion
+
+Respect:
+
+prefers-reduced-motion
+
+Avoid motion that makes content difficult to read.
+
+## Mobile
+
+Interactive targets should be sufficiently large.
+
+Avoid tiny navigation controls.
+
+## Arabic
+
+Ensure RTL does not break:
+- focus order
+- keyboard navigation
+- screen-reader meaning
+- directional controls

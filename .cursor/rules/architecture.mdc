@@ -1,0 +1,143 @@
+---
+description: Architecture rules for the Waei Consult Angular website
+alwaysApply: true
+---
+
+# Architecture
+
+## Application Type
+
+This is a static corporate website.
+
+There is currently:
+
+- No backend
+- No authentication
+- No database
+- No API
+- No CMS
+- No user dashboard
+
+Do not create backend-related architecture.
+
+## Rendering
+
+The website should be built with SEO in mind.
+
+Prefer Angular SSR / prerendering where the project configuration supports it.
+
+The content is mostly static, so avoid client-only rendering for important SEO content.
+
+## Routing
+
+Use Angular Router.
+
+Recommended routes:
+
+/
+ /about
+ /services
+ /services/:slug
+ /why-waei
+ /clients
+ /contact
+
+Routes can be adjusted if the final UX requires fewer pages.
+
+Do not create routes simply for the sake of having routes.
+
+## Feature Organization
+
+Use a clear feature-oriented structure.
+
+Example:
+
+src/app/
+
+├── core/
+│   ├── layout/
+│   ├── services/
+│   └── models/
+│
+├── shared/
+│   ├── components/
+│   ├── directives/
+│   └── pipes/
+│
+├── features/
+│   ├── home/
+│   ├── about/
+│   ├── services/
+│   ├── why-waei/
+│   ├── clients/
+│   └── contact/
+│
+└── app.routes.ts
+
+## Components
+
+Prefer small standalone components.
+
+A page should compose reusable sections.
+
+Example:
+
+HomePage
+├── Header
+├── HeroSection
+├── AboutPreview
+├── ServicesPreview
+├── WhyWaeiSection
+├── TargetClientsSection
+├── CTASection
+└── Footer
+
+Do not put the entire homepage into one giant component.
+
+## State Management
+
+Do NOT use NgRx.
+
+Do NOT create a facade/store architecture for static content.
+
+Signals may be used for local UI state when useful.
+
+Examples:
+
+- mobile menu open/closed
+- selected service
+- active navigation state
+- accordion state
+
+Do not create signals simply because Angular supports them.
+
+## Services
+
+Do not create Angular services for static content unless there is a real reason.
+
+Static content can live in typed constants/models.
+
+## Reusability
+
+Create reusable components for repeated UI patterns:
+
+- Section heading
+- Button
+- Service card
+- Value card
+- Client segment card
+- Navigation
+- Footer
+- CTA
+
+Avoid premature abstraction.
+
+## Component Generation
+
+When creating Angular components, use Angular CLI.
+
+Example:
+
+ng generate component features/home/components/hero
+
+Do not manually create Angular component files when CLI generation is available.

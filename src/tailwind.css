@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Maps tokens from src/styles.scss :root to Tailwind color utilities. */
+@theme inline {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-secondary-dark: var(--color-secondary-dark);
+
+  --color-tertiary: var(--color-tertiary);
+  --color-tertiary-light: var(--color-tertiary-light);
+  --color-tertiary-dark: var(--color-tertiary-dark);
+
+  --color-white: var(--color-white);
+  --color-black: var(--color-black);
+  --color-gray-50: var(--color-gray-50);
+  --color-gray-100: var(--color-gray-100);
+  --color-gray-200: var(--color-gray-200);
+  --color-gray-300: var(--color-gray-300);
+  --color-gray-500: var(--color-gray-500);
+  --color-gray-700: var(--color-gray-700);
+  --color-gray-900: var(--color-gray-900);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+
+  --color-background: var(--color-background);
+  --color-background-soft: var(--color-background-soft);
+  --color-surface: var(--color-surface);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
+  --color-muted: var(--color-text-muted);
+  --color-inverse: var(--color-text-inverse);
+
+  --color-border: var(--color-border);
+}
