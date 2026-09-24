@@ -10,15 +10,29 @@
   <div class="pointer-events-none absolute inset-0 bg-primary/80" aria-hidden="true"></div>
   <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
     <p class="font-body text-sm font-medium text-secondary">مختبر الشركات</p>
-    <h1 class="font-heading mt-3 text-4xl font-extrabold text-inverse md:text-5xl">من نحن</h1>
-    <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
+    <h1 class="mt-3 border-s-4 border-secondary ps-4 font-heading text-4xl font-extrabold text-inverse md:text-5xl">
+      من نحن
+    </h1>
   </div>
 </section>
 
-<section class="bg-surface">
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <h2 class="font-heading text-5xl font-extrabold text-primary">فكرة واعي</h2>
-    <div class="mt-3 h-1 w-12 bg-secondary" aria-hidden="true"></div>
+<section class="relative overflow-hidden bg-surface">
+  <img
+    src="/images/aboutSection/arch.webp"
+    alt=""
+    width="1600"
+    height="900"
+    loading="lazy"
+    decoding="async"
+    class="pointer-events-none absolute inset-0 size-full object-cover"
+    aria-hidden="true"
+  />
+  <div class="pointer-events-none absolute inset-0 bg-white/97" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+    <h2 class="flex items-center gap-4 font-heading text-5xl font-extrabold text-primary">
+      <span class="size-3 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      فكرة واعي
+    </h2>
 
     <div class="font-[600] mt-6 flex max-w-3xl flex-col gap-4 text-2xl  leading-8 text-[var(--color-primary-dark)]">
       <p>انطلقت فكرة "واعي" من واقعين نعيشهما كل يوم:</p>
@@ -29,18 +43,30 @@
 
     <ol class="mt-12 flex flex-col gap-10 md:gap-16">
       @for (area of supportAreas; track area.title; let i = $index; let odd = $odd) {
-        <li class="about-card about-split grid items-center gap-6 md:grid-cols-2 md:gap-12" data-about-card>
-          <div class="flex items-start gap-5" [class]="odd ? 'md:order-2' : ''">
+        <li
+          class="about-card about-split group grid items-center gap-6 md:grid-cols-2 md:gap-12 cursor-pointer"
+          [class.about-split--flip]="odd"
+          data-about-card
+        >
+          <div class="flex items-start gap-5" [class]="odd ? 'md:order-2 md:justify-end' : ''">
             <span
-              class="about-split-number font-heading text-6xl leading-none font-extrabold md:text-7xl"
+              class="about-split-number w-24 shrink-0 pt-1 text-center font-heading text-6xl leading-none
+               font-extrabold tabular-nums md:w-28 md:text-7xl"
               aria-hidden="true"
             >
               {{ '0' + (i + 1) }}
             </span>
-            <div class="border-s-2 border-secondary ps-5 pt-2">
-              <h3 class="font-heading text-2xl font-extrabold text-primary md:text-3xl">
+            <div class="border-s-2 border-secondary ps-5">
+              <h3
+                class="font-heading inline-block rounded-lg px-3 py-1 text-2xl font-extrabold text-primary transition-colors duration-300 motion-reduce:transition-none group-hover:bg-secondary md:text-3xl"
+              >
                 {{ area.title }}
               </h3>
+              <p
+                class="mt-3 whitespace-pre-line rounded-xl px-3 py-2 text-xl leading-8 font-semibold text-gray-700 transition-colors duration-300 motion-reduce:transition-none group-hover:bg-white group-hover:text-primary"
+              >
+                {{ area.desc }}
+              </p>
             </div>
           </div>
 
@@ -69,80 +95,85 @@
   </div>
 </section>
 
-<section class="bg-background-soft">
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <h2 class="font-heading text-3xl font-extrabold text-primary">الرؤية والرسالة والهدف</h2>
-    <div class="mt-3 h-1 w-12 bg-secondary" aria-hidden="true"></div>
+<section class="relative overflow-hidden bg-background-soft">
+  <!-- <img
+    src="/images/aboutSection/arch.webp"
+    alt=""
+    width="1600"
+    height="900"
+    loading="lazy"
+    decoding="async"
+    class="pointer-events-none absolute inset-0 size-full object-cover"
+    aria-hidden="true"
+  />
+  <div class="pointer-events-none absolute inset-0 bg-white/95" aria-hidden="true"></div> -->
+  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      الرؤية والرسالة والهدف
+    </h2>
 
-    <div class="mt-8 grid gap-6 md:grid-cols-3">
-      <article class="about-card h-full" data-about-card style="--delay: 0ms">
-        <div class="about-card-inner cursor-pointer overflow-hidden rounded-md bg-surface shadow-sm">
-          <div class="about-card-accent h-1 bg-tertiary" aria-hidden="true"></div>
-          <div class="px-5 py-6">
-            <h3 class="font-heading text-xl font-extrabold text-primary">الرؤية</h3>
-            <p class="font-body mt-3 text-lg leading-8 text-gray-700">
-              أن نكون المستشار الأول في مصر والخليج للشركات والأفراد لاتخاذ القرار الصحيح.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="about-card h-full" data-about-card style="--delay: 80ms">
-        <div class="about-card-inner cursor-pointer overflow-hidden rounded-md bg-surface shadow-sm">
-          <div class="about-card-accent h-1 bg-tertiary" aria-hidden="true"></div>
-          <div class="px-5 py-6">
-            <h3 class="font-heading text-xl font-extrabold text-primary">الرسالة</h3>
-            <p class="font-body mt-3 text-lg leading-8 text-gray-700">
-              نقدم خبراتنا العملية والعلمية في صورة استشارات محترفة لتمكين الأفراد والمديرين والمؤسسات من
-              اتخاذ القرارات الصحيحة في الوقت المناسب.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="about-card h-full" data-about-card style="--delay: 160ms">
-        <div class="about-card-inner cursor-pointer overflow-hidden rounded-md bg-surface shadow-sm">
-          <div class="about-card-accent h-1 bg-tertiary" aria-hidden="true"></div>
-          <div class="px-5 py-6">
-            <h3 class="font-heading text-xl font-extrabold text-primary">الهدف</h3>
-            <p class="font-body mt-3 text-lg leading-8 text-gray-700">
-              نقل شركائنا من المديرين وأصحاب الأعمال والمؤسسات من مرحلة رد الفعل إلى مرحلة الاستباق
-              لتحقيق النمو والريادة والاستدامة.
-            </p>
-          </div>
-        </div>
-      </article>
-    </div>
+    <ol class="mt-8 grid gap-6 md:grid-cols-3">
+      @for (item of statements; track item.title; let i = $index) {
+        <li class="about-card h-full" data-about-card [style.--delay]="i * 100 + 'ms'">
+          <article
+            class="about-panel flex h-full cursor-pointer flex-col rounded-2xl bg-primary p-7 ring-1 ring-primary-light"
+          >
+            <ng-container [ngTemplateOutlet]="aboutIcon" [ngTemplateOutletContext]="{ $implicit: item.icon }" />
+            <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">{{ item.title }}</h3>
+            <p class="font-body mt-3 text-lg leading-8 text-gray-200">{{ item.description }}</p>
+            <div class="mt-auto pt-6">
+              <div class="about-panel-line h-0.5 bg-secondary" aria-hidden="true"></div>
+            </div>
+          </article>
+        </li>
+      }
+    </ol>
   </div>
 </section>
 
-<section class="bg-surface">
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <h2 class="font-heading text-3xl font-extrabold text-primary">قيمنا</h2>
-    <div class="mt-3 h-1 w-12 bg-secondary" aria-hidden="true"></div>
+<section class="relative overflow-hidden bg-surface">
+  <!-- <img
+    src="/images/aboutSection/partnership.webp"
+    alt=""
+    width="1600"
+    height="900"
+    loading="lazy"
+    decoding="async"
+    class="pointer-events-none absolute inset-0 size-full object-cover"
+    aria-hidden="true"
+  />
+  <div class="pointer-events-none absolute inset-0 bg-white/85" aria-hidden="true"></div> -->
+  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      قيمنا
+    </h2>
 
-    <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ol class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       @for (value of values; track value.title; let i = $index) {
-        <li class="about-card h-full" data-about-card [style.--delay]="i * 80 + 'ms'">
-          <div class="about-card-inner cursor-pointer overflow-hidden rounded-md bg-background-soft shadow-sm">
-            <div class="about-card-accent h-1 bg-secondary" aria-hidden="true"></div>
-            <div class="px-5 py-6">
-              <h3 class="font-heading text-xl font-extrabold text-primary">{{ value.title }}</h3>
-              <p class="font-body mt-3 text-lg leading-8 text-gray-700">{{ value.description }}</p>
+        <li class="about-card h-full" data-about-card [style.--delay]="(i % 3) * 100 + 'ms'">
+          <article
+            class="about-panel flex h-full cursor-pointer flex-col rounded-2xl bg-primary p-7 ring-1 ring-primary-light"
+          >
+            <ng-container [ngTemplateOutlet]="aboutIcon" [ngTemplateOutletContext]="{ $implicit: value.icon }" />
+            <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">{{ value.title }}</h3>
+            <p class="font-body mt-3 text-lg leading-8 text-gray-200">{{ value.description }}</p>
+            <div class="mt-auto pt-6">
+              <div class="about-panel-line h-0.5 bg-secondary" aria-hidden="true"></div>
             </div>
-          </div>
+          </article>
         </li>
       }
-    </ul>
+    </ol>
   </div>
 </section>
 
 <section class="bg-primary">
   <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <h2 class="font-heading text-3xl font-extrabold text-inverse">
+    <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
       نحن لا نقدم تقارير... نحن نبني قرارات.
     </h2>
-    <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
     <a
       routerLink="/contact"
       class="font-body mt-8 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -151,3 +182,45 @@
     </a>
   </div>
 </section>
+
+<ng-template #aboutIcon let-name>
+  <svg class="size-12 text-secondary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    @switch (name) {
+      @case ('vision') {
+        <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.75" />
+        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.75" />
+      }
+      @case ('mission') {
+        <path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
+        <path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      }
+      @case ('goal') {
+        <path d="M5 21V4M5 4h11l-2.2 3.5L16 11H5" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" />
+      }
+      @case ('integrity') {
+        <path d="M12 3v18M8 21h8M4 7h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+        <path d="M4 7 2 13h6L6 7M20 7l-2 6h6L22 7" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" />
+      }
+      @case ('accuracy') {
+        <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.75" />
+        <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      }
+      @case ('confidentiality') {
+        <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.75" />
+        <path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      }
+      @case ('safety') {
+        <path d="M12 3 5 6v6c0 4.2 2.8 7.2 7 8.8 4.2-1.6 7-4.6 7-8.8V6l-7-3Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
+      }
+      @case ('partnership') {
+        <circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.75" />
+        <circle cx="16" cy="8" r="2.5" stroke="currentColor" stroke-width="1.75" />
+        <path d="M3.5 19c.6-2.6 2.4-4 4.5-4s3.9 1.4 4.5 4M11.5 19c.6-2.6 2.4-4 4.5-4s3.9 1.4 4.5 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      }
+      @case ('time') {
+        <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.75" />
+        <path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+      }
+    }
+  </svg>
+</ng-template>
