@@ -50,7 +50,7 @@ export const routes: Routes = [
       },
       {
         path: 'clients',
-        title: 'العملاء المستهدفون | واعي',
+        title: 'عملاؤنا المستهدفون | واعي',
         loadComponent: () =>
           import('./features/who-we-serve/who-we-serve').then((m) => m.WhoWeServe),
       },

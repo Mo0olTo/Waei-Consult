@@ -1,35 +1,40 @@
-.client-card-inner {
-  height: 100%;
+.client-segment-media {
   transition:
     box-shadow 0.3s ease,
     translate 0.3s ease;
 }
 
-.client-card-accent {
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-.client-card-inner:hover {
-  translate: 0 -0.35rem;
+.client-segment-media:hover {
+  translate: 0 -0.25rem;
   box-shadow: 0 12px 28px rgb(11 47 79 / 0.14);
 }
 
-.client-card-inner:hover .client-card-accent {
-  transform: scaleY(1.75);
+.segment-bullet {
+  position: relative;
 }
 
-:host.who-we-serve-ready .client-card:not(.is-visible) {
+.segment-bullet::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.85em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: var(--color-secondary);
+}
+
+:host.who-we-serve-ready .client-segment:not(.is-visible) {
   opacity: 0;
   translate: 0 1.25rem;
 }
 
-:host.who-we-serve-ready .client-card.is-visible {
-  animation: client-card-in 0.6s ease-out both;
+:host.who-we-serve-ready .client-segment.is-visible {
+  animation: client-segment-in 0.6s ease-out both;
   animation-delay: var(--delay, 0ms);
 }
 
-@keyframes client-card-in {
+@keyframes client-segment-in {
   from {
     opacity: 0;
     translate: 0 1.25rem;
@@ -42,22 +47,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .client-card-inner,
-  .client-card-accent {
+  .client-segment-media {
     transition: none;
   }
 
-  .client-card-inner:hover {
+  .client-segment-media:hover {
     translate: none;
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
+    box-shadow: none;
   }
 
-  .client-card-inner:hover .client-card-accent {
-    transform: none;
-  }
-
-  :host.who-we-serve-ready .client-card:not(.is-visible),
-  :host.who-we-serve-ready .client-card.is-visible {
+  :host.who-we-serve-ready .client-segment:not(.is-visible),
+  :host.who-we-serve-ready .client-segment.is-visible {
     opacity: 1;
     translate: none;
     animation: none;

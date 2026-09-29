@@ -1,17 +1,13 @@
-import {
-  afterNextRender,
-  Component,
-  DestroyRef,
-  ElementRef,
-  inject,
-} from '@angular/core';
+import { afterNextRender, Component, DestroyRef, ElementRef, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CtaCard, CtaSection } from '../../../../shared/Components/cta-section/cta-section';
 import { SERVICES } from '../../data/services.data';
 import { ServiceIcon } from '../service-icon/service-icon';
+import { WaeiLogo } from '../../../../shared/ui/waei-logo/waei-logo';
 
 @Component({
   selector: 'app-services-list',
-  imports: [RouterLink, ServiceIcon],
+  imports: [RouterLink, ServiceIcon, CtaSection, WaeiLogo],
   templateUrl: './services-list.html',
   styleUrl: './services-list.scss',
 })
@@ -20,6 +16,13 @@ export class ServicesList {
   private readonly destroyRef = inject(DestroyRef);
 
   protected readonly services = SERVICES;
+
+  protected readonly resourceLinks: readonly CtaCard[] = [
+    { title: 'رؤى', icon: 'insights', link: '/contact', value: 63 },
+    { title: 'مشاريع', icon: 'projects', link: '/contact', value: 18 },
+    { title: 'أبحاث', icon: 'research', link: '/contact', value: 12 },
+    { title: 'شركات استشارية', icon: 'firms', link: '/contact', value: 8 },
+  ];
 
   constructor() {
     afterNextRender(() => {
@@ -33,9 +36,7 @@ export class ServicesList {
     }
 
     const root = this.host.nativeElement as HTMLElement;
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
       return;

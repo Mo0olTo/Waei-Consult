@@ -1,0 +1,71 @@
+<section class="border-y border-border bg-background" aria-label="روابط ذات صلة">
+  <div class="site-container py-10 md:py-12">
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      @for (card of cards(); track card.title; let i = $index) {
+        <li>
+          <a
+            [routerLink]="card.link"
+            class="flex h-full min-h-11 flex-col items-center justify-center gap-3 rounded-2xl bg-surface px-5 py-6 text-center ring-1 ring-border hover:ring-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <span class="sr-only">{{ card.value }}</span>
+            <span
+              class="font-heading text-4xl font-extrabold tabular-nums text-secondary"
+              aria-hidden="true"
+            >
+              {{ '+' + displayValue(i)  }}
+            </span>
+            <svg class="size-10 text-secondary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              @switch (card.icon) {
+                @case ('insights') {
+                  <path
+                    d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11c.4.4.7.9.8 1.5h4.4c.1-.6.4-1.1.8-1.5A6 6 0 0 0 12 3Z"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linejoin="round"
+                  />
+                }
+                @case ('projects') {
+                  <path
+                    d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-10Z"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linejoin="round"
+                  />
+                }
+                @case ('research') {
+                  <path
+                    d="M7 3.5h7l5 5V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M14 3.5V9h5.5M8.5 13h7M8.5 16.5h5"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                }
+                @case ('firms') {
+                  <path
+                    d="M4 20.5h16M6 20.5V9.5L12 4l6 5.5v11"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 20.5v-4h4v4M9.5 11h.01M14.5 11h.01M9.5 14.5h.01M14.5 14.5h.01"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                }
+              }
+            </svg>
+            <span class="font-heading text-lg font-extrabold text-primary">{{ card.title }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

@@ -6,15 +6,12 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-interface TargetClient {
-  title: string;
-  description: string;
-}
+import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
+import { TARGET_CLIENT_SEGMENTS } from './data/who-we-serve.data';
 
 @Component({
   selector: 'app-who-we-serve',
-  imports: [RouterLink],
+  imports: [RouterLink, WaeiLogo],
   templateUrl: './who-we-serve.html',
   styleUrl: './who-we-serve.scss',
 })
@@ -22,32 +19,15 @@ export class WhoWeServe {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly clients: TargetClient[] = [
-    {
-      title: 'الشركات الناشئة والـ SMEs',
-      description: 'اللي عايزة تأسيس صح وهيكلة من اليوم الأول.',
-    },
-    {
-      title: 'الشركات العائلية',
-      description: 'اللي بتبحث عن حوكمة وفصل الملكية عن الإدارة واستمرارية.',
-    },
-    {
-      title: 'المؤسسات متوسطة وكبيرة الحجم',
-      description: 'اللي محتاجة إعادة هيكلة وتحول رقمي وإدارة مخاطر.',
-    },
-    {
-      title: 'مجالس الإدارات والمديرون التنفيذيون',
-      description: 'اللي محتاجين دعم قرار سريع مبني على بيانات موثوقة.',
-    },
-  ];
+  protected readonly segments = TARGET_CLIENT_SEGMENTS;
 
   constructor() {
     afterNextRender(() => {
-      this.setupCardReveal();
+      this.setupSegmentReveal();
     });
   }
 
-  private setupCardReveal(): void {
+  private setupSegmentReveal(): void {
     if (typeof IntersectionObserver === 'undefined') {
       return;
     }
@@ -61,7 +41,7 @@ export class WhoWeServe {
       return;
     }
 
-    const cards = root.querySelectorAll('[data-client-card]');
+    const segments = root.querySelectorAll('[data-client-segment]');
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -76,14 +56,14 @@ export class WhoWeServe {
 
     const viewportBottom = window.innerHeight * 0.92;
 
-    for (const card of cards) {
-      const rect = card.getBoundingClientRect();
+    for (const segment of segments) {
+      const rect = segment.getBoundingClientRect();
       const isInView = rect.top < viewportBottom && rect.bottom > 0;
 
       if (isInView) {
-        card.classList.add('is-visible');
+        segment.classList.add('is-visible');
       } else {
-        observer.observe(card);
+        observer.observe(segment);
       }
     }
 
