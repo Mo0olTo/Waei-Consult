@@ -1,4 +1,6 @@
-<section class="relative overflow-hidden bg-primary">
+<section
+  class="relative flex min-h-[calc(100dvh-4.8125rem)] items-end overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
+>
   <img
     src="/images/aboutSection/employees.webp"
     alt=""
@@ -7,16 +9,30 @@
     class="pointer-events-none absolute inset-0 size-full object-cover"
     aria-hidden="true"
   />
-  <div class="pointer-events-none absolute inset-0 bg-primary/80" aria-hidden="true"></div>
-  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <p class="font-body text-sm font-medium text-secondary">مختبر الشركات</p>
-    <h1 class="mt-3 border-s-4 border-secondary ps-4 font-heading text-4xl font-extrabold text-inverse md:text-5xl">
+  <div
+    class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
+    aria-hidden="true"
+  ></div>
+  <div class="site-container relative w-full pb-16 pt-24 md:pb-20">
+    <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
+    <h1
+      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
+    >
       من نحن
     </h1>
+    <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-xl">
+      هدفنا أن نختصر على مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل لا على التوقع.
+    </p>
+    <a
+      href="/about#about-idea"
+      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    >
+      تعرّف على واعي
+    </a>
   </div>
 </section>
 
-<section class="relative overflow-hidden bg-surface">
+<section id="about-idea" class="relative scroll-mt-6 overflow-hidden bg-surface">
   <img
     src="/images/aboutSection/arch.webp"
     alt=""
@@ -28,17 +44,18 @@
     aria-hidden="true"
   />
   <div class="pointer-events-none absolute inset-0 bg-white/97" aria-hidden="true"></div>
-  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+  <div class="site-container relative py-16 md:py-20">
     <h2 class="flex items-center gap-4 font-heading text-5xl font-extrabold text-primary">
       <span class="size-3 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       فكرة واعي
     </h2>
 
     <div class="font-[600] mt-6 flex max-w-3xl flex-col gap-4 text-2xl  leading-8 text-[var(--color-primary-dark)]">
-      <p>انطلقت فكرة "واعي" من واقعين نعيشهما كل يوم:</p>
+      <p>في «واعي» ننطلق من فهمٍ عمليٍّ وعميقٍ لتحديات الأفراد والشركات والمؤسسات والمشروعات الناشئة والصغيرة، ونؤمن بأن دورنا يتجاوز تقديم الاستشارات التقليدية إلى بناء شراكاتٍ حقيقيةٍ تختصر شهورًا من التجربة والخطأ، من خلال منظومةٍ متكاملةٍ من الحلول تشمل:</p>
+      <!-- <p>انطلقت فكرة "واعي" من واقعين نعيشهما كل يوم:</p>
       <p>الأول: الاحتكاك المباشر وفهم تحديات المؤسسات الصغيرة والكبيرة.</p>
       <p>الثاني: إيماننا بمسؤوليتنا كشركاء نجاح للنهوض بالمؤسسات وتحقيق النمو والريادة.</p>
-      <p>لذلك قررنا تقديم الدعم الاستشاري المتكامل في:</p>
+      <p>لذلك قررنا تقديم الدعم الاستشاري المتكامل في:</p> -->
     </div>
 
     <ol class="mt-12 flex flex-col gap-10 md:gap-16">
@@ -88,10 +105,6 @@
       }
     </ol>
 
-    <p class="font-body mt-8 max-w-3xl text-lg leading-8 text-gray-700">
-      هدفنا أن نختصر على مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل
-      لا على التوقع.
-    </p>
   </div>
 </section>
 
@@ -107,7 +120,7 @@
     aria-hidden="true"
   />
   <div class="pointer-events-none absolute inset-0 bg-white/95" aria-hidden="true"></div> -->
-  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+  <div class="site-container relative py-16 md:py-20">
     <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       الرؤية والرسالة والهدف
@@ -132,7 +145,41 @@
   </div>
 </section>
 
-<section class="relative overflow-hidden bg-surface">
+<section class="bg-surface">
+  <div class="site-container py-16 md:py-20">
+    <div class="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+      <div>
+        <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+          <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+          منهجيتنا في "واعي"
+        </h2>
+        <div class="font-body mt-6 flex flex-col gap-4 text-3xl leading-8 text-gray-700">
+          <p>
+            نقدم منظومة متكاملة من الحلول الاستشارية لدعم نمو مؤسستك واستدامتها، ونصمم خدماتنا بما يتناسب مع كل مرحلة من
+            مراحلها، بدءًا من التأسيس، مرورًا بالنمو، وصولًا إلى التوسع.
+          </p>
+          <p>
+            لا نعتمد على الحلول النمطية، بل نطور لكل عميل استراتيجية مخصصة تنطلق من طبيعة أعماله وحجم مؤسسته وتحدياته، بما
+            يدعم تحقيق أهدافه وبناء مستقبل مستدام.
+          </p>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-3xl shadow-sm">
+        <img
+          src="/images/aboutSection/aboutDesc.jpeg"
+          alt="تخطيط على مكتب بجانب ساعة رملية وساعة، مع كتب عن الاستراتيجية والتنفيذ والنمو"
+          width="1536"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[3/2] size-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative overflow-hidden border-t border-border bg-surface">
   <!-- <img
     src="/images/aboutSection/partnership.webp"
     alt=""
@@ -144,7 +191,7 @@
     aria-hidden="true"
   />
   <div class="pointer-events-none absolute inset-0 bg-white/85" aria-hidden="true"></div> -->
-  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+  <div class="site-container relative py-16 md:py-20">
     <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       قيمنا
@@ -170,10 +217,12 @@
 </section>
 
 <section class="bg-primary">
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+  <div class="site-container py-16 md:py-20">
     <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
-      نحن لا نقدم تقارير... نحن نبني قرارات.
+      نقدم حلولًا قائمةً على الخبرة العملية والتحليل الدقيق للأرقام؛ لدعم أعمالكم في اتخاذ القرارات المناسبة في الوقت المناسب، سعيًا للنمو والريادة والاستدامة.
     </h2>
+
+    
     <a
       routerLink="/contact"
       class="font-body mt-8 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
