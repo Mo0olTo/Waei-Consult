@@ -16,7 +16,7 @@ export const TARGET_CLIENT_SEGMENTS: readonly TargetClientSegment[] = [
     paragraphs: [
       'أيًّا كان حجم أعمالك، سواء كنت تدير مشروعًا قائمًا وتواجه تحدياتٍ إداريةً أو تشغيليةً، أو تسعى لتحويل فكرةٍ إلى مشروعٍ ناجحٍ، فإننا نساعدك على تطوير أعمالك وإدارة تحدياتك بكفاءة، ونرافقك في تأسيس شركتك تأسيسًا قانونيًّا سليمًا منذ اليوم الأول.',
     ],
-    imageSrc: '/images/aboutSection/idea.webp',
+    imageSrc: '/images/whoWeServe/1.webp',
     imageAlt: 'رواد الأعمال والمشروعات الناشئة',
   },
   {
@@ -30,7 +30,7 @@ export const TARGET_CLIENT_SEGMENTS: readonly TargetClientSegment[] = [
       'إدارة الخلافات وبناء التوافق بين الشركاء.',
       'التخطيط لانتقال القيادة للجيل القادم سعياً وراء الاستدامة والنمو.',
     ],
-    imageSrc: '/images/aboutSection/partnership.webp',
+    imageSrc: '/images/whoWeServe/2.webp',
     imageAlt: 'الشركات العائلية',
   },
   {
@@ -39,7 +39,7 @@ export const TARGET_CLIENT_SEGMENTS: readonly TargetClientSegment[] = [
     paragraphs: [
       'ندرك حجم المسؤولية والضغوط التي تواجه مجالس الإدارات والقيادات التنفيذية. نعمل كشريك استشاري موثوق، سواء بشكل مباشر أو خلف الكواليس، لتقديم رأي مهني مستقل ومحايد يدعم اتخاذ القرارات الاستراتيجية، ويساعد في تقييم آثارها التشغيلية والاقتصادية والقانونية، مع تعزيز القدرة على عرض مبرراتها أمام الجمعية العامة للمساهمين.',
     ],
-    imageSrc: '/images/aboutSection/arch.webp',
+    imageSrc: '/images/whoWeServe/3.webp',
     imageAlt: 'الشركات المساهمة ومجالس إداراتها',
   },
   {
@@ -52,7 +52,7 @@ export const TARGET_CLIENT_SEGMENTS: readonly TargetClientSegment[] = [
       'بناء الخطط الاستراتيجية (قصيرة، متوسطة، وطويلة الأجل).',
       'التوفيق بين تطلعاتكم القيادية وأهداف مؤسساتكم التنموية.',
     ],
-    imageSrc: '/images/aboutSection/employees.webp',
+    imageSrc: '/images/whoWeServe/4.webp',
     imageAlt: 'المديرون والقيادات التنفيذية وصناع القرار',
   },
   {
@@ -66,7 +66,7 @@ export const TARGET_CLIENT_SEGMENTS: readonly TargetClientSegment[] = [
       'حماية حقوق الأقلية والشركاء في الكيانات التجارية.',
       'تقييم الاستثمارات الحالية وتحديد التوقيت الأمثل للتخارج والبيع لتعظيم عوائدك.',
     ],
-    imageSrc: '/images/aboutSection/direction.webp',
+    imageSrc: '/images/whoWeServe/5.webp',
     imageAlt: 'المستثمرون والمساهمون وأصحاب الحصص',
   },
   {
@@ -75,7 +75,7 @@ export const TARGET_CLIENT_SEGMENTS: readonly TargetClientSegment[] = [
     paragraphs: [
       'لكل قطاع تحدياته ومتطلباته التنظيمية والتشغيلية. في «واعي»، لا نقدم حلولًا جاهزة، بل نصمم حلولًا استشارية مخصصة تتوافق مع طبيعة قطاعك ولوائحه، وتستجيب لتحدياته التشغيلية، بما يدعم نمو أعمالك واستدامتها.',
     ],
-    imageSrc: '/images/whoWeServe/clients-serve.jpg',
+    imageSrc: '/images/whoWeServe/6.webp',
     imageAlt: 'القطاعات التخصصية',
   },
 ];

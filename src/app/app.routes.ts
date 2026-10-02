@@ -19,6 +19,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/about/about').then((m) => m.About),
       },
       {
+        path: 'crew',
+        title: 'فريق عمل واعي | واعي',
+        loadComponent: () => import('./features/crew/crew').then((m) => m.Crew),
+      },
+      {
         path: 'services',
         loadComponent: () =>
           import('./features/services/services').then((m) => m.Services),
