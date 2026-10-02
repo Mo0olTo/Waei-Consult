@@ -7,27 +7,27 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
-import { TARGET_CLIENT_SEGMENTS } from './data/who-we-serve.data';
+import { TEAM } from './data/crew.data';
 
 @Component({
-  selector: 'app-who-we-serve',
+  selector: 'app-crew',
   imports: [RouterLink, WaeiLogo],
-  templateUrl: './who-we-serve.html',
-  styleUrl: './who-we-serve.scss',
+  templateUrl: './crew.html',
+  styleUrl: './crew.scss',
 })
-export class WhoWeServe {
+export class Crew {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly segments = TARGET_CLIENT_SEGMENTS;
+  protected readonly team = TEAM;
 
   constructor() {
     afterNextRender(() => {
-      this.setupSegmentReveal();
+      this.setupCardReveal();
     });
   }
 
-  private setupSegmentReveal(): void {
+  private setupCardReveal(): void {
     if (typeof IntersectionObserver === 'undefined') {
       return;
     }
@@ -41,7 +41,7 @@ export class WhoWeServe {
       return;
     }
 
-    const segments = root.querySelectorAll('[data-client-segment]');
+    const cards = root.querySelectorAll('[data-crew-card]');
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -56,18 +56,18 @@ export class WhoWeServe {
 
     const viewportBottom = window.innerHeight * 0.92;
 
-    for (const segment of segments) {
-      const rect = segment.getBoundingClientRect();
+    for (const card of cards) {
+      const rect = card.getBoundingClientRect();
       const isInView = rect.top < viewportBottom && rect.bottom > 0;
 
       if (isInView) {
-        segment.classList.add('is-visible');
+        card.classList.add('is-visible');
       } else {
-        observer.observe(segment);
+        observer.observe(card);
       }
     }
 
-    root.classList.add('who-we-serve-ready');
+    root.classList.add('crew-ready');
     this.destroyRef.onDestroy(() => observer.disconnect());
   }
 }

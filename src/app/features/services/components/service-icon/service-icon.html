@@ -1,0 +1,28 @@
+<svg class="size-12 text-secondary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  @switch (name()) {
+    @case ('consulting') {
+      <path d="M4 8h16v11H4V8Z" stroke="currentColor" stroke-width="1.75" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2M4 13h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+    }
+    @case ('data') {
+      <path d="M4 19V11M10 19V5M16 19v-6M22 19H2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+    }
+    @case ('governance') {
+      <path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10M3 10l9-6 9 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    }
+    @case ('compliance') {
+      <path d="M12 3 5 6v6c0 4.2 2.8 7.2 7 8.8 4.2-1.6 7-4.6 7-8.8V6l-7-3Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
+      <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+    }
+    @case ('people') {
+      <circle cx="9" cy="8" r="2.5" stroke="currentColor" stroke-width="1.75" />
+      <circle cx="16" cy="9" r="2" stroke="currentColor" stroke-width="1.75" />
+      <path d="M3.5 19c.6-2.8 2.6-4.2 5.5-4.2s4.9 1.4 5.5 4.2M14 14.8c1.8 0 3.4.9 4.2 2.7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+    }
+    @case ('continuity') {
+      <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.75" />
+      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.75" />
+      <path d="M12 4v5M12 15v5M4 12h5M15 12h5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+    }
+  }
+</svg>

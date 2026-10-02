@@ -1,0 +1,54 @@
+@if (service(); as service) {
+  <section class="relative overflow-hidden bg-primary">
+    <img
+      src="/images/sectionsBackground/services.webp"
+      alt=""
+      width="1600"
+      height="900"
+      class="pointer-events-none absolute inset-0 size-full object-cover"
+      aria-hidden="true"
+    />
+    <div class="pointer-events-none absolute inset-0 bg-primary/80" aria-hidden="true"></div>
+    <div class="site-container relative py-16 md:py-20">
+      <a
+        routerLink="/services"
+        class="font-body inline-flex min-h-11 items-center text-sm font-medium text-secondary hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        العودة إلى خدماتنا
+      </a>
+      <app-service-icon class="mt-6 block" [name]="service.icon" />
+      <h1 class="font-heading mt-3 text-4xl font-extrabold text-inverse md:text-5xl">
+        {{ service.title }}
+      </h1>
+      <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="site-container py-16 md:py-20">
+      <ul class="flex flex-col gap-10">
+        @for (item of service.capabilities; track item.title) {
+          <li class="border-s-2 border-secondary ps-5">
+            <h2 class="font-heading text-2xl font-extrabold text-primary">{{ item.title }}</h2>
+            <p class="font-body mt-3 text-lg leading-9 text-gray-700">{{ item.description }}</p>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-primary">
+    <div class="site-container py-16 md:py-20">
+      <h2 class="font-heading text-3xl font-extrabold text-inverse">
+        نحن لا نقدم تقارير... نحن نبني قرارات.
+      </h2>
+      <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
+      <a
+        routerLink="/contact"
+        class="font-body mt-8 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        تواصل معنا
+      </a>
+    </div>
+  </section>
+}

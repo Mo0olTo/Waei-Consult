@@ -1,4 +1,6 @@
-<section class="relative overflow-hidden bg-primary">
+<section
+  class="relative flex min-h-[calc(100dvh-4.8125rem)] flex-col overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
+>
   <img
     src="/images/whoWeServe/whoServe.webp"
     alt=""
@@ -7,43 +9,103 @@
     class="pointer-events-none absolute inset-0 size-full object-cover md:object-[center_25%]"
     aria-hidden="true"
   />
-  <div class="pointer-events-none absolute inset-0 bg-primary/80" aria-hidden="true"></div>
-  <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <p class="font-body text-sm font-medium text-secondary">مختبر الشركات</p>
-    <h1 class="font-heading mt-3 text-4xl font-extrabold text-inverse md:text-5xl">
-      العملاء المستهدفون
+  <div
+    class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
+    aria-hidden="true"
+  ></div>
+  <div class="relative flex flex-1 items-center justify-center">
+    <app-waei-logo size="lg" tone="inverse" />
+  </div>
+  <div class="site-container relative w-full pb-16 md:pb-20">
+    <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
+    <h1
+      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
+    >
+      عملاؤنا المستهدفون
     </h1>
-    <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
+    <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-xl">
+      "واعي".. شريككم في القرار، وداعمكم في النمو.
+    </p>
+    <a
+      href="/clients#client-segments"
+      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    >
+      تعرّف على شرائح عملائنا
+    </a>
   </div>
 </section>
 
-<section class="bg-surface">
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <h2 class="font-heading text-3xl font-extrabold text-primary">العملاء المستهدفون</h2>
-    <div class="mt-3 h-1 w-12 bg-secondary" aria-hidden="true"></div>
+<section
+  id="client-segments"
+  class="relative scroll-mt-6 overflow-hidden border-t border-border bg-surface"
+>
+  <div class="site-container py-16 md:py-20">
+    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      عملاؤنا المستهدفون
+    </h2>
 
-    <ul class="mt-8 grid gap-6 sm:grid-cols-2">
-      @for (client of clients; track client.title; let i = $index) {
-        <li class="client-card h-full" data-client-card [style.--delay]="i * 80 + 'ms'">
-          <div class="client-card-inner cursor-pointer overflow-hidden rounded-md bg-background-soft shadow-sm">
-            <div class="client-card-accent h-1 bg-secondary" aria-hidden="true"></div>
-            <div class="px-5 py-6">
-              <h3 class="font-heading text-xl font-extrabold text-primary">{{ client.title }}</h3>
-              <p class="font-body mt-3 text-lg leading-8 text-gray-700">{{ client.description }}</p>
-            </div>
+    <div class="mt-12 flex flex-col gap-16 md:gap-20">
+      @for (segment of segments; track segment.id; let i = $index) {
+        <article
+          class="client-segment grid gap-8 lg:grid-cols-2 lg:items-center"
+          data-client-segment
+          [style.--delay]="i * 80 + 'ms'"
+        >
+          <div
+            class="client-segment-copy"
+            [class.lg:order-1]="i % 2 === 0"
+            [class.lg:order-2]="i % 2 === 1"
+          >
+            <h3 class="font-heading text-2xl font-extrabold text-primary md:text-3xl">
+              {{ segment.title }}
+            </h3>
+            @if (segment.lead) {
+              <p class="font-body mt-3 text-lg font-medium leading-8 text-secondary">
+                {{ segment.lead }}
+              </p>
+            }
+            @if (segment.paragraphs) {
+              @for (paragraph of segment.paragraphs; track paragraph) {
+                <p class="font-body mt-4 text-lg leading-8 text-gray-700">{{ paragraph }}</p>
+              }
+            }
+            @if (segment.intro) {
+              <p class="font-body mt-4 text-lg leading-8 text-gray-700">{{ segment.intro }}</p>
+            }
+            @if (segment.bullets) {
+              <ul class="font-body mt-4 flex flex-col gap-2 text-lg leading-8 text-gray-700">
+                @for (item of segment.bullets; track item) {
+                  <li class="segment-bullet ps-4">{{ item }}</li>
+                }
+              </ul>
+            }
           </div>
-        </li>
+          <figure
+            class="client-segment-media overflow-hidden rounded-2xl ring-1 ring-border shadow-sm"
+            [class.lg:order-1]="i % 2 === 1"
+            [class.lg:order-2]="i % 2 === 0"
+          >
+            <img
+              [src]="segment.imageSrc"
+              [alt]="segment.imageAlt"
+              width="800"
+              height="600"
+              loading="lazy"
+              class="aspect-4/3 size-full object-fill"
+            />
+          </figure>
+        </article>
       }
-    </ul>
+    </div>
   </div>
 </section>
 
 <section class="bg-primary">
-  <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-    <h2 class="font-heading text-3xl font-extrabold text-inverse">
+  <div class="site-container py-16 md:py-20">
+    <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
       نحن لا نقدم تقارير... نحن نبني قرارات.
     </h2>
-    <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
     <a
       routerLink="/contact"
       class="font-body mt-8 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"

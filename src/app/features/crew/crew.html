@@ -1,0 +1,98 @@
+<section
+  class="relative flex min-h-[calc(100dvh-4.8125rem)] flex-col overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
+>
+  <img
+    src="/images/aboutSection/employees.webp"
+    alt=""
+    width="1600"
+    height="900"
+    class="pointer-events-none absolute inset-0 size-full object-cover"
+    aria-hidden="true"
+  />
+  <div
+    class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
+    aria-hidden="true"
+  ></div>
+  <div class="relative flex flex-1 items-center justify-center">
+    <app-waei-logo size="lg" tone="inverse" />
+  </div>
+  <div class="site-container relative w-full pb-16 md:pb-20">
+    <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
+    <h1
+      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
+    >
+      فريق عمل "واعي"
+    </h1>
+    <a
+      href="/crew#crew-team"
+      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    >
+      تعرّف على الفريق
+    </a>
+  </div>
+</section>
+
+<section
+  id="crew-team"
+  class="relative scroll-mt-6 overflow-hidden border-t border-border bg-surface"
+>
+  <div class="site-container relative py-16 md:py-20">
+    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      فريق عمل "واعي"
+    </h2>
+
+    <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      @for (member of team; track member.id; let i = $index) {
+        <li class="crew-card h-full" data-crew-card [style.--delay]="(i % 3) * 100 + 'ms'">
+          <article
+            class="crew-panel flex h-full flex-col rounded-2xl bg-primary p-7 ring-1 ring-primary-light"
+          >
+            <div class="flex flex-col items-center text-center">
+              <div class="crew-photo overflow-hidden rounded-3xl ring-2 ring-secondary/30">
+                <img
+                  [src]="member.imageSrc"
+                  [alt]="member.imageAlt"
+                  width="280"
+                  height="280"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-square size-36 object-cover md:size-40"
+                />
+              </div>
+              <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">
+                {{ member.name }}
+              </h3>
+              <p class="font-body mt-2 text-sm font-medium leading-7 text-secondary">
+                {{ member.role }}
+              </p>
+              <p class="font-body mt-1 text-sm text-gray-300">{{ member.category }}</p>
+            </div>
+            <div class="font-body mt-4 flex flex-col gap-3 text-base leading-8 text-gray-200">
+              @for (paragraph of member.paragraphs; track paragraph) {
+                <p>{{ paragraph }}</p>
+              }
+            </div>
+            <div class="mt-auto pt-6">
+              <div class="crew-panel-line h-0.5 bg-secondary" aria-hidden="true"></div>
+            </div>
+          </article>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="bg-primary">
+  <div class="site-container py-16 md:py-20">
+    <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
+      نحن لا نقدم تقارير... نحن نبني قرارات.
+    </h2>
+    <a
+      routerLink="/contact"
+      class="font-body mt-8 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    >
+      تواصل معنا
+    </a>
+  </div>
+</section>

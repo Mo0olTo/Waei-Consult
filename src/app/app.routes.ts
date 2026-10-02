@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { serviceDetailTitle, serviceExistsGuard } from './features/services/data/services.data';
 
 export const routes: Routes = [
   {
@@ -18,10 +19,33 @@ export const routes: Routes = [
         loadComponent: () => import('./features/about/about').then((m) => m.About),
       },
       {
+        path: 'crew',
+        title: 'فريق عمل واعي | واعي',
+        loadComponent: () => import('./features/crew/crew').then((m) => m.Crew),
+      },
+      {
         path: 'services',
-        title: 'خدماتنا | واعي',
         loadComponent: () =>
           import('./features/services/services').then((m) => m.Services),
+        children: [
+          {
+            path: '',
+            title: 'خدماتنا | واعي',
+            loadComponent: () =>
+              import('./features/services/components/services-list/services-list').then(
+                (m) => m.ServicesList,
+              ),
+          },
+          {
+            path: ':id',
+            title: serviceDetailTitle,
+            canActivate: [serviceExistsGuard],
+            loadComponent: () =>
+              import('./features/services/components/service-detail/service-detail').then(
+                (m) => m.ServiceDetail,
+              ),
+          },
+        ],
       },
       {
         path: 'why-waei',
@@ -31,7 +55,7 @@ export const routes: Routes = [
       },
       {
         path: 'clients',
-        title: 'العملاء المستهدفون | واعي',
+        title: 'عملاؤنا المستهدفون | واعي',
         loadComponent: () =>
           import('./features/who-we-serve/who-we-serve').then((m) => m.WhoWeServe),
       },

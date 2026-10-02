@@ -1,22 +1,21 @@
-.service-card-inner {
-  height: 100%;
+.service-panel {
   transition:
-    box-shadow 0.3s ease,
-    translate 0.3s ease;
+    translate 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.service-card-accent {
-  transform-origin: center;
-  transition: transform 0.3s ease;
+.service-panel-line {
+  width: 3rem;
+  transition: width 0.4s ease;
 }
 
-.service-card-inner:hover {
+.service-panel:hover {
   translate: 0 -0.35rem;
-  box-shadow: 0 12px 28px rgb(11 47 79 / 0.14);
+  box-shadow: 0 18px 36px rgb(11 47 79 / 0.3);
 }
 
-.service-card-inner:hover .service-card-accent {
-  transform: scaleY(1.75);
+.service-panel:hover .service-panel-line {
+  width: 100%;
 }
 
 .service-capability {
@@ -57,18 +56,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-card-inner,
-  .service-card-accent {
+  .service-panel,
+  .service-panel-line {
     transition: none;
   }
 
-  .service-card-inner:hover {
+  .service-panel:hover {
     translate: none;
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
-  }
-
-  .service-card-inner:hover .service-card-accent {
-    transform: none;
   }
 
   :host.services-ready .service-card:not(.is-visible),
