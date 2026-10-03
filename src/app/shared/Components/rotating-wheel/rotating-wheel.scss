@@ -1,0 +1,87 @@
+:host {
+  display: block;
+  aspect-ratio: 1;
+}
+
+.wheel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.wheel__rotor {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: wheel-spin var(--wheel-duration, 80s) linear infinite;
+}
+
+.wheel__label {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wheel-spin var(--wheel-duration, 80s) linear infinite reverse;
+  fill: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: var(--wheel-label-size, 22px);
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 200ms ease;
+}
+
+// Labels must pause together with the rotor, otherwise they drift off level.
+.wheel:hover :is(.wheel__rotor, .wheel__label),
+.wheel:focus-within :is(.wheel__rotor, .wheel__label),
+:host(.is-paused) :is(.wheel__rotor, .wheel__label) {
+  animation-play-state: paused;
+}
+
+.wheel__shape {
+  fill: var(--color-primary);
+  stroke: var(--color-white);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: fill 200ms ease;
+}
+
+.wheel__sector:nth-child(even) .wheel__shape {
+  fill: var(--color-primary-light);
+}
+
+.wheel__sector:hover .wheel__shape,
+.wheel__sector.is-active .wheel__shape {
+  fill: var(--color-secondary);
+}
+
+.wheel__sector:hover .wheel__label,
+.wheel__sector.is-active .wheel__label {
+  fill: var(--color-primary-dark);
+}
+
+.wheel__sector:focus {
+  outline: none;
+}
+
+.wheel__sector:focus-visible .wheel__shape {
+  stroke: var(--color-secondary-dark);
+  stroke-width: 6;
+}
+
+.wheel__hub {
+  fill: var(--color-white);
+  stroke: var(--color-border);
+  stroke-width: 2;
+}
+
+@keyframes wheel-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel__rotor,
+  .wheel__label {
+    animation: none;
+  }
+}

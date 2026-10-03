@@ -1,0 +1,79 @@
+<section
+  class="hero relative flex min-h-[calc(100dvh-4.8125rem)] items-start overflow-hidden bg-background-soft md:min-h-[calc(100dvh-4.3125rem)] min-[900px]:items-center"
+  aria-labelledby="home-hero-title"
+  (focusin)="onFocusIn()"
+  (focusout)="onFocusOut($event)"
+>
+  <app-rotating-wheel
+    class="hero__wheel"
+    label="مجالات خدمات واعي"
+    [segments]="items"
+    [paused]="wheelPaused()"
+    [(activeIndex)]="activeIndex"
+  />
+
+  <div class="hero__content relative w-full px-5 py-16 md:px-10">
+    <div class="hero__layout">
+      <div class="max-w-2xl">
+        <p class="font-body text-sm font-medium text-secondary-dark">واعي | مختبر الشركات</p>
+        <h1
+          id="home-hero-title"
+          class="mt-4 font-heading text-4xl leading-tight font-extrabold text-primary md:text-5xl xl:text-6xl"
+        >
+          نحن لا نقدم تقارير... نحن نبني قرارات.
+        </h1>
+
+        <div class="mt-8 min-h-56" aria-live="polite">
+          @for (item of activeItems(); track item.id) {
+            <article class="hero__panel border-s-2 border-secondary ps-5">
+              <p class="font-body text-sm font-medium text-text-secondary">من خدماتنا</p>
+              <h2 class="mt-2 font-heading text-3xl leading-snug font-bold text-primary md:text-4xl">
+                {{ item.title }}
+              </h2>
+              <p class="font-body mt-4 text-lg leading-8 text-text-secondary">{{ item.brief }}</p>
+              <a
+                [routerLink]="item.link"
+                class="font-body mt-6 inline-flex min-h-11 items-center rounded-xs bg-primary px-6 text-sm font-bold text-inverse transition-colors hover:bg-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-dark"
+              >
+                استكشف الخدمة
+              </a>
+            </article>
+          } @empty {
+            <div class="hero__panel">
+              <p class="font-body text-lg leading-8 text-text-secondary">
+                نقدم الدعم الاستشاري المتكامل في الاستشارات والحوكمة ودعم اتخاذ القرار، لنختصر على
+                مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل لا على
+                التوقع.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a
+                  routerLink="/contact"
+                  class="font-body inline-flex min-h-11 items-center rounded-xs bg-primary px-6 text-sm font-bold text-inverse transition-colors hover:bg-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-dark"
+                >
+                  احجز استشارتك
+                </a>
+                <a
+                  routerLink="/services"
+                  class="font-body inline-flex min-h-11 items-center rounded-xs border border-primary px-6 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-dark"
+                >
+                  اكتشف خدماتنا
+                </a>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="hero__logo">
+        <img
+          src="/images/logo/waei_logo.png"
+          alt=""
+          width="870"
+          height="694"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+</section>

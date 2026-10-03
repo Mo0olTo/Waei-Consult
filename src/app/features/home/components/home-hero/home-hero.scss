@@ -1,0 +1,110 @@
+// Mobile: a smaller wheel tucked into the top-left corner, with the text below it.
+.hero {
+  --wheel-size: min(78vw, 360px);
+  --wheel-label-size: 30px;
+}
+
+.hero__wheel {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  left: 0; // physical side on purpose: the wheel sits top-left on mobile
+  width: var(--wheel-size);
+  translate: -50% 0;
+}
+
+// The content box spans the wheel area; only its text column should take the pointer.
+.hero__content {
+  padding-block-start: calc(var(--wheel-size) + 2rem);
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    --wheel-size: min(100vh - 120px, 840px);
+    --wheel-label-size: 22px;
+  }
+
+  // Centered on the inline-start edge (right in RTL) so only half of the wheel is visible.
+  .hero__wheel {
+    top: 50%;
+    left: auto;
+    inset-inline-start: 0;
+    translate: 50% -50%;
+  }
+
+  .hero__content {
+    padding-block-start: 4rem;
+    padding-inline-start: calc(var(--wheel-size) / 2 + 4rem);
+  }
+}
+
+.hero__logo {
+  pointer-events: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Mobile: logo in the top band beside the wheel, aligned to the same start edge as the text.
+@media (max-width: 899.98px) {
+  .hero__logo {
+    position: absolute;
+    top: 1rem;
+    left: calc(var(--wheel-size) / 2); // physical: the wheel is pinned to the left on mobile
+    right: 0;
+    height: var(--wheel-size);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-inline: 1.25rem;
+
+    img {
+      width: min(70%, 200px);
+    }
+  }
+}
+
+// Tablet and desktop: small logo above the text.
+@media (min-width: 900px) {
+  .hero__layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__logo {
+    order: -1;
+    width: 6rem;
+    margin-block-end: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero__logo {
+    width: 8rem;
+  }
+}
+
+.hero__panel {
+  animation: hero-panel-fade 300ms ease-out;
+}
+
+@keyframes hero-panel-fade {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__panel {
+    animation: none;
+  }
+}
