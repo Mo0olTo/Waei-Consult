@@ -1,1 +1,7 @@
-<p>home works!</p>
+<app-home-hero />
+
+@defer (on viewport) {
+  <app-carousel-home />
+} @placeholder {
+  <div class="h-[70dvh] max-h-176 min-h-112 bg-primary-dark" aria-hidden="true"></div>
+}
