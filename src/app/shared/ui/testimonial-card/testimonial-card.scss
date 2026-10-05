@@ -1,0 +1,32 @@
+.testimonial-card {
+  transition:
+    translate 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.testimonial-card__line {
+  width: 3rem;
+  height: 0.125rem;
+  transition: width 0.4s ease;
+}
+
+.testimonial-card:hover {
+  translate: 0 -0.25rem;
+  box-shadow: 0 14px 28px rgb(11 47 79 / 0.1);
+}
+
+.testimonial-card:hover .testimonial-card__line {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card,
+  .testimonial-card__line {
+    transition: none;
+  }
+
+  .testimonial-card:hover {
+    translate: none;
+    box-shadow: none;
+  }
+}

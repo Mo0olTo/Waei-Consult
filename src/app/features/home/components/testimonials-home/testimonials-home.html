@@ -1,0 +1,39 @@
+<section
+  class="testimonials-home bg-background-soft"
+  aria-label="آراء العملاء"
+  (focusin)="pauseAutoplay()"
+  (focusout)="resumeAutoplay($event)"
+>
+  <div class="site-container px-4 py-16 md:py-20">
+    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      آراء العملاء
+    </h2>
+
+    @defer (on viewport) {
+      <div class="testimonials-home__carousel mt-12">
+        <owl-carousel-o
+          class="block"
+          [options]="options"
+          (initialized)="localizeControls()"
+          (translated)="localizeControls()"
+        >
+          @for (item of testimonials(); track item.id) {
+            <ng-template carouselSlide [id]="'testimonial-' + item.id">
+              <app-testimonial-card
+                [name]="item.name"
+                [review]="item.review"
+                [photoSrc]="item.photoSrc"
+                [photoAlt]="item.photoAlt"
+              />
+            </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+    } @placeholder {
+      <div class="testimonials-home__carousel mt-12">
+        <div class="min-h-80 rounded-2xl bg-surface ring-1 ring-border" aria-hidden="true"></div>
+      </div>
+    }
+  </div>
+</section>
