@@ -1,5 +1,18 @@
-<svg class="wheel" viewBox="0 0 800 800" role="group" [attr.aria-label]="label()">
-  <g class="wheel__rotor">
+<svg
+  class="wheel"
+  viewBox="0 0 800 800"
+  role="group"
+  [attr.aria-label]="label()"
+  (pointerdown)="onDragStart($event)"
+  (pointermove)="onDragMove($event)"
+  (pointerup)="onDragEnd($event)"
+  (pointercancel)="onDragEnd($event)"
+  (pointerenter)="onPointerEnter($event)"
+  (pointerleave)="onPointerLeave($event)"
+  (focusin)="onFocusIn()"
+  (focusout)="onFocusOut($event)"
+>
+  <g #rotor class="wheel__rotor">
     @for (sector of sectors(); track sector.id; let i = $index) {
       <g
         class="wheel__sector"
@@ -9,17 +22,27 @@
         [attr.aria-pressed]="activeIndex() === i"
         [attr.aria-label]="sector.ariaLabel"
         (mouseenter)="activate(i)"
-        (click)="activate(i)"
+        (click)="onSectorClick($event, i)"
         (focus)="activate(i)"
         (keydown.enter)="activateWithKey($event, i)"
         (keydown.space)="activateWithKey($event, i)"
       >
         <path class="wheel__shape" [attr.d]="sector.path" />
-        <!-- Counter-rotate the group, not the <text>. A text box's transform origin is wrong once the SVG is scaled. -->
-        <g class="wheel__label">
-          <text [attr.x]="sector.labelX" [attr.y]="sector.labelY" aria-hidden="true">
-            <tspan [attr.x]="sector.labelX" dy="-0.35em">{{ sector.lines[0] }}</tspan>
-            <tspan [attr.x]="sector.labelX" dy="1.3em">{{ sector.lines[1] }}</tspan>
+        <!-- Pivot is the label point in user space, so the two lines stay upright at any size. -->
+        <g
+          #label
+          class="wheel__label"
+          [attr.data-lx]="sector.labelX"
+          [attr.data-ly]="sector.labelY"
+        >
+          <text
+            [attr.x]="sector.labelX"
+            [attr.y]="sector.lineY1"
+            [attr.font-size]="labelFontSize"
+            aria-hidden="true"
+          >
+            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY1">{{ sector.lines[0] }}</tspan>
+            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY2">{{ sector.lines[1] }}</tspan>
           </text>
         </g>
       </g>
