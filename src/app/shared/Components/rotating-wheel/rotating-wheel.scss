@@ -1,13 +1,22 @@
 :host {
   display: block;
   aspect-ratio: 1;
+  // Matches the SVG viewBox. The graphic is drawn 1:1, then scaled to the host.
+  --wheel-viewbox: 800px;
 }
 
+// Width/height must match the viewBox. Scaling the SVG with width/height alone makes
+// label rotation use screen pixels, so the names leave the ring on a phone.
 .wheel {
+  position: absolute;
+  top: 0;
+  left: 0; // physical: scale origin is the top-left corner, including in RTL
   display: block;
-  width: 100%;
-  height: 100%;
+  width: var(--wheel-viewbox);
+  height: var(--wheel-viewbox);
   overflow: visible;
+  transform-origin: top left;
+  scale: calc(var(--wheel-size, var(--wheel-viewbox)) / var(--wheel-viewbox));
 }
 
 .wheel__rotor {

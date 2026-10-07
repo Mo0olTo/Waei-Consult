@@ -15,10 +15,13 @@
         (keydown.space)="activateWithKey($event, i)"
       >
         <path class="wheel__shape" [attr.d]="sector.path" />
-        <text class="wheel__label" [attr.x]="sector.labelX" [attr.y]="sector.labelY" aria-hidden="true">
-          <tspan [attr.x]="sector.labelX" dy="-0.35em">{{ sector.lines[0] }}</tspan>
-          <tspan [attr.x]="sector.labelX" dy="1.3em">{{ sector.lines[1] }}</tspan>
-        </text>
+        <!-- Counter-rotate the group, not the <text>. A text box's transform origin is wrong once the SVG is scaled. -->
+        <g class="wheel__label">
+          <text [attr.x]="sector.labelX" [attr.y]="sector.labelY" aria-hidden="true">
+            <tspan [attr.x]="sector.labelX" dy="-0.35em">{{ sector.lines[0] }}</tspan>
+            <tspan [attr.x]="sector.labelX" dy="1.3em">{{ sector.lines[1] }}</tspan>
+          </text>
+        </g>
       </g>
     }
     <circle
