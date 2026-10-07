@@ -1,0 +1,66 @@
+<svg viewBox="0 0 640 310" class="block h-auto w-full" focusable="false" aria-hidden="true">
+  <defs>
+    <linearGradient id="growth-chart-area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  @for (y of guides; track y) {
+    <line x1="40" [attr.y1]="y" x2="600" [attr.y2]="y" class="stroke-primary/15" stroke-dasharray="4 6" />
+  }
+  <line x1="40" y1="280" x2="600" y2="280" class="stroke-primary/25" />
+
+  @for (bar of bars; track bar.x; let i = $index) {
+    <rect
+      [attr.x]="bar.x"
+      [attr.y]="280 - bar.h"
+      width="34"
+      [attr.height]="bar.h"
+      rx="4"
+      class="fill-primary/10 origin-bottom [transform-box:fill-box] animate-chart-rise motion-reduce:animate-none"
+      [style.animation-delay.ms]="i * 90"
+    />
+  }
+
+  <path
+    [attr.d]="areaPath"
+    fill="url(#growth-chart-area)"
+    class="animate-chart-fade motion-reduce:animate-none [animation-delay:900ms]"
+  />
+
+  <path
+    [attr.d]="linePath"
+    pathLength="1"
+    class="fill-none stroke-primary stroke-[3.5] [stroke-linecap:round] [stroke-dasharray:1] animate-chart-draw motion-reduce:animate-none [animation-delay:500ms]"
+  />
+
+  @for (m of markers; track m.x; let i = $index) {
+    <circle
+      [attr.cx]="m.x"
+      [attr.cy]="m.y"
+      r="5"
+      class="fill-background-soft stroke-primary stroke-[2.5] animate-chart-fade motion-reduce:animate-none"
+      [style.animation-delay.ms]="700 + i * 350"
+    />
+  }
+
+  <circle
+    cx="600"
+    cy="46"
+    r="7"
+    class="fill-secondary/40 origin-center [transform-box:fill-box] animate-chart-pulse motion-reduce:animate-none [animation-delay:2.3s]"
+  />
+  <circle
+    cx="600"
+    cy="46"
+    r="7"
+    class="fill-secondary stroke-background-soft stroke-[3] animate-chart-fade motion-reduce:animate-none [animation-delay:2.2s]"
+  />
+
+  @for (s of stages; track s.label) {
+    <text [attr.x]="s.x" y="302" text-anchor="middle" class="font-body fill-text-muted text-[13px] font-medium">
+      {{ s.label }}
+    </text>
+  }
+</svg>

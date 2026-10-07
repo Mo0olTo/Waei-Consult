@@ -43,6 +43,19 @@
   }
 }
 
+
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: min(5rem, calc((100vw - 5rem) / 8.5));
+  }
+}
+
+@media (min-width: 900px) {
+  .hero__title {
+    font-size: min(5rem, calc(min(42rem, 100vw - (var(--wheel-size) / 2) - 8rem) / 8.5));
+  }
+}
+
 .hero__logo {
   pointer-events: none;
 

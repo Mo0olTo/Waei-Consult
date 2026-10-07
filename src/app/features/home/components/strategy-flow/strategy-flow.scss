@@ -1,0 +1,209 @@
+:host {
+  display: block;
+}
+
+.strategy-flow__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// Tertiary-light stays in the same hue but stays readable on the primary field.
+.strategy-flow__branches {
+  fill: var(--color-tertiary-light);
+  stroke: var(--color-tertiary-light);
+  stroke-width: 1;
+  opacity: 0.28;
+}
+
+.strategy-flow__path {
+  fill: none;
+  stroke: var(--color-tertiary-light);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+.strategy-flow__ring {
+  fill: none;
+  stroke: var(--color-tertiary-light);
+  stroke-width: 1;
+  opacity: 0.75;
+}
+
+.strategy-flow__core {
+  fill: var(--color-tertiary-light);
+}
+
+.strategy-flow__halo {
+  fill: var(--color-secondary);
+  opacity: 0.18;
+}
+
+.strategy-flow__ring--growth {
+  stroke: var(--color-secondary);
+  opacity: 0.75;
+}
+
+.strategy-flow__core--growth {
+  fill: var(--color-secondary);
+}
+
+.strategy-flow__node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: strategy-node 15s ease-out infinite;
+}
+
+.strategy-flow__node--2 {
+  animation-delay: 5s;
+}
+
+.strategy-flow__node--3 {
+  animation-delay: 10s;
+}
+
+.strategy-flow__node--growth {
+  animation-name: strategy-growth;
+  animation-delay: 15s;
+}
+
+.strategy-flow__label {
+  direction: ltr;
+  fill: var(--color-text-inverse);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  animation: strategy-label 15s linear infinite;
+}
+
+.strategy-flow__label--side {
+  font-size: 22px;
+}
+
+.strategy-flow__label--2 {
+  animation-delay: 5s;
+}
+
+.strategy-flow__label--3 {
+  animation-delay: 10s;
+}
+
+.strategy-flow__label--growth {
+  animation-delay: 15s;
+}
+
+// Physical left/top: the SVG path is drawn in user space, which does not follow RTL.
+.strategy-flow__runner {
+  position: absolute;
+  pointer-events: none;
+}
+
+.strategy-flow__runner--x {
+  top: 50%;
+  left: 8.75%;
+  width: 82.5%;
+  height: 0;
+  animation: strategy-travel-x 15s linear infinite;
+}
+
+.strategy-flow__runner--y {
+  top: 8.571%;
+  left: 50%;
+  width: 0;
+  height: 82.858%;
+  animation: strategy-travel-y 15s linear infinite;
+}
+
+.strategy-flow__dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  transform: translate(-50%, -50%);
+  animation: strategy-dot 15s linear infinite;
+}
+
+.strategy-flow__dot::before {
+  content: "";
+  position: absolute;
+  inset: -0.4rem;
+  border-radius: inherit;
+  background: var(--color-secondary);
+  opacity: 0.35;
+}
+
+@keyframes strategy-travel-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes strategy-travel-y {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes strategy-dot {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  5%,
+  95% {
+    opacity: 1;
+  }
+}
+
+@keyframes strategy-node {
+  0% {
+    transform: scale(1.18);
+  }
+  8%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes strategy-growth {
+  0% {
+    transform: scale(1.28);
+  }
+  12%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes strategy-label {
+  0% {
+    fill: var(--color-secondary);
+  }
+  12%,
+  100% {
+    fill: var(--color-text-inverse);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strategy-flow__runner,
+  .strategy-flow__dot,
+  .strategy-flow__node,
+  .strategy-flow__label {
+    animation: none;
+  }
+
+  .strategy-flow__dot {
+    opacity: 0;
+  }
+}

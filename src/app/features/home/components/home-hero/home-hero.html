@@ -1,9 +1,32 @@
 <section
-  class="hero relative flex min-h-[calc(100dvh-4.8125rem)] items-start overflow-hidden bg-background-soft md:min-h-[calc(100dvh-4.3125rem)] min-[900px]:items-center"
+  class="hero relative isolate flex min-h-[calc(100dvh-4.8125rem)] items-start overflow-hidden bg-background-soft md:min-h-[calc(100dvh-4.3125rem)] min-[900px]:items-center"
   aria-labelledby="home-hero-title"
   (focusin)="onFocusIn()"
   (focusout)="onFocusOut($event)"
 >
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-grid-soft mask-b-from-30% mask-b-to-90%"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -top-40 -inset-s-40 -z-10 size-168 rounded-full bg-radial from-primary/10 to-transparent to-70%"
+    aria-hidden="true"
+  ></div>
+  <!-- Decorative growth chart in the empty inline-end corner; the wheel and logo fill the top band on mobile. -->
+  <div
+    class="pointer-events-none absolute bottom-0 inset-e-0 -z-10 hidden w-[min(46vw,44rem)] opacity-70 mask-t-from-55% min-[900px]:block"
+    aria-hidden="true"
+  >
+    <app-growth-chart />
+  </div>
+  <!-- Decorative decision rings: bottom corner on small screens, above the chart on desktop. -->
+  <div
+    class="pointer-events-none absolute -bottom-16 -inset-e-16 -z-10 size-60 md:size-80 min-[900px]:top-10 min-[900px]:bottom-auto min-[900px]:-inset-e-12 min-[900px]:size-104 xl:size-112"
+    aria-hidden="true"
+  >
+    <app-decision-rings />
+  </div>
+
   <app-rotating-wheel
     class="hero__wheel"
     label="مجالات خدمات واعي"
@@ -11,17 +34,24 @@
     [paused]="wheelPaused()"
     [(activeIndex)]="activeIndex"
   />
-
+  
   <div class="hero__content relative w-full px-5 py-16 md:px-10">
     <div class="hero__layout">
+
+      
       <div class="max-w-2xl">
-        <p class="font-body text-sm font-medium text-secondary-dark">واعي | مختبر الشركات</p>
         <h1
           id="home-hero-title"
-          class="mt-4 font-heading text-4xl leading-tight font-extrabold text-primary md:text-5xl xl:text-6xl"
+          class="text-[60px] md:text-[80px] font-bold font-heading font-extrabold tracking-tight text-primary"
+        >
+          واعــــــــــي
+        </h1>
+        <p class="font-body mt-3 text-sm font-medium text-secondary-dark">مختبر الشركات</p>
+        <p
+          class="mt-4 font-heading text-2xl leading-tight font-extrabold text-primary md:text-3xl xl:text-4xl"
         >
           نحن لا نقدم تقارير... نحن نبني قرارات.
-        </h1>
+        </p>
 
         <div class="mt-8 min-h-56" aria-live="polite">
           @for (item of activeItems(); track item.id) {
@@ -40,7 +70,7 @@
             </article>
           } @empty {
             <div class="hero__panel">
-              <p class="font-body text-lg leading-8 text-text-secondary">
+              <p class="font-body text-xl leading-8 text-text-secondary">
                 نقدم الدعم الاستشاري المتكامل في الاستشارات والحوكمة ودعم اتخاذ القرار، لنختصر على
                 مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل لا على
                 التوقع.

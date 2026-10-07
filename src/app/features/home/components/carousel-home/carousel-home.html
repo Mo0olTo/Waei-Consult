@@ -1,9 +1,14 @@
 <section
-  class="carousel-home relative bg-primary-dark"
+  class="carousel-home relative isolate bg-primary-dark"
   aria-label="لمحات من خدمات واعي"
   (focusin)="pauseAutoplay()"
   (focusout)="resumeAutoplay($event)"
 >
+  <div
+    class="pointer-events-none absolute inset-0 z-10 shadow-[inset_0_0_120px_var(--color-primary-dark)]"
+    aria-hidden="true"
+  ></div>
+
   <owl-carousel-o
     [options]="options"
     (initialized)="localizeControls()"
@@ -22,9 +27,9 @@
           [attr.fetchpriority]="first ? 'high' : null"
           decoding="async"
         />
-          <div class="absolute inset-0 bg-black/45" aria-hidden="true"></div>
+          <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
           <div
-            class="absolute inset-0 bg-linear-to-b from-black/70 via-black/20 to-transparent md:bg-linear-to-bl md:from-black/60 md:via-transparent"
+            class="absolute inset-0 bg-linear-to-b from-primary-dark/80 via-primary-dark/20 to-transparent md:bg-linear-to-bl md:from-primary-dark/70 md:via-transparent"
             aria-hidden="true"
           ></div>
           <figcaption
