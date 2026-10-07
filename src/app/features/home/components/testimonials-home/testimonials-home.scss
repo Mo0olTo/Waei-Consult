@@ -1,5 +1,9 @@
 @use 'ngx-owl-carousel-o/lib/styles/scss/core';
 
+// Centered in a 24px box so mask-position: center places the stroke in the middle of the button.
+$testimonials-chevron-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l6 6-6 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+$testimonials-chevron-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15 6l-6 6 6 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
 .testimonials-home {
   width: 100%;
   overflow: hidden;
@@ -56,6 +60,7 @@
 
       inline-size: 2.75rem;
       block-size: 2.75rem;
+      padding: 0;
 
       border: 1px solid var(--color-border);
       border-radius: 9999px;
@@ -63,12 +68,23 @@
       background-color: var(--color-primary);
       color: var(--color-white);
 
-      font-size: 1.25rem;
-      line-height: 1;
-
       transition:
         background-color 0.3s ease,
         border-color 0.3s ease;
+
+      &::before {
+        content: "";
+        display: block;
+        inline-size: 1.125rem;
+        block-size: 1.125rem;
+        background-color: currentColor;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
+      }
 
       &:hover {
         background-color: var(--color-secondary-dark);
@@ -83,10 +99,20 @@
 
     .owl-prev {
       inset-inline-start: -3.5rem;
+
+      &::before {
+        mask-image: $testimonials-chevron-right;
+        -webkit-mask-image: $testimonials-chevron-right;
+      }
     }
 
     .owl-next {
       inset-inline-end: -3.5rem;
+
+      &::before {
+        mask-image: $testimonials-chevron-left;
+        -webkit-mask-image: $testimonials-chevron-left;
+      }
     }
   }
 
@@ -100,6 +126,11 @@
       .owl-next {
         inline-size: 2.25rem;
         block-size: 2.25rem;
+
+        &::before {
+          inline-size: 0.9rem;
+          block-size: 0.9rem;
+        }
       }
 
       .owl-prev {

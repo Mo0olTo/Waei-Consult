@@ -2,6 +2,10 @@
 @use 'ngx-owl-carousel-o/lib/styles/scss/core';
 @use 'ngx-owl-carousel-o/lib/styles/scss/animate';
 
+// Centered in a 24px box so mask-position: center places the stroke in the middle of the button.
+$carousel-chevron-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l6 6-6 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+$carousel-chevron-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15 6l-6 6 6 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
 .carousel-home {
   width: 100%;
   overflow: hidden;
@@ -69,6 +73,7 @@
 
       inline-size: 2.75rem;
       block-size: 2.75rem;
+      padding: 0;
 
       border: 1px solid rgb(255 255 255 / 0.5);
       border-radius: 9999px;
@@ -76,12 +81,23 @@
       background-color: rgb(11 47 79 / 0.6);
       color: #fff;
 
-      font-size: 1.25rem;
-      line-height: 1;
-
       transition:
         background-color 0.3s ease,
         border-color 0.3s ease;
+
+      &::before {
+        content: "";
+        display: block;
+        inline-size: 1.125rem;
+        block-size: 1.125rem;
+        background-color: currentColor;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
+      }
 
       &:hover {
         background-color: var(--color-secondary-dark);
@@ -95,10 +111,42 @@
 
     .owl-prev {
       inset-inline-start: 1rem;
+
+      &::before {
+        mask-image: $carousel-chevron-right;
+        -webkit-mask-image: $carousel-chevron-right;
+      }
     }
 
     .owl-next {
       inset-inline-end: 1rem;
+
+      &::before {
+        mask-image: $carousel-chevron-left;
+        -webkit-mask-image: $carousel-chevron-left;
+      }
+    }
+
+    @media (max-width: 47.99rem) {
+      .owl-prev,
+      .owl-next {
+        inline-size: 2.25rem;
+        block-size: 2.25rem;
+        bottom: 1rem;
+
+        &::before {
+          inline-size: 0.9rem;
+          block-size: 0.9rem;
+        }
+      }
+
+      .owl-prev {
+        inset-inline-start: 0.75rem;
+      }
+
+      .owl-next {
+        inset-inline-end: 0.75rem;
+      }
     }
   }
 
@@ -156,21 +204,6 @@
   }
 
   @media (max-width: 47.99rem) {
-    .owl-prev,
-    .owl-next {
-      inline-size: 2.25rem;
-      block-size: 2.25rem;
-      bottom: 1rem;
-    }
-
-    .owl-prev {
-      inset-inline-start: 0.75rem;
-    }
-
-    .owl-next {
-      inset-inline-end: 0.75rem;
-    }
-
     .owl-dots {
       bottom: 1rem;
     }
