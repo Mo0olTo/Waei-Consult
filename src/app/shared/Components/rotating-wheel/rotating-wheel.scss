@@ -1,56 +1,42 @@
 :host {
   display: block;
   aspect-ratio: 1;
-  // Matches the SVG viewBox. The graphic is drawn 1:1, then scaled to the host.
-  --wheel-viewbox: 800px;
 }
 
-// Width/height must match the viewBox. Scaling the SVG with width/height alone makes
-// label rotation use screen pixels, so the names leave the ring on a phone.
+// The viewBox scales the drawing. A CSS scale or rotate on this SVG flips the two
+// label lines once the wheel is smaller than the 800-unit drawing, which is the phone size.
 .wheel {
   position: absolute;
-  top: 0;
-  left: 0; // physical: scale origin is the top-left corner, including in RTL
+  inset: 0;
   display: block;
-  width: var(--wheel-viewbox);
-  height: var(--wheel-viewbox);
+  width: 100%;
+  height: 100%;
   overflow: visible;
-  transform-origin: top left;
-  scale: calc(var(--wheel-size, var(--wheel-viewbox)) / var(--wheel-viewbox));
-}
-
-.wheel__rotor {
-  transform-box: view-box;
-  transform-origin: center;
-  animation: wheel-spin var(--wheel-duration, 80s) linear infinite;
+  direction: ltr;
+  touch-action: none;
+  user-select: none;
 }
 
 .wheel__label {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: wheel-spin var(--wheel-duration, 80s) linear infinite reverse;
+  direction: rtl;
   fill: var(--color-white);
   font-family: var(--font-heading);
-  font-size: var(--wheel-label-size, 22px);
   font-weight: 700;
   text-anchor: middle;
   pointer-events: none;
   transition: fill 200ms ease;
 }
 
-// Labels must pause together with the rotor, otherwise they drift off level.
-.wheel:hover :is(.wheel__rotor, .wheel__label),
-.wheel:focus-within :is(.wheel__rotor, .wheel__label),
-:host(.is-paused) :is(.wheel__rotor, .wheel__label) {
-  animation-play-state: paused;
-}
-
 .wheel__shape {
   fill: var(--color-primary);
   stroke: var(--color-white);
   stroke-width: 2;
-  cursor: pointer;
+  cursor: grab;
   transition: fill 200ms ease;
+}
+
+.wheel.is-dragging .wheel__shape {
+  cursor: grabbing;
 }
 
 .wheel__sector:nth-child(even) .wheel__shape {
@@ -80,17 +66,4 @@
   fill: var(--color-white);
   stroke: var(--color-border);
   stroke-width: 2;
-}
-
-@keyframes wheel-spin {
-  to {
-    rotate: 360deg;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wheel__rotor,
-  .wheel__label {
-    animation: none;
-  }
 }

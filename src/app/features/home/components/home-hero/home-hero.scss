@@ -1,8 +1,6 @@
 // Mobile: a smaller wheel tucked into the top-left corner, with the text below it.
 .hero {
   --wheel-size: min(78vw, 360px);
-  // User units inside the 800-unit wheel, so the names shrink with it on a phone.
-  --wheel-label-size: 22px;
 }
 
 .hero__wheel {

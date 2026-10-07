@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   DestroyRef,
+  ElementRef,
   inject,
   signal,
 } from '@angular/core';
@@ -38,6 +39,9 @@ export class HomeHero {
     return index === null ? [] : [this.items[index]];
   });
 
+  private readonly host = inject(ElementRef<HTMLElement>);
+  private alive = true;
+
   constructor() {
     const destroyRef = inject(DestroyRef);
 
@@ -46,8 +50,49 @@ export class HomeHero {
       const sync = (): void => this.canHover.set(query.matches);
       sync();
       query.addEventListener('change', sync);
-      destroyRef.onDestroy(() => query.removeEventListener('change', sync));
+
+      // A phone tap does not blur the sector, so pause stays on until an outside tap.
+      const release = (event: PointerEvent): void => this.releaseIfOutside(event);
+      document.addEventListener('pointerdown', release);
+
+      destroyRef.onDestroy(() => {
+        this.alive = false;
+        query.removeEventListener('change', sync);
+        document.removeEventListener('pointerdown', release);
+      });
     });
+  }
+
+  private releaseIfOutside(event: PointerEvent): void {
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const wheel = this.host.nativeElement.querySelector('app-rotating-wheel');
+    if (wheel?.contains(target)) {
+      return;
+    }
+
+    const release = (): void => {
+      this.activeIndex.set(null);
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && wheel?.contains(active)) {
+        active.blur();
+      }
+    };
+
+    // The service link sits outside the wheel. Clear after its click so navigation still runs.
+    if (target.closest('a, button')) {
+      setTimeout(() => {
+        if (this.alive) {
+          release();
+        }
+      });
+      return;
+    }
+
+    release();
   }
 
   protected onFocusIn(): void {
