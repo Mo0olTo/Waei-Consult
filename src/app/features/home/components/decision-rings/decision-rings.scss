@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// Whole composition drifts a few pixels so it feels suspended, not pinned.
+.rings {
+  animation: rings-float 10s ease-in-out infinite alternate;
+}
+
+.rings__cw,
+.rings__ccw,
+.rings__pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.rings__cw {
+  animation: rings-spin 24s linear infinite;
+}
+
+.rings__ccw {
+  animation: rings-spin 18s linear infinite reverse;
+}
+
+.rings__pulse {
+  animation: rings-pulse 4s ease-out infinite;
+}
+
+@keyframes rings-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rings-float {
+  to {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes rings-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rings,
+  .rings__cw,
+  .rings__ccw,
+  .rings__pulse {
+    animation: none;
+  }
+}

@@ -1,0 +1,102 @@
+<div class="pointer-events-none relative overflow-hidden bg-primary">
+  <div class="strategy-flow__stage relative hidden h-52 md:block lg:h-64">
+    <svg
+      class="strategy-flow__svg"
+      viewBox="0 0 800 220"
+      preserveAspectRatio="xMidYMid slice"
+      focusable="false"
+    >
+      <g class="strategy-flow__branches">
+        <line x1="400" y1="110" x2="400" y2="36" />
+        <circle cx="400" cy="36" r="3" />
+        <line x1="290" y1="110" x2="150" y2="178" />
+        <circle cx="150" cy="178" r="3" />
+        <line x1="510" y1="110" x2="598" y2="44" />
+        <circle cx="598" cy="44" r="2.5" />
+      </g>
+
+      <line class="strategy-flow__path" x1="70" y1="110" x2="730" y2="110" />
+
+      <g transform="translate(70 110)">
+        <g class="strategy-flow__node">
+          <circle class="strategy-flow__ring" r="11" />
+          <circle class="strategy-flow__core" r="3.5" />
+        </g>
+      </g>
+      <g transform="translate(290 110)">
+        <g class="strategy-flow__node strategy-flow__node--2">
+          <circle class="strategy-flow__ring" r="11" />
+          <circle class="strategy-flow__core" r="3.5" />
+        </g>
+      </g>
+      <g transform="translate(510 110)">
+        <g class="strategy-flow__node strategy-flow__node--3">
+          <circle class="strategy-flow__ring" r="11" />
+          <circle class="strategy-flow__core" r="3.5" />
+        </g>
+      </g>
+      <g transform="translate(730 110)">
+        <g class="strategy-flow__node strategy-flow__node--growth">
+          <circle class="strategy-flow__halo" r="18" />
+          <circle class="strategy-flow__ring strategy-flow__ring--growth" r="12" />
+          <circle class="strategy-flow__core strategy-flow__core--growth" r="4" />
+        </g>
+      </g>
+
+      <text class="strategy-flow__label" x="70" y="146" text-anchor="middle">التحدي</text>
+      <text class="strategy-flow__label strategy-flow__label--2" x="290" y="146" text-anchor="middle">التحليل</text>
+      <text class="strategy-flow__label strategy-flow__label--3" x="510" y="146" text-anchor="middle">القرار</text>
+      <text class="strategy-flow__label strategy-flow__label--growth" x="730" y="146" text-anchor="middle">النمو</text>
+    </svg>
+
+    <div class="strategy-flow__runner strategy-flow__runner--x">
+      <span class="strategy-flow__dot"></span>
+    </div>
+  </div>
+
+  <div class="strategy-flow__stage relative mx-auto aspect-[320/420] h-72 w-auto md:hidden">
+    <svg
+      class="strategy-flow__svg"
+      viewBox="0 0 320 420"
+      preserveAspectRatio="xMidYMid meet"
+      focusable="false"
+    >
+      <line class="strategy-flow__path" x1="160" y1="36" x2="160" y2="384" />
+
+      <g transform="translate(160 36)">
+        <g class="strategy-flow__node">
+          <circle class="strategy-flow__ring" r="11" />
+          <circle class="strategy-flow__core" r="3.5" />
+        </g>
+      </g>
+      <g transform="translate(160 152)">
+        <g class="strategy-flow__node strategy-flow__node--2">
+          <circle class="strategy-flow__ring" r="11" />
+          <circle class="strategy-flow__core" r="3.5" />
+        </g>
+      </g>
+      <g transform="translate(160 268)">
+        <g class="strategy-flow__node strategy-flow__node--3">
+          <circle class="strategy-flow__ring" r="11" />
+          <circle class="strategy-flow__core" r="3.5" />
+        </g>
+      </g>
+      <g transform="translate(160 384)">
+        <g class="strategy-flow__node strategy-flow__node--growth">
+          <circle class="strategy-flow__halo" r="18" />
+          <circle class="strategy-flow__ring strategy-flow__ring--growth" r="12" />
+          <circle class="strategy-flow__core strategy-flow__core--growth" r="4" />
+        </g>
+      </g>
+
+      <text class="strategy-flow__label strategy-flow__label--side" x="184" y="36" text-anchor="start" dominant-baseline="middle">التحدي</text>
+      <text class="strategy-flow__label strategy-flow__label--side strategy-flow__label--2" x="136" y="152" text-anchor="end" dominant-baseline="middle">التحليل</text>
+      <text class="strategy-flow__label strategy-flow__label--side strategy-flow__label--3" x="184" y="268" text-anchor="start" dominant-baseline="middle">القرار</text>
+      <text class="strategy-flow__label strategy-flow__label--side strategy-flow__label--growth" x="136" y="384" text-anchor="end" dominant-baseline="middle">النمو</text>
+    </svg>
+
+    <div class="strategy-flow__runner strategy-flow__runner--y">
+      <span class="strategy-flow__dot"></span>
+    </div>
+  </div>
+</div>

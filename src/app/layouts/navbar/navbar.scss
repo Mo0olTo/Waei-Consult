@@ -1,0 +1,27 @@
+/* Opens to the menu's real height. min-height: 0 is required for 0fr to collapse. */
+.mobile-nav {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.48s ease;
+}
+
+.mobile-nav.is-open {
+  grid-template-rows: 1fr;
+}
+
+.mobile-nav__inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 48rem) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav {
+    transition: none;
+  }
+}

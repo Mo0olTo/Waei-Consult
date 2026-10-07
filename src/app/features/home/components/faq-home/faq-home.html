@@ -1,0 +1,96 @@
+<section class="bg-[#f5f6fa] font-body" lang="ar" dir="rtl" aria-labelledby="faq-home-heading">
+  <div class="site-container px-4 py-16 md:py-20">
+    <h2
+      id="faq-home-heading"
+      class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary"
+    >
+      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+      الأسئلة الشائعة
+    </h2>
+
+    <ul class="mt-10 flex flex-col gap-3">
+      @for (item of items; track item.id) {
+        <li
+          class="rounded-[14px] border border-[#e6e8ef] bg-white shadow-[0_8px_24px_rgba(17,17,17,0.06)]"
+        >
+          <h3 class="m-0 font-heading text-base md:text-lg">
+            <button
+              [id]="buttonId(item.id)"
+              type="button"
+              class="flex w-full items-center gap-4 px-4 py-4 text-start text-base font-bold text-[#111] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:px-5 md:py-5 md:text-lg"
+              [attr.aria-expanded]="isOpen(item.id)"
+              [attr.aria-controls]="panelId(item.id)"
+              (click)="toggle(item.id)"
+            >
+              <span class="min-w-0 flex-1">{{ item.question }}</span>
+              <svg
+                class="size-5 shrink-0 text-[#111] transition-transform duration-300 motion-reduce:transition-none"
+                [class.rotate-180]="isOpen(item.id)"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M5 7.5 10 12.5 15 7.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </h3>
+
+          <div
+            class="faq-panel"
+            [class.is-open]="isOpen(item.id)"
+            [id]="panelId(item.id)"
+            role="region"
+            [attr.aria-labelledby]="buttonId(item.id)"
+            [attr.aria-hidden]="isOpen(item.id) ? null : 'true'"
+            [attr.inert]="isOpen(item.id) ? null : ''"
+          >
+            <div class="faq-panel__inner">
+              <div
+                class="space-y-3 px-4 pb-4 font-body text-base leading-8 text-gray-700 md:px-5 md:pb-5"
+              >
+                @for (block of item.answer; track $index) {
+                  @switch (block.type) {
+                    @case ('p') {
+                      <p>{{ block.text }}</p>
+                    }
+                    @case ('ul') {
+                      <ul class="list-disc space-y-2 ps-5">
+                        @for (line of block.items; track line) {
+                          <li>{{ line }}</li>
+                        }
+                      </ul>
+                    }
+                    @case ('ol') {
+                      <ol class="list-decimal space-y-2 ps-5">
+                        @for (line of block.items; track line) {
+                          <li>{{ line }}</li>
+                        }
+                      </ol>
+                    }
+                    @case ('labeled') {
+                      <ul class="list-disc space-y-2 ps-5">
+                        @for (row of block.items; track row.label) {
+                          <li>
+                            <strong class="font-bold text-[#111]">{{ row.label }}:</strong>
+                            {{ row.text }}
+                          </li>
+                        }
+                      </ul>
+                    }
+                  }
+                }
+              </div>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

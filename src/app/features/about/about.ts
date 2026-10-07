@@ -7,13 +7,14 @@ import {
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
 import { AboutStatement } from './models/about-statement.model';
 import { CompanyValue } from './models/company-value.model';
 import { SupportArea } from './models/support-area.model';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, NgTemplateOutlet],
+  imports: [RouterLink, NgTemplateOutlet, WaeiLogo],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })

@@ -1,9 +1,22 @@
 <section
-  class="testimonials-home bg-background-soft"
+  class="testimonials-home relative isolate overflow-hidden bg-background-soft"
   aria-label="آراء العملاء"
   (focusin)="pauseAutoplay()"
   (focusout)="resumeAutoplay($event)"
 >
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-dots-soft opacity-60 mask-radial-[ellipse_at_center] mask-radial-from-20% mask-radial-to-75%"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -bottom-56 -inset-e-56 -z-10 size-160 rounded-full bg-radial from-tertiary/10 to-transparent to-70%"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-linear-to-b from-background to-transparent"
+    aria-hidden="true"
+  ></div>
+
   <div class="site-container px-4 py-16 md:py-20">
     <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>

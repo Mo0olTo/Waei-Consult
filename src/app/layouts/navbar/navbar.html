@@ -37,7 +37,7 @@
 
     <button
       type="button"
-      class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border text-primary md:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+      class="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md border border-border text-primary md:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
       [attr.aria-expanded]="isMenuOpen()"
       aria-controls="mobile-navigation"
       [attr.aria-label]="isMenuOpen() ? 'إغلاق القائمة' : 'فتح القائمة'"
@@ -65,18 +65,20 @@
     </button>
   </div>
 
-  @if (isMenuOpen()) {
-    <nav
-      id="mobile-navigation"
-      aria-label="التنقل في الجوال"
-      class="border-t border-border px-4 py-3 md:hidden"
-    >
-      <ul class="flex flex-col gap-1">
+  <nav
+    id="mobile-navigation"
+    aria-label="التنقل في الجوال"
+    class="mobile-nav"
+    [class.is-open]="isMenuOpen()"
+    [attr.inert]="isMenuOpen() ? null : ''"
+  >
+    <div class="mobile-nav__inner">
+      <ul class="flex flex-col gap-1 border-t border-border px-4 py-3">
         @for (link of links; track link.path) {
           <li>
             <a
               [routerLink]="link.path"
-              routerLinkActive="text-primary bg-gray-50"
+              routerLinkActive="text-secondary-dark hover:text-secondary-dark bg-gray-50"
               [routerLinkActiveOptions]="{ exact: link.path === '/' }"
               class="font-body block min-h-11 rounded-md px-3 py-3 text-base font-bold text-gray-700 hover:bg-gray-50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
               (click)="closeMenu()"
@@ -86,6 +88,6 @@
           </li>
         }
       </ul>
-    </nav>
-  }
+    </div>
+  </nav>
 </header>
