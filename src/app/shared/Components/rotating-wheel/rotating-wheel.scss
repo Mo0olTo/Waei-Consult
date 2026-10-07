@@ -18,13 +18,17 @@
 }
 
 .wheel__label {
-  direction: rtl;
   fill: var(--color-white);
   font-family: var(--font-heading);
   font-weight: 700;
-  text-anchor: middle;
   pointer-events: none;
   transition: fill 200ms ease;
+}
+
+.wheel__label text {
+  direction: rtl;
+  unicode-bidi: plaintext;
+  text-anchor: middle;
 }
 
 .wheel__shape {
