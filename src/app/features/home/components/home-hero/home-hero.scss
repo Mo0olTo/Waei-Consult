@@ -107,15 +107,15 @@
 
   .hero__logo {
     order: -1;
-    width: 6rem;
-    margin-block-end: 1.5rem;
+    // width: 20rem;
+    // margin-block-end: 1.5rem;
   }
 }
 
 @media (min-width: 1280px) {
-  .hero__logo {
-    width: 8rem;
-  }
+  // .hero__logo {
+  //   width: 8rem;
+  // }
 }
 
 .hero__panel {
