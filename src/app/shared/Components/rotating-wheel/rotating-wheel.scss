@@ -25,10 +25,16 @@
   transition: fill 200ms ease;
 }
 
+// px here are wheel units (800-unit viewBox); mobile is larger because the wheel renders much smaller.
 .wheel__label text {
-  direction: ltr;
-  unicode-bidi: isolate;
+  font-size: 28px;
   text-anchor: middle;
+}
+
+@media (min-width: 900px) {
+  .wheel__label text {
+    font-size: 22px;
+  }
 }
 
 .wheel__shape {

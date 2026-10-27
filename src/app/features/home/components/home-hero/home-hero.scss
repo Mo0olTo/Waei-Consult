@@ -1,6 +1,6 @@
 // Mobile: one screen under the header. The wheel stays in the top band; type is not scaled up to fill the rest.
 .hero {
-  --wheel-size: min(59vw, 270px);
+  --wheel-size: min(88vw, 380px);
   height: calc(100dvh - 5.0625rem);
   max-height: calc(100dvh - 5.0625rem);
 }

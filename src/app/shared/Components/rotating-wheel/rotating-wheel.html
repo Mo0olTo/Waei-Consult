@@ -34,16 +34,11 @@
           class="wheel__label"
           [attr.data-lx]="sector.labelX"
           [attr.data-ly]="sector.labelY"
+          aria-hidden="true"
         >
-          <text
-            [attr.x]="sector.labelX"
-            [attr.y]="sector.lineY1"
-            [attr.font-size]="labelFontSize"
-            aria-hidden="true"
-          >
-            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY1">{{ sector.lines[0] }}</tspan>
-            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY2">{{ sector.lines[1] }}</tspan>
-          </text>
+          <!-- One text per line: iOS Safari mixes characters between tspans of the same RTL text. -->
+          <text [attr.x]="sector.labelX" [attr.y]="sector.labelY" dy="-0.35em">{{ sector.lines[0] }}</text>
+          <text [attr.x]="sector.labelX" [attr.y]="sector.labelY" dy="0.95em">{{ sector.lines[1] }}</text>
         </g>
       </g>
     }
