@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { afterNextRender, Component, DestroyRef, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MAIN_NAVIGATION } from '../../core/navigation';
 
@@ -7,10 +7,29 @@ import { MAIN_NAVIGATION } from '../../core/navigation';
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
+  host: {
+    class: 'sticky top-0 z-40 block',
+    '[class.is-scrolled]': 'isScrolled()',
+  },
 })
 export class Navbar {
   protected readonly links = MAIN_NAVIGATION;
   protected readonly isMenuOpen = signal(false);
+  protected readonly isScrolled = signal(false);
+
+  constructor() {
+    const destroyRef = inject(DestroyRef);
+
+    afterNextRender(() => {
+      const onScroll = (): void => {
+        this.isScrolled.set(window.scrollY > 12);
+      };
+
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      destroyRef.onDestroy(() => window.removeEventListener('scroll', onScroll));
+    });
+  }
 
   protected toggleMenu(): void {
     this.isMenuOpen.update((isOpen) => !isOpen);

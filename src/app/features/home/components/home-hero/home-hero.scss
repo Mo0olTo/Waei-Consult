@@ -1,6 +1,15 @@
-// Mobile: a smaller wheel tucked into the top-left corner, with the text below it.
+// Mobile: one screen under the header. The wheel stays in the top band; type is not scaled up to fill the rest.
 .hero {
-  --wheel-size: min(78vw, 360px);
+  --wheel-size: min(59vw, 270px);
+  height: calc(100dvh - 5.0625rem);
+  max-height: calc(100dvh - 5.0625rem);
+}
+
+@media (min-width: 768px) and (max-width: 899.98px) {
+  .hero {
+    height: calc(100dvh - 5.5625rem);
+    max-height: calc(100dvh - 5.5625rem);
+  }
 }
 
 .hero__wheel {
@@ -14,7 +23,10 @@
 
 // The content box spans the wheel area; only its text column should take the pointer.
 .hero__content {
-  padding-block-start: calc(var(--wheel-size) + 2rem);
+  height: 100%;
+  min-height: 0;
+  padding-block-start: calc(var(--wheel-size) + 1.5rem);
+  padding-block-end: 1rem;
   pointer-events: none;
 
   > * {
@@ -25,6 +37,8 @@
 @media (min-width: 900px) {
   .hero {
     --wheel-size: min(100vh - 120px, 840px);
+    height: auto;
+    max-height: none;
   }
 
   // Centered on the inline-start edge (right in RTL) so only half of the wheel is visible.
@@ -36,7 +50,8 @@
   }
 
   .hero__content {
-    padding-block-start: 4rem;
+    height: auto;
+    padding-block: 4rem;
     padding-inline-start: calc(var(--wheel-size) / 2 + 4rem);
   }
 }

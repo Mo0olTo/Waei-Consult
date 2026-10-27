@@ -6,7 +6,6 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
 
 interface WhyWaeiReason {
   title: string;
@@ -15,7 +14,7 @@ interface WhyWaeiReason {
 
 @Component({
   selector: 'app-why-waei',
-  imports: [RouterLink, WaeiLogo],
+  imports: [RouterLink],
   templateUrl: './why-waei.html',
   styleUrl: './why-waei.scss',
 })

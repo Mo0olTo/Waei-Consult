@@ -1,5 +1,5 @@
 <section
-  class="relative flex min-h-[calc(100dvh-4.8125rem)] flex-col overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
+  class="relative flex flex-col overflow-hidden bg-primary"
 >
   <img
     src="/images/aboutSection/employees.webp"
@@ -13,25 +13,27 @@
     class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
     aria-hidden="true"
   ></div>
-  <div class="relative flex flex-1 items-center justify-center">
-    <app-waei-logo size="lg" tone="inverse" />
-  </div>
-  <div class="site-container relative w-full pb-16 md:pb-20 px-4 md:px-0">
+  
+  <div class="site-container relative w-full pb-16 md:pb-20 px-4 md:px-0 mt-6 md:mt-12 flex items-center justify-around">
+    
+   <div class="w-3/4 md:w-1/2">
     <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
     <h1
-      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
+      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-2xl md:text-4xl font-extrabold leading-tight text-inverse md:text-7xl"
     >
       من نحن
     </h1>
-    <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-xl">
-      هدفنا أن نختصر على مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل لا على التوقع.
-    </p>
     <a
       href="/about#about-idea"
-      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      class=" mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
     >
       تعرّف على واعي
     </a>
+   </div>
+   <div class="w-1/4 md:w-1/2 flex flex-col mt-10 items-end justify-center">
+    <img src="/images/logo/waei_logo_black.PNG"  class="w-[110px] md:w-[180px] invert" alt="">
+    <img src="/images/logo/waei_title_black.PNG"  class="w-[110px] md:w-[180px] invert" alt="">
+  </div>
   </div>
 </section>
 
@@ -48,83 +50,65 @@
   />
   <div class="pointer-events-none absolute inset-0 bg-white/97" aria-hidden="true"></div>
   <div class="site-container relative py-16 md:py-20 px-3 md:px-0">
-    <h2 class="flex items-center gap-4 font-heading text-5xl font-extrabold text-primary">
+    <h2 class="flex items-center gap-4 font-heading text-4xl md:text-5xl font-extrabold text-primary">
       <span class="size-3 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       فكرة واعي
     </h2>
 
-    <div class="font-[600] mt-6 flex max-w-3xl flex-col gap-4 text-2xl  leading-8 text-[var(--color-primary-dark)]">
+    <div class="font-medium mt-6 flex max-w-3xl flex-col gap-4 text-2xl  leading-8 text-gray-700">
       <p>في «واعي» ننطلق من فهمٍ عمليٍّ وعميقٍ لتحديات الأفراد والشركات والمؤسسات والمشروعات الناشئة والصغيرة، ونؤمن بأن دورنا يتجاوز تقديم الاستشارات التقليدية إلى بناء شراكاتٍ حقيقيةٍ تختصر شهورًا من التجربة والخطأ، من خلال منظومةٍ متكاملةٍ من الحلول تشمل:</p>
-      <!-- <p>انطلقت فكرة "واعي" من واقعين نعيشهما كل يوم:</p>
-      <p>الأول: الاحتكاك المباشر وفهم تحديات المؤسسات الصغيرة والكبيرة.</p>
-      <p>الثاني: إيماننا بمسؤوليتنا كشركاء نجاح للنهوض بالمؤسسات وتحقيق النمو والريادة.</p>
-      <p>لذلك قررنا تقديم الدعم الاستشاري المتكامل في:</p> -->
     </div>
 
-    <ol class="mt-12 flex flex-col gap-10 md:gap-16">
-      @for (area of supportAreas; track area.title; let i = $index; let odd = $odd) {
+    <ol class="mt-10 flex flex-col gap-4 sm:flex-row">
+      @for (area of supportAreas; track area.title; let i = $index) {
         <li
-          class="about-card about-split group grid items-center gap-6 md:grid-cols-2 md:gap-12 cursor-pointer"
-          [class.about-split--flip]="odd"
+          class="about-card w-full perspective-distant sm:min-w-0 sm:flex-1"
           data-about-card
+          [style.--delay]="i * 120 + 'ms'"
         >
-          <div class="flex items-start gap-5" [class]="odd ? 'md:order-2 md:justify-end' : ''">
-            <span
-              class="about-split-number w-24 shrink-0 pt-1 text-center font-heading text-6xl leading-none
-               font-extrabold tabular-nums md:w-28 md:text-7xl"
-              aria-hidden="true"
-            >
-              {{ '0' + (i + 1) }}
-            </span>
-            <div class="border-s-2 border-secondary ps-5">
-              <h3
-                class="font-heading inline-block rounded-lg px-3 py-1 text-2xl font-extrabold text-primary transition-colors duration-300 motion-reduce:transition-none group-hover:bg-secondary md:text-3xl"
-              >
-                {{ area.title }}
-              </h3>
-              <p
-                class="mt-3 whitespace-pre-line rounded-xl px-3 py-2 text-xl leading-8 font-semibold text-gray-700 transition-colors duration-300 motion-reduce:transition-none group-hover:bg-white group-hover:text-primary"
-              >
-                {{ area.desc }}
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="about-split-photo overflow-hidden rounded-3xl shadow-sm"
-            [class]="odd ? 'md:order-1' : ''"
+          <article
+            class="transform-3d flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-primary px-5 py-7 text-center shadow-sm ring-1 ring-primary-light transition-transform duration-700 ease-in-out hover:rotate-x-360 motion-reduce:transition-none motion-reduce:hover:rotate-x-0"
           >
-            <img
-              [src]="area.image"
-              alt=""
-              width="1200"
-              height="800"
-              loading="lazy"
-              decoding="async"
-              class="aspect-[4/3] size-full object-cover"
+            <ng-container
+              [ngTemplateOutlet]="aboutIcon"
+              [ngTemplateOutletContext]="{ $implicit: area.icon }"
             />
-          </div>
+            <h3 class="font-heading text-xl font-extrabold text-inverse md:text-2xl">
+              {{ area.title }}
+            </h3>
+          </article>
         </li>
       }
     </ol>
-
+    <div class="site-container py-16 md:py-20 px-3 md:px-0">
+      <div class="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+        <div>
+          <div class="font-medium mt-3 flex flex-col gap-4 text-2xl leading-8 text-gray-700">
+            <p>
+               نقدم حلولًا قائمةً على الخبرة العملية والتحليل الدقيق للأرقام؛ لدعم أعمالكم في اتخاذ القرارات المناسبة في الوقت المناسب، سعيًا للنمو والريادة والاستدامة.
+            </p>
+          
+          </div>
+        </div>
+        <!-- <div class="overflow-hidden rounded-3xl shadow-sm">
+          <img
+            src="/images/aboutSection/aboutDesc.jpeg"
+            alt="تخطيط على مكتب بجانب ساعة رملية وساعة، مع كتب عن الاستراتيجية والتنفيذ والنمو"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/2] size-full object-cover"
+          />
+        </div> -->
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="relative overflow-hidden bg-background-soft">
-  <!-- <img
-    src="/images/aboutSection/arch.webp"
-    alt=""
-    width="1600"
-    height="900"
-    loading="lazy"
-    decoding="async"
-    class="pointer-events-none absolute inset-0 size-full object-cover"
-    aria-hidden="true"
-  />
-  <div class="pointer-events-none absolute inset-0 bg-white/95" aria-hidden="true"></div> -->
   <div class="site-container relative py-16 md:py-20 px-3 md:px-0">
-    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+    <h2 class="flex items-center gap-4 font-heading text-4xl md:text-5xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       الرؤية والرسالة والهدف
     </h2>
@@ -148,54 +132,12 @@
   </div>
 </section>
 
-<section class="bg-surface">
-  <div class="site-container py-16 md:py-20 px-3 md:px-0">
-    <div class="grid items-center gap-8 md:grid-cols-2 md:gap-12">
-      <div>
-        <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
-          <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
-          منهجيتنا في "واعي"
-        </h2>
-        <div class="font-body mt-6 flex flex-col gap-4 text-3xl leading-8 text-gray-700">
-          <p>
-            نقدم منظومة متكاملة من الحلول الاستشارية لدعم نمو مؤسستك واستدامتها، ونصمم خدماتنا بما يتناسب مع كل مرحلة من
-            مراحلها، بدءًا من التأسيس، مرورًا بالنمو، وصولًا إلى التوسع.
-          </p>
-          <p>
-            لا نعتمد على الحلول النمطية، بل نطور لكل عميل استراتيجية مخصصة تنطلق من طبيعة أعماله وحجم مؤسسته وتحدياته، بما
-            يدعم تحقيق أهدافه وبناء مستقبل مستدام.
-          </p>
-        </div>
-      </div>
-      <div class="overflow-hidden rounded-3xl shadow-sm">
-        <img
-          src="/images/aboutSection/aboutDesc.jpeg"
-          alt="تخطيط على مكتب بجانب ساعة رملية وساعة، مع كتب عن الاستراتيجية والتنفيذ والنمو"
-          width="1536"
-          height="1024"
-          loading="lazy"
-          decoding="async"
-          class="aspect-[3/2] size-full object-cover"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <section class="relative overflow-hidden border-t border-border bg-surface">
-  <!-- <img
-    src="/images/aboutSection/partnership.webp"
-    alt=""
-    width="1600"
-    height="900"
-    loading="lazy"
-    decoding="async"
-    class="pointer-events-none absolute inset-0 size-full object-cover"
-    aria-hidden="true"
-  />
-  <div class="pointer-events-none absolute inset-0 bg-white/85" aria-hidden="true"></div> -->
+
   <div class="site-container relative py-16 md:py-20 px-3 md:px-0">
-    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+    <h2 class="flex items-center gap-4 font-heading text-4xl md:text-5xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       قيمنا
     </h2>
@@ -206,7 +148,7 @@
           <article
             class="about-panel flex h-full cursor-pointer flex-col rounded-2xl bg-primary p-7 ring-1 ring-primary-light"
           >
-            <ng-container [ngTemplateOutlet]="aboutIcon" [ngTemplateOutletContext]="{ $implicit: value.icon }" />
+            <ng-container [ngTemplateOutlet]="aboutIcon"  [ngTemplateOutletContext]="{ $implicit: value.icon }" />
             <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">{{ value.title }}</h3>
             <p class="font-body mt-3 text-lg leading-8 text-gray-200">{{ value.description }}</p>
             <div class="mt-auto pt-6">
@@ -222,7 +164,7 @@
 <section class="bg-primary">
   <div class="site-container py-16 md:py-20 px-4 md:px-0">
     <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
-      نقدم حلولًا قائمةً على الخبرة العملية والتحليل الدقيق للأرقام؛ لدعم أعمالكم في اتخاذ القرارات المناسبة في الوقت المناسب، سعيًا للنمو والريادة والاستدامة.
+      نحـلل صــــح ... تقـرر صــــح 
     </h2>
 
     
@@ -236,7 +178,7 @@
 </section>
 
 <ng-template #aboutIcon let-name>
-  <svg class="size-12 text-secondary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg class="size-12 text-secondary " viewBox="0 0 24 24" fill="none" aria-hidden="true">
     @switch (name) {
       @case ('vision') {
         <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.75" />
@@ -272,6 +214,18 @@
       @case ('time') {
         <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.75" />
         <path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+      }
+      @case ('consulting') {
+        <path d="M8 7V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+        <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.75" />
+        <path d="M3 12h18" stroke="currentColor" stroke-width="1.75" />
+      }
+      @case ('governance') {
+        <path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10M3 10h18L12 4 3 10Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" />
+      }
+      @case ('decision') {
+        <path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+        <path d="m7 14 4-4 3 3 5-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
       }
     }
   </svg>

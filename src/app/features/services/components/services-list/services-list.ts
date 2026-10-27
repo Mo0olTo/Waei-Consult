@@ -3,11 +3,10 @@ import { RouterLink } from '@angular/router';
 import { CtaCard, CtaSection } from '../../../../shared/Components/cta-section/cta-section';
 import { SERVICES } from '../../data/services.data';
 import { ServiceIcon } from '../service-icon/service-icon';
-import { WaeiLogo } from '../../../../shared/ui/waei-logo/waei-logo';
 
 @Component({
   selector: 'app-services-list',
-  imports: [RouterLink, ServiceIcon, CtaSection, WaeiLogo],
+  imports: [RouterLink, ServiceIcon, CtaSection],
   templateUrl: './services-list.html',
   styleUrl: './services-list.scss',
 })

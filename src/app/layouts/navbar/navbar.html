@@ -5,30 +5,67 @@
   تخطي إلى المحتوى الرئيسي
 </a>
 
-<header class="border-b border-border bg-surface">
-  <div class="site-container flex items-center justify-between gap-4 py-4 px-3 md:px-0">
+
+<header
+  class="relative isolate overflow-hidden 
+    bg-[linear-gradient(to_bottom,var(--color-primary)_0%,var(--color-primary)_95%,white_100%)] 
+    md:bg-[linear-gradient(to_bottom,var(--color-primary)_0%,var(--color-primary)_90%,white_100%)]
+    transition-[border-radius,box-shadow] duration-300"
+  [class.rounded-b-2xl]="isScrolled()"
+  [class.shadow-md]="isScrolled()"
+>
+  <!-- Subtle geometric pattern -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 opacity-20
+      [background-image:radial-gradient(rgba(255,255,255,0.65)_1px,transparent_1px)]
+      [background-size:24px_24px]
+      [mask-image:linear-gradient(to_bottom,black_0%,black_35%,transparent_85%)]"
+  ></div>
+
+  <div
+    class="site-container flex items-center justify-between gap-4 px-3 transition-[padding] duration-300 md:px-0"
+    [class.py-4]="!isScrolled()"
+    [class.py-2]="isScrolled()"
+  >
     <a
       routerLink="/"
       class="inline-flex shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
     >
-      <img
-        src="/images/logo/waei_logo.png"
-        alt="واعي"
-        width="870"
-        height="694"
-        decoding="async"
-        class="h-12 w-auto md:h-14"
-      />
+      <span
+        class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white  transition-[width,height] duration-300 motion-reduce:transition-none"
+        [class.size-12]="!isScrolled()"
+        [class.md:size-14]="!isScrolled()"
+        [class.size-10]="isScrolled()"
+        [class.md:size-11]="isScrolled()"
+      >
+        <img
+          src="/images/logo/logo_circle2.png"
+          alt="واعي"
+          width="970"
+          height="794"
+          decoding="async"
+          class="size-full object-contain object-center"
+        />
+      </span>
+
+      <p
+        class="mr-5 flex flex-col items-center justify-center text-[14px] font-bold text-[var(--color-secondary-light)] md:text-[19px]"
+      >
+        إستشارات | حوكمة | دعم إتخاذ القرار
+      </p>
     </a>
 
-    <nav aria-label="التنقل الرئيسي" class="hidden items-center gap-6 md:flex">
+    <nav
+      aria-label="التنقل الرئيسي"
+      class="hidden items-center gap-6 md:flex"
+    >
       @for (link of links; track link.path) {
         <a
           [routerLink]="link.path"
-          routerLinkActive="text-primary"
+          routerLinkActive="!text-secondary-light"
           [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-          class="font-body text-sm font-bold text-muted transition-colors hover:text-primary 
-          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+          class="font-body text-lg font-bold text-white transition-colors hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
         >
           {{ link.label }}
         </a>
@@ -37,7 +74,8 @@
 
     <button
       type="button"
-      class="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md border border-border text-primary md:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+      class="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md border border-border 
+      text-primary md:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
       [attr.aria-expanded]="isMenuOpen()"
       aria-controls="mobile-navigation"
       [attr.aria-label]="isMenuOpen() ? 'إغلاق القائمة' : 'فتح القائمة'"
@@ -47,7 +85,7 @@
         <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M6 6l12 12M18 6 6 18"
-            stroke="currentColor"
+            stroke="white"
             stroke-width="2"
             stroke-linecap="round"
           />
@@ -56,7 +94,7 @@
         <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M4 7h16M4 12h16M4 17h16"
-            stroke="currentColor"
+            stroke="white"
             stroke-width="2"
             stroke-linecap="round"
           />
@@ -78,9 +116,10 @@
           <li>
             <a
               [routerLink]="link.path"
-              routerLinkActive="text-secondary-dark hover:text-secondary-dark bg-gray-50"
+              routerLinkActive="!text-secondary-light hover:text-secondary-dark "
               [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-              class="font-body block min-h-11 rounded-md px-3 py-3 text-base font-bold text-gray-700 hover:bg-gray-50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+              class="font-body block min-h-11 rounded-md px-3 py-3 text-base font-bold text-white
+                     hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
               (click)="closeMenu()"
             >
               {{ link.label }}
@@ -91,3 +130,6 @@
     </div>
   </nav>
 </header>
+
+
+

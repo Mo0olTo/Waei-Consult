@@ -7,14 +7,13 @@ import {
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
 import { AboutStatement } from './models/about-statement.model';
 import { CompanyValue } from './models/company-value.model';
 import { SupportArea } from './models/support-area.model';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, NgTemplateOutlet, WaeiLogo],
+  imports: [RouterLink, NgTemplateOutlet],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
@@ -25,16 +24,19 @@ export class About {
   protected readonly supportAreas: SupportArea[] =[
     {
       title: 'الاستشارات',
+      icon: 'consulting',
       image: '/images/aboutSection/idea.webp',
       desc: 'نقدم استشارات متخصصة تساعد المنشآت على فهم تحدياتها وبناء حلول عملية قابلة للتنفيذ.\nندعم عملاءنا بخبرات منهجية تسهم في تطوير الأداء وتحقيق أهدافهم.'
     },
     {
       title: 'الحوكمة',
+      icon: 'governance',
       image: '/images/aboutSection/direction.webp',
       desc: 'نساعد المنشآت على بناء أطر حوكمة واضحة تعزز الشفافية والمسؤولية وتدعم استدامة الأعمال.\nنصمم ممارسات متوازنة تساهم في وضوح الأدوار ورفع كفاءة اتخاذ القرار.'
     },
     {
       title: 'دعم اتخاذ القرار',
+      icon: 'decision',
       image: '/images/aboutSection/partnership.webp',
       desc: 'نوفر رؤى وتحليلات تساعد القيادات على اتخاذ قرارات أكثر وضوحًا واستنادًا إلى معلومات موثوقة.\nنحوّل البيانات والمعطيات إلى أدوات عملية تدعم التخطيط وتوجيه الأعمال.'
     }
