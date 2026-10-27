@@ -26,14 +26,9 @@
 }
 
 .wheel__label text {
-  direction: rtl;
-  unicode-bidi: embed;
+  direction: ltr;
+  unicode-bidi: isolate;
   text-anchor: middle;
-} 
-
-.wheel__label tspan {
-  direction: rtl;
-  unicode-bidi: embed;
 }
 
 .wheel__shape {

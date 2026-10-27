@@ -47,6 +47,15 @@ const SECOND_LINE_SHIFT = (-0.35 + 1.3) * LABEL_FONT_SIZE;
 const round = (value: number): number => Math.round(value * 100) / 100;
 const DRAG_THRESHOLD_PX = 8;
 const VIEWBOX_SIZE = WHEEL_CENTER * 2;
+/**
+ * iOS Safari reverses prerendered SVG text when direction and unicode-bidi
+ * are set on both text and tspan. An explicit RTL isolate keeps the Arabic
+ * order without those extra embeddings.
+ */
+const RIGHT_TO_LEFT_ISOLATE = '\u2067';
+const POP_DIRECTIONAL_ISOLATE = '\u2069';
+const isolateRtl = (value: string): string =>
+  `${RIGHT_TO_LEFT_ISOLATE}${value}${POP_DIRECTIONAL_ISOLATE}`;
 
 @Component({
   selector: 'app-rotating-wheel',
@@ -74,7 +83,7 @@ export class RotatingWheel {
       const label = polarPoint(LABEL_RADIUS, start + step / 2);
       return {
         id: segment.id,
-        lines: segment.lines,
+        lines: [isolateRtl(segment.lines[0]), isolateRtl(segment.lines[1])],
         ariaLabel: segment.lines.join(' '),
         path: ringSectorPath(start, start + step, OUTER_RADIUS, HUB_RADIUS),
         labelX: label.x,
