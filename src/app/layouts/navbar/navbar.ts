@@ -22,7 +22,7 @@ export class Navbar {
 
     afterNextRender(() => {
       const onScroll = (): void => {
-        this.isScrolled.set(window.scrollY > 12);
+        this.isScrolled.set(window.scrollY > 17);
       };
 
       onScroll();

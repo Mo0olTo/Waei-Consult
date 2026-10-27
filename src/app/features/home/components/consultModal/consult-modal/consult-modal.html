@@ -1,0 +1,85 @@
+<section class="bg-background-soft" aria-labelledby="consult-modal-title">
+  <div class="site-container px-4 py-16 md:py-20">
+    <div
+      class="mx-auto flex max-w-3xl flex-col items-center rounded-2xl bg-primary px-6 py-10 text-center md:px-12 md:py-14"
+    >
+      <span class="size-2.5 rotate-45 bg-secondary" aria-hidden="true"></span>
+      <h2
+        id="consult-modal-title"
+        class="mt-5 font-heading text-2xl font-extrabold leading-snug text-inverse md:text-4xl"
+      >
+        تشخيص مجاني لمشكلتك
+      </h2>
+      <button
+        type="button"
+        class="font-body mt-8 inline-flex min-h-11 cursor-pointer items-center rounded-md bg-secondary px-6 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        (click)="open()"
+      >
+        إضغط هنا
+      </button>
+    </div>
+  </div>
+</section>
+
+@if (isOpen()) {
+  <div class="fixed inset-0 z-[70] flex items-center justify-center p-4">
+    <button
+      type="button"
+      class="absolute inset-0 cursor-pointer bg-primary-dark/75"
+      aria-label="إغلاق النافذة"
+      (click)="close()"
+    ></button>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consult-dialog-title"
+      class="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-lg ring-1 ring-border md:p-10"
+    >
+      <button
+        type="button"
+        class="absolute top-3 end-3 inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-primary hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        aria-label="إغلاق"
+        (click)="close()"
+      >
+        <svg class="size-5" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path
+            d="M5 5l10 10M15 5L5 15"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <h2
+        id="consult-dialog-title"
+        class="pe-12 font-heading text-xl font-extrabold leading-snug text-primary md:text-2xl"
+      >
+        خبراء واعي يقدمون لك تشخيص مجاني لمشكلتك
+      </h2>
+      <p class="font-body mt-4 text-base leading-8 text-text-secondary md:text-lg">
+        قم بإرسال مشكلتك لنتناقش بها
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          [href]="whatsappHref"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-body inline-flex min-h-11 flex-1 items-center justify-center rounded-md bg-secondary px-5 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          استشارة مجانية
+        </a>
+        <button
+          type="button"
+          class="font-body inline-flex min-h-11 flex-1 cursor-pointer items-center justify-center rounded-md border border-primary px-5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          (click)="close()"
+        >
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
+}

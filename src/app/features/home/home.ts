@@ -4,10 +4,11 @@ import { FaqHome } from './components/faq-home/faq-home';
 import { HomeHero } from './components/home-hero/home-hero';
 import { StrategyFlow } from './components/strategy-flow/strategy-flow';
 import { TestimonialsHome } from './components/testimonials-home/testimonials-home';
+import { ConsultModal } from './components/consultModal/consult-modal/consult-modal';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeHero, CarouselHome, StrategyFlow, TestimonialsHome, FaqHome],
+  imports: [HomeHero, CarouselHome, StrategyFlow, TestimonialsHome, FaqHome, ConsultModal],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

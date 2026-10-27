@@ -39,11 +39,11 @@
             [attr.x]="sector.labelX"
             [attr.y]="sector.lineY1"
             [attr.font-size]="labelFontSize"
-            dir="rtl"
+            direction="rtl"
             aria-hidden="true"
           >
-            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY1">{{ sector.lines[0] }}</tspan>
-            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY2">{{ sector.lines[1] }}</tspan>
+            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY1" direction="rtl">{{ sector.lines[0] }}</tspan>
+            <tspan [attr.x]="sector.labelX" [attr.y]="sector.lineY2" direction="rtl">{{ sector.lines[1] }}</tspan>
           </text>
         </g>
       </g>

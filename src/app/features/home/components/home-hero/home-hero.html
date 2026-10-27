@@ -38,23 +38,23 @@
   <div class="hero__content relative w-full px-5 md:px-10">
     <div class="hero__layout">
       <div class="max-w-2xl">
-        <h1
+        <!-- <h1
           id="home-hero-title"
           class="font-heading text-[clamp(1.75rem,9vw,3.75rem)] leading-none font-extrabold tracking-tight whitespace-nowrap text-primary md:text-[60px] md:whitespace-normal min-[900px]:text-[80px]"
         >
           واعــــــــــي
         </h1>
-        <p class="font-body mt-2 text-sm font-medium text-secondary-dark md:mt-3">مختبر الشركات</p>
-        <p
-          class="mt-3 font-heading text-lg leading-snug font-extrabold text-primary md:mt-4 md:text-3xl md:leading-tight xl:text-4xl"
+        <p class="font-body mt-2 text-sm font-medium text-secondary-dark md:mt-3">مختبر الشركات</p> -->
+        <!-- <p
+          class="mt-3 font-heading text-3xl leading-snug font-extrabold text-primary md:mt-4 md:text-3xl md:leading-tight xl:text-4xl"
         >
-          نحن لا نقدم تقارير... نحن نبني قرارات.
-        </p>
+           نحـلل صــــح ... تقـرر صــــح 
+        </p> -->
 
         <div class="mt-4 md:mt-8 md:min-h-56" aria-live="polite">
           @for (item of activeItems(); track item.id) {
             <article class="hero__panel border-s-2 border-secondary ps-5">
-              <p class="font-body text-sm font-medium text-text-secondary">من خدماتنا</p>
+              <p class=" text-base font-extrabold text-text-secondary">من خدماتنا</p>
               <h2 class="mt-2 font-heading text-2xl leading-snug font-bold text-primary md:text-4xl">
                 {{ item.title }}
               </h2>
@@ -68,7 +68,7 @@
             </article>
           } @empty {
             <div class="hero__panel">
-              <p class="font-body text-base leading-7 text-text-secondary md:text-xl md:leading-8">
+              <p class="font-bold text-base leading-7 text-text-secondary md:text-2xl md:leading-8">
                 نقدم الدعم الاستشاري المتكامل في الاستشارات والحوكمة ودعم اتخاذ القرار، لنختصر على
                 مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل لا على
                 التوقع.
@@ -94,12 +94,13 @@
 
       <div class="hero__logo">
         <img
-          src="/images/logo/waei_logo.png"
+          src="/images/logo/waei_logo-2.png"
           alt=""
           width="870"
           height="694"
           fetchpriority="high"
           decoding="async"
+          class="!w-[250px] !h-[250px]  md:!w-[300px] md:!h-[300px]  lg:!w-[500px] lg:!h-[490px]  "
         />
       </div>
     </div>
