@@ -1,6 +1,4 @@
-<section
-  class="relative flex min-h-[calc(100dvh-4.8125rem)] flex-col overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
->
+<section class="relative flex flex-col overflow-hidden bg-primary">
   <img
     src="/images/whyWaei/Success.jpg"
     alt=""
@@ -13,35 +11,39 @@
     class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
     aria-hidden="true"
   ></div>
-  <div class="relative flex flex-1 items-center justify-center">
-    <app-waei-logo size="lg" tone="inverse" />
-  </div>
-  <div class="site-container relative w-full pb-16 md:pb-20 px-4 md:px-0">
-    <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
-    <h1
-      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
-    >
-      لماذا واعي؟
-    </h1>
-    <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-xl">
-      نحن لا نقدم تقارير... نحن نصنع قرارات.
-    </p>
-    <a
-      href="/why-waei#why-reasons"
-      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-    >
-      تعرّف على الأسباب
-    </a>
+  <div class="site-container relative mt-6 flex w-full items-center justify-around px-4 pb-16 md:mt-12 md:px-0 md:pb-20">
+    <div class="w-3/4 md:w-1/2">
+      <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
+      <h1
+        class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-2xl 
+        font-extrabold leading-tight text-inverse md:text-7xl"
+      >
+        لماذا واعي؟
+      </h1>
+      <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-xl">
+        نحن لا نقدم تقارير... نحن نصنع قرارات.
+      </p>
+      <a
+        href="/why-waei#why-reasons"
+        class=" mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        تعرّف على الأسباب
+      </a>
+    </div>
+    <div class="mt-10 flex w-1/4 md:w-1/2 flex-col items-end justify-center">
+      <img src="/images/logo/waei_logo_black.PNG" class="w-[110px] invert md:w-[180px]" alt="" />
+      <img src="/images/logo/waei_title_black.PNG" class="w-[110px] invert md:w-[180px]" alt="" />
+    </div>
   </div>
 </section>
 
 <section id="why-reasons" class="relative scroll-mt-6 overflow-hidden bg-surface">
   <div class="site-container relative py-16 md:py-20 px-3 md:px-0">
-    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
+    <h2 class="flex items-center gap-4 font-heading text-5xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       لماذا واعي؟
     </h2>
-    <div class="font-body mt-6 flex max-w-3xl flex-col gap-4 text-lg leading-8 text-gray-700 md:text-xl">
+    <div class="font-medium mt-6 flex max-w-3xl flex-col gap-4 text-xl leading-8 text-gray-700 md:text-2xl">
       <p>
         ندرك أن قيادة المؤسسة مسؤولية تتطلب إدارة الموارد، وضبط التكاليف، وتطوير الأداء، واتخاذ قرارات مصيرية في ظل تحديات متغيرة.
       </p>
@@ -69,7 +71,7 @@
 <section class="bg-primary">
   <div class="site-container py-16 md:py-20 px-4 md:px-0">
     <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
-      نحن لا نقدم تقارير... نحن نصنع قرارات.
+      "واعي".. شريككم في القرار، وداعمكم في النمو.
     </h2>
     <a
       routerLink="/contact"

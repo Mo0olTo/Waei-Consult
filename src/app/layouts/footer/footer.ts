@@ -22,7 +22,7 @@ export class Footer {
   protected readonly currentYear = new Date().getFullYear();
   // URLs are placeholders until the official profile links are provided.
   protected readonly socialLinks: SocialLink[] = [
-    { icon: 'instagram', href: '#', label: 'إنستغرام' },
+    { icon: 'instagram', href: 'https://www.instagram.com/waei.consult/', label: 'إنستغرام' },
     { icon: 'facebook', href: '#', label: 'فيسبوك' },
     { icon: 'linkedin', href: '#', label: 'لينكدإن' },
     { icon: 'whatsapp', href: 'https://wa.me/201061510041', label: 'واتساب' },

@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { SERVICES } from '../services/data/services.data';
-import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
 
 type ContactField = 'name' | 'email' | 'phone' | 'company' | 'services' | 'message';
 
@@ -19,7 +18,7 @@ function atLeastOneSelected(control: AbstractControl<string[]>): ValidationError
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, WaeiLogo],
+  imports: [ReactiveFormsModule],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
