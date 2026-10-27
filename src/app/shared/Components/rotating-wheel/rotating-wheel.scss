@@ -29,6 +29,11 @@
   direction: rtl;
   unicode-bidi: embed;
   text-anchor: middle;
+} 
+
+.wheel__label tspan {
+  direction: rtl;
+  unicode-bidi: embed;
 }
 
 .wheel__shape {
