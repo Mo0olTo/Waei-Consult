@@ -30,6 +30,12 @@ export class ConsultModal implements OnDestroy {
     }
   }
 
+  sendInquiry():void{
+    window.open(this.whatsappHref)
+    this.close()
+  }
+
+
   ngOnDestroy(): void {
     this.document.body.style.overflow = '';
   }

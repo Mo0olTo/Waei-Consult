@@ -21,8 +21,12 @@ export class Navbar {
     const destroyRef = inject(DestroyRef);
 
     afterNextRender(() => {
+      const enterAt = 64;
+      const leaveAt = 8;
+
       const onScroll = (): void => {
-        this.isScrolled.set(window.scrollY > 17);
+        const y = window.scrollY;
+        this.isScrolled.update((scrolled) => (scrolled ? y > leaveAt : y > enterAt));
       };
 
       onScroll();
