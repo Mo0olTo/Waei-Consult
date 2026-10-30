@@ -11,11 +11,20 @@
     <div class="pointer-events-none absolute inset-0 bg-primary/80" aria-hidden="true"></div>
     <div class="site-container relative py-16 md:py-20 px-4 md:px-0">
       <a
-        routerLink="/services"
-        class="font-body inline-flex min-h-11 items-center text-sm font-medium text-secondary hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-      >
-        العودة إلى خدماتنا
-      </a>
+      routerLink="/services"
+      class="back-link font-body inline-flex min-h-11 items-center gap-2 text-xl font-semibold text-secondary hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    >
+      العودة إلى خدماتنا
+      <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M15 6 9 12l6 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
       <app-service-icon class="mt-6 block" [name]="service.icon" />
       <h1 class="font-heading mt-3 text-4xl font-extrabold text-inverse md:text-5xl">
         {{ service.title }}
@@ -29,8 +38,8 @@
       <ul class="flex flex-col gap-10">
         @for (item of service.capabilities; track item.title) {
           <li class="border-s-2 border-secondary ps-5">
-            <h2 class="font-heading text-2xl font-extrabold text-primary">{{ item.title }}</h2>
-            <p class="font-body mt-3 text-lg leading-9 text-gray-700">{{ item.description }}</p>
+            <h2 class="font-heading text-3xl font-extrabold text-primary">{{ item.title }}</h2>
+            <p class="font-body mt-3 text-xl font-medium leading-9 text-gray-700">{{ item.description }}</p>
           </li>
         }
       </ul>
@@ -40,7 +49,7 @@
   <section class="bg-primary">
     <div class="site-container py-16 md:py-20 px-4 md:px-0">
       <h2 class="font-heading text-3xl font-extrabold text-inverse">
-        نحن لا نقدم تقارير... نحن نبني قرارات.
+        نحـلل صــــح ... تقـرر صــــح 
       </h2>
       <div class="mt-5 h-1 w-16 bg-secondary" aria-hidden="true"></div>
       <a

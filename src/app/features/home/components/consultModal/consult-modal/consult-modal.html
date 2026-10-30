@@ -59,16 +59,24 @@
       >
         خبراء واعي يقدمون لك تشخيص مجاني لمشكلتك
       </h2>
-      <p class="font-body mt-4 text-base leading-8 text-text-secondary md:text-lg">
-        قم بإرسال مشكلتك لنتناقش بها
+      <p class="font-body mt-4 text-lg font-[500] leading-8 text-text-secondary md:text-lg">
+        شاركنا التحديات التي تواجه أعمالك، وسيقوم خبراء واعي بمراجعة طلبك والتواصل معك لمناقشة الحلول والتوصيات المناسبة
       </p>
+      <p class="font-body mt-6 text-base font-bold text-primary">يرجى إرسال:</p>
+        <ul class="font-body mt-3 list-disc space-y-2 ps-5 text-base font-[500] leading-8 text-text-secondary">
+          <li>الاسم</li>
+          <li>اسم المنشأة (اختياري)</li>
+          <li>البريد الإلكتروني أو رقم الهاتف</li>
+          <li>وصف مختصر للمشكلة</li>
+        </ul>
 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a
-          [href]="whatsappHref"
+         
+          (click)="sendInquiry()"
           target="_blank"
           rel="noopener noreferrer"
-          class="font-body inline-flex min-h-11 flex-1 items-center justify-center rounded-md bg-secondary px-5 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          class="cursor-pointer font-body inline-flex min-h-11 flex-1 items-center justify-center rounded-md bg-secondary px-5 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           استشارة مجانية
         </a>

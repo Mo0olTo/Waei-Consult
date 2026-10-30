@@ -40,7 +40,6 @@ export class HomeHero {
   });
 
   private readonly host = inject(ElementRef<HTMLElement>);
-  private alive = true;
 
   constructor() {
     const destroyRef = inject(DestroyRef);
@@ -56,7 +55,6 @@ export class HomeHero {
       document.addEventListener('pointerdown', release);
 
       destroyRef.onDestroy(() => {
-        this.alive = false;
         query.removeEventListener('change', sync);
         document.removeEventListener('pointerdown', release);
       });
@@ -74,25 +72,17 @@ export class HomeHero {
       return;
     }
 
-    const release = (): void => {
-      this.activeIndex.set(null);
-      const active = document.activeElement;
-      if (active instanceof HTMLElement && wheel?.contains(active)) {
-        active.blur();
-      }
-    };
-
-    // The service link sits outside the wheel. Clear after its click so navigation still runs.
+    // pointerdown fires before click. Removing the anchor here cancels RouterLink.
+    // Leaving the page unmounts the hero, so the panel does not need to close first.
     if (target.closest('a, button')) {
-      setTimeout(() => {
-        if (this.alive) {
-          release();
-        }
-      });
       return;
     }
 
-    release();
+    this.activeIndex.set(null);
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && wheel?.contains(active)) {
+      active.blur();
+    }
   }
 
   protected onFocusIn(): void {

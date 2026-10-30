@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MAIN_NAVIGATION } from '../../core/navigation';
 
 interface SocialLink {
@@ -11,7 +11,7 @@ interface SocialLink {
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, NgTemplateOutlet],
+  imports: [RouterLink, RouterLinkActive, NgTemplateOutlet],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })

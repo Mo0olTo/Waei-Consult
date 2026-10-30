@@ -1,11 +1,23 @@
-<footer class="w-full border-t border-gray-200 bg-white font-body">
-  <div class="site-container px-6 py-12">
+<footer
+  class="relative isolate w-full overflow-hidden font-body
+    bg-[linear-gradient(to_top,var(--color-primary)_0%,var(--color-primary)_99%,white_100%)]"
+>
+  <!-- Subtle geometric pattern -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 opacity-20
+      [background-image:radial-gradient(rgba(255,255,255,0.65)_1px,transparent_1px)]
+      [background-size:24px_24px]
+      [mask-image:linear-gradient(to_top,black_0%,black_35%,transparent_85%)]"
+  ></div>
+
+  <div class="site-container px-6 pt-16 pb-8">
     <div class="flex flex-col justify-between gap-10 lg:flex-row lg:gap-0">
       <!-- Logo & description -->
       <div class="flex w-full flex-col items-start md:w-1/3">
         <a
           routerLink="/"
-          class="inline-flex focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+          class="inline-flex rounded-2xl bg-white p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
         >
           <img
             src="/images/Footer/Footer-waei-.png"
@@ -14,20 +26,20 @@
             height="1024"
             decoding="async"
             loading="lazy"
-            class="h-[190px] md:h-[190px] w-auto"
+            class="h-[170px] w-auto"
           />
         </a>
 
         <div class="mt-5 px-5">
-          <h2 class="font-heading text-2xl font-bold text-primary"> .</h2>
-          <p class="font-medium text-black"> .</p>
+          <h2 class="font-heading text-2xl font-bold text-secondary-light"> .</h2>
+          <p class="font-medium text-white/80"> .</p>
         </div>
       </div>
 
       <!-- Contact -->
       <div class="flex w-full flex-col items-start lg:items-center md:w-1/3">
         <div class="self-start px-5 lg:ms-0">
-          <h2 class="font-heading text-4xl font-bold text-primary ">تواصل معنا</h2>
+          <h2 class="font-heading text-4xl font-bold text-secondary-light">تواصل معنا</h2>
         </div>
 
         <div class="mt-5 space-y-4 px-5">
@@ -37,7 +49,7 @@
               style="--contact-icon: url('/images/contactUs/mobile_contact.png')"
               aria-hidden="true"
             ></span>
-            <a href="tel:+201061510041" dir="ltr" class="text-lg font-medium text-primary rtl hover:text-secondary-dark"> +20 106 151 0041</a>
+            <a href="tel:+201061510041" dir="ltr" class="text-lg font-medium text-white transition-colors hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">+20 106 151 0041</a>
           </div>
 
           <div class="flex items-center gap-3">
@@ -46,7 +58,7 @@
               style="--contact-icon: url('/images/contactUs/message_contact.png')"
               aria-hidden="true"
             ></span>
-            <a href="mailto:info@waei-consult.com" class="text-lg font-medium text-primary hover:text-secondary-dark">info@waei-consult.com</a>
+            <a href="mailto:info@waei-consult.com" class="text-lg font-medium text-white transition-colors hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">info@waei-consult.com</a>
           </div>
 
           <div class="flex items-start gap-3">
@@ -55,21 +67,25 @@
               style="--contact-icon: url('/images/contactUs/pin_contact.png')"
               aria-hidden="true"
             ></span>
-            <a href="https://maps.app.goo.gl/p2zUzWbkfAE6bqXo8" target="_blank" rel="noopener noreferrer" 
-            class="text-base font-medium text-primary hover:text-secondary-dark">
+            <a
+              href="https://maps.app.goo.gl/p2zUzWbkfAE6bqXo8"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-base font-medium text-white transition-colors hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+            >
               برج الإماراتية ميدان جلال قريطم, <br/> Shobra, Damanhour, Beheira Governorate
             </a>
           </div>
 
           <ul class="flex items-center gap-8 mt-5 md:mt-0" role="list">
             @for (social of socialLinks; track social.icon) {
-              <li class="cursor-pointer">
+              <li>
                 <a
                   [href]="social.href"
                   target="_blank"
                   rel="noopener noreferrer"
                   [attr.aria-label]="social.label"
-                  class="me-2 inline-flex text-primary transition duration-200 hover:scale-120 hover:text-secondary-dark motion-reduce:transition-none motion-reduce:hover:scale-100 lg:me-10"
+                  class="me-2 inline-flex text-secondary transition duration-200 hover:scale-110 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none motion-reduce:hover:scale-100 lg:me-10"
                 >
                   <ng-container
                     [ngTemplateOutlet]="socialIcon"
@@ -85,15 +101,17 @@
       <!-- Explore -->
       <div class="flex w-full flex-col items-start lg:items-center md:w-1/3">
         <div class="px-5 md:ms-8">
-          <h2 class="font-heading text-4xl font-bold text-primary">استكشف</h2>
+          <h2 class="font-heading text-4xl font-bold text-secondary-light">استكشف</h2>
         </div>
 
         <nav aria-label="روابط التذييل" class="mt-5 flex flex-col gap-2 px-5 lg:self-center lg:px-0">
           @for (link of links; track link.path) {
             <a
               [routerLink]="link.path"
-              class="inline-flex min-h-11 items-center text-lg font-semibold text-primary transition-colors duration-200
-               hover:text-secondary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
+              routerLinkActive="!text-secondary-light"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="inline-flex min-h-11 items-center text-lg font-bold text-white transition-colors duration-200
+                hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
             >
               {{ link.label }}
             </a>
@@ -102,17 +120,19 @@
       </div>
     </div>
 
-    <div class="mt-10 flex justify-center border-t border-gray-300 pt-6">
-      <p class="flex items-center gap-2 text-sm text-gray-600">
+    <div class="mt-10 flex justify-center border-t border-white/15 pt-6">
+      <p class="flex flex-col items-center gap-2 text-center text-sm text-white/75 md:flex-row">
         <span>جميع الحقوق محفوظة © {{ currentYear }}</span>
-        <img
-          src="/images/logo/logo_circle.png"
-          width="745"
-          height="1024"
-          loading="lazy"
-          alt=""
-          class="h-[35px] w-auto"
-        />
+        <span class="inline-flex size-9 items-center justify-center overflow-hidden rounded-full bg-white">
+          <img
+            src="/images/logo/logo_circle.png"
+            width="745"
+            height="1024"
+            loading="lazy"
+            alt=""
+            class="size-full object-contain"
+          />
+        </span>
         <span>واعي للاستشارات</span>
       </p>
     </div>
