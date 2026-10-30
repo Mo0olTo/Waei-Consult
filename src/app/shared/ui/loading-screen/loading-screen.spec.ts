@@ -73,7 +73,7 @@ describe('LoadingScreen', () => {
 
     const screen = host.nativeElement.querySelector('.loading-screen') as HTMLElement | null;
     expect(screen?.getAttribute('aria-label')).toBe('جارٍ تحميل الصفحة');
-    expect(screen?.querySelector('img')?.getAttribute('src')).toBe('/images/logo/waei_logo-2.png');
+    expect(screen?.querySelector('img')?.getAttribute('src')).toBe('/images/logo/waei_logo-2.webp');
     expect(screen?.querySelectorAll('.loading-dots span').length).toBe(3);
 
     releaseNavigation(true);

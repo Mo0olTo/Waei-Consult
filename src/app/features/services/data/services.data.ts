@@ -205,6 +205,16 @@ export const serviceDetailTitle: ResolveFn<string> = (route) => {
   return service ? `${service.title} | واعي` : 'خدماتنا | واعي';
 };
 
+export const serviceDetailDescription: ResolveFn<string> = (route) => {
+  const service = findService(route.paramMap.get('id'));
+  if (!service) {
+    return 'خدمات واعي في الاستشارات والحوكمة ودعم اتخاذ القرار.';
+  }
+
+  const points = service.capabilities.map((capability) => capability.title).join('، ');
+  return `${service.title} من واعي: ${points}.`;
+};
+
 export const serviceExistsGuard: CanActivateFn = (route) => {
   if (findService(route.paramMap.get('id'))) {
     return true;
