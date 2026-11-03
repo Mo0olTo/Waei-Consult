@@ -1,9 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, inject, OnDestroy, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-consult-modal',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './consult-modal.html',
   styleUrl: './consult-modal.scss',
 })
@@ -11,7 +12,6 @@ export class ConsultModal implements OnDestroy {
   private readonly document = inject(DOCUMENT);
 
   protected readonly isOpen = signal(false);
-  protected readonly whatsappHref = 'https://wa.me/201061510041';
 
   protected open(): void {
     this.isOpen.set(true);
@@ -29,12 +29,6 @@ export class ConsultModal implements OnDestroy {
       this.close();
     }
   }
-
-  sendInquiry():void{
-    window.open(this.whatsappHref)
-    this.close()
-  }
-
 
   ngOnDestroy(): void {
     this.document.body.style.overflow = '';

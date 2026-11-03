@@ -1,0 +1,42 @@
+@if (allowed()) {
+  <section class="bg-surface" aria-labelledby="diagnosis-thanks-title">
+    <div class="site-container px-4 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl rounded-2xl bg-white px-6 py-10 text-center shadow-sm ring-1 ring-border md:px-14 md:py-16">
+        <p class="font-body text-sm font-bold tracking-wide text-secondary">مختبر الشركات</p>
+        <h1
+          id="diagnosis-thanks-title"
+          class="mt-4 font-heading text-3xl font-extrabold leading-snug text-primary md:text-4xl"
+        >
+          استلمنا طلبك، شكرًا لثقتك في "واعي"
+        </h1>
+        <p class="font-body mt-6 text-lg font-bold leading-8 text-primary">
+          تم تسجيل طلب التشخيص الأولي بنجاح.
+        </p>
+        <p class="font-body mt-3 text-base leading-8 text-gray-700 md:text-lg">
+          سيقوم فريق «واعي» بمراجعة المعلومات التي أرسلتها، وسيصلك التشخيص الأولي عبر واتساب خلال يومي عمل.
+        </p>
+        <p class="font-body mt-8 text-base leading-8 text-gray-700">
+          وفي هذه الأثناء، يمكنك التعرف أكثر على:
+        </p>
+        <div class="mt-4 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
+          <a
+            routerLink="/services"
+            class="font-body inline-flex min-h-11 items-center justify-center rounded-md bg-secondary px-6 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            خدمات واعي
+          </a>
+          <a
+            routerLink="/"
+            fragment="faq-home-heading"
+            class="font-body inline-flex min-h-11 items-center justify-center rounded-md border border-primary px-6 text-base font-bold text-primary hover:bg-primary hover:text-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            الأسئلة الشائعة
+          </a>
+        </div>
+        <p class="mt-10 font-heading text-xl font-extrabold text-primary md:text-2xl">
+          نحلل صح .. تقرر صح
+        </p>
+      </div>
+    </div>
+  </section>
+}
