@@ -13,12 +13,12 @@
     aria-hidden="true"
   ></div>
   <!-- Decorative growth chart in the empty inline-end corner; the wheel and logo fill the top band on mobile. -->
-  <div
+  <!-- <div
     class="pointer-events-none absolute bottom-5 inset-e-0 -z-10 hidden w-[min(46vw,44rem)] opacity-70 mask-t-from-55% min-[900px]:block"
     aria-hidden="true"
   >
     <app-growth-chart />
-  </div>
+  </div> -->
   <!-- Decorative decision rings: bottom corner on small screens, above the chart on desktop. -->
   <div
     class="pointer-events-none absolute -bottom-16 -inset-e-16 -z-10 size-60 md:size-80 min-[900px]:top-10 min-[900px]:bottom-auto min-[900px]:-inset-e-12 min-[900px]:size-104 xl:size-112"
@@ -38,18 +38,6 @@
   <div class="hero__content relative w-full px-5 md:px-10">
     <div class="hero__layout">
       <div class="max-w-2xl">
-        <!-- <h1
-          id="home-hero-title"
-          class="font-heading text-[clamp(1.75rem,9vw,3.75rem)] leading-none font-extrabold tracking-tight whitespace-nowrap text-primary md:text-[60px] md:whitespace-normal min-[900px]:text-[80px]"
-        >
-          واعــــــــــي
-        </h1>
-        <p class="font-body mt-2 text-sm font-medium text-secondary-dark md:mt-3">مختبر الشركات</p> -->
-        <!-- <p
-          class="mt-3 font-heading text-3xl leading-snug font-extrabold text-primary md:mt-4 md:text-3xl md:leading-tight xl:text-4xl"
-        >
-           نحـلل صــــح ... تقـرر صــــح 
-        </p> -->
 
         <div class="mt-4 md:mt-8 md:min-h-56" aria-live="polite">
           @for (item of activeItems(); track item.id) {
@@ -68,10 +56,8 @@
             </article>
           } @empty {
             <div class="hero__panel">
-              <p class="font-bold text-base leading-7 text-text-secondary md:text-2xl md:leading-8">
-                نقدم الدعم الاستشاري المتكامل في الاستشارات والحوكمة ودعم اتخاذ القرار، لنختصر على
-                مجالس الإدارة والمديرين شهور التجارب بقرار مبني على الخبرة العملية والتحليل لا على
-                التوقع.
+              <p class="font-bold text-base leading-7 text-text-secondary md:text-3xl md:leading-8">
+                بيت خبرة لدعم الأفراد والشركات على اتخاذ القرار الصحيح في الوقت المناسب.
               </p>
               <div class="mt-4 flex flex-wrap gap-3 md:mt-8">
                 <a
@@ -100,7 +86,7 @@
           height="1200"
           fetchpriority="high"
           decoding="async"
-          class="!w-[220px] !h-[220px]  md:!w-[300px] md:!h-[300px]  lg:!w-[500px] lg:!h-[490px]  "
+          class="!h-auto !w-[220px] max-w-full md:!w-[300px] lg:!w-[500px]"
         />
       </div>
     </div>
