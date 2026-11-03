@@ -99,6 +99,18 @@ export const routes: Routes = [
           import('./features/contact/contact').then((m) => m.Contact),
       },
       {
+        path: 'diagnosis-thank-you',
+        title: 'استلمنا طلبك | واعي',
+        data: {
+          description:
+            'تم تسجيل طلب التشخيص الأولي. يراجع فريق واعي المعلومات ويرسل التشخيص عبر واتساب خلال يومي عمل.',
+        },
+        loadComponent: () =>
+          import('./features/diagnosis-thank-you/diagnosis-thank-you').then(
+            (m) => m.DiagnosisThankYou,
+          ),
+      },
+      {
         path: '**',
         redirectTo: '',
       },

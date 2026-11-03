@@ -71,10 +71,8 @@
 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a
-         
-          (click)="sendInquiry()"
-          target="_blank"
-          rel="noopener noreferrer"
+          routerLink="/contact"
+          [queryParams]="{ form: 'diagnosis' }"
           class="cursor-pointer font-body inline-flex min-h-11 flex-1 items-center justify-center rounded-md bg-secondary px-5 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           استشارة مجانية
