@@ -19,8 +19,7 @@
       >
         خدماتنا
       </h1>
-      <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-2xl">
-        نقدم منظومة متكاملة من الحلول الاستشارية لدعم نمو مؤسستك واستدامتها      </p>
+
       <a
         href="/services#services-list"
         class=" mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -59,15 +58,13 @@
                 {{ service.title }}
               </h3>
             </div>
-            <ul class="font-body mt-4 flex flex-col gap-2 text-lg leading-8 text-gray-200">
-              @for (item of service.capabilities; track item.title) {
-                <li class="service-capability ps-4">{{ item.title }}</li>
-              }
-            </ul>
+            <p class="font-body mt-4 text-start text-lg leading-8 text-gray-200">
+              {{ service.desc }}
+            </p>
             <div class="mt-auto pt-6">
               <a
                 [routerLink]="['/services', service.id]"
-                class="font-body inline-flex min-h-11 items-center text-sm font-medium text-secondary hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                class="service-read-more font-body inline-flex min-h-11 items-center text-lg font-medium text-secondary hover:text-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 اقرأ المزيد
                 <span class="sr-only"> عن {{ service.title }}</span>

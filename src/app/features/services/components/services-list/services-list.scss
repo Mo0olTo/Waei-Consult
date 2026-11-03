@@ -18,6 +18,27 @@
   width: 100%;
 }
 
+.service-panel:hover .service-read-more,
+.service-panel:focus-within .service-read-more {
+  animation: service-read-more-bounce 1.1s ease-in-out infinite;
+}
+
+@keyframes service-read-more-bounce {
+  0%,
+  70%,
+  100% {
+    translate: 0;
+  }
+
+  35% {
+    translate: 0 -0.4rem;
+  }
+
+  50% {
+    translate: 0 0.08rem;
+  }
+}
+
 .service-capability {
   position: relative;
 }
@@ -63,6 +84,11 @@
 
   .service-panel:hover {
     translate: none;
+  }
+
+  .service-panel:hover .service-read-more,
+  .service-panel:focus-within .service-read-more {
+    animation: none;
   }
 
   :host.services-ready .service-card:not(.is-visible),

@@ -58,25 +58,25 @@
                   height="280"
                   loading="lazy"
                   decoding="async"
-                  class="aspect-square size-36 object-fill  md:size-40"
+                  class="aspect-square size-36 object-center object-cover  md:size-40"
                 />
               </div>
               <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">
                 {{ member.name }}
               </h3>
-              <p class="font-body mt-2 text-sm font-medium leading-7 text-secondary">
-                {{ member.role }}
+              <p class="font-body mt-2 flex flex-col text-base font-bold leading-7 text-secondary">
+                @for (line of member.role; track line) {
+                  <span>{{ line }}</span>
+                }
               </p>
-              <p class="font-body mt-1 text-sm text-gray-300">{{ member.category }}</p>
+              <!-- <p class="font-body mt-1 text-base text-gray-300">{{ member.category }}</p> -->
             </div>
-            <div class="font-body mt-4 flex flex-col gap-3 text-base leading-8 text-gray-200">
+            <div class="font-body mt-4 flex flex-col gap-3 text-lg leading-8 text-gray-200">
               @for (paragraph of member.paragraphs; track paragraph) {
                 <p>{{ paragraph }}</p>
               }
             </div>
-            <div class="mt-auto pt-6">
-              <div class="crew-panel-line h-0.5 bg-secondary" aria-hidden="true"></div>
-            </div>
+           
           </article>
         </li>
       }
