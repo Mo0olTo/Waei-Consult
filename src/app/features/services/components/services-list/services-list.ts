@@ -1,5 +1,5 @@
 import { afterNextRender, Component, DestroyRef, ElementRef, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CtaCard, CtaSection } from '../../../../shared/Components/cta-section/cta-section';
 import { SERVICES } from '../../data/services.data';
 import { ServiceIcon } from '../service-icon/service-icon';
@@ -13,6 +13,7 @@ import { ServiceIcon } from '../service-icon/service-icon';
 export class ServicesList {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly route = inject(ActivatedRoute);
 
   protected readonly services = SERVICES;
 
@@ -25,8 +26,31 @@ export class ServicesList {
 
   constructor() {
     afterNextRender(() => {
+      this.scrollToChosenCard();
       this.setupCardReveal();
     });
+  }
+
+  private scrollToChosenCard(): void {
+    const id = this.route.snapshot.fragment;
+    if (!id) {
+      return;
+    }
+
+    const alignCard = (): void => {
+      const card = this.host.nativeElement.querySelector(`#${CSS.escape(id)}`);
+      if (!(card instanceof HTMLElement)) {
+        return;
+      }
+
+      card.classList.add('is-visible');
+      const top = card.getBoundingClientRect().top + window.scrollY - 112;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+    };
+
+    // Router anchor scrolling runs on the next frame and ignores the sticky navbar.
+    const timer = setTimeout(alignCard, 0);
+    this.destroyRef.onDestroy(() => clearTimeout(timer));
   }
 
   private setupCardReveal(): void {

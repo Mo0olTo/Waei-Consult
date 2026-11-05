@@ -134,27 +134,20 @@
 
 
 
-<section class="relative overflow-hidden border-t border-border bg-surface">
+<section class="border-t border-border bg-surface">
 
-  <div class="site-container relative py-16 md:py-20 px-3 md:px-0">
+  <div class="site-container relative py-16 md:py-20 px-4 md:px-8">
     <h2 class="flex items-center gap-4 font-heading text-4xl md:text-5xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
       قيمنا
     </h2>
 
-    <ol class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ol class="about-charter mt-10 md:mt-14">
       @for (value of values; track value.title; let i = $index) {
-        <li class="about-card h-full" data-about-card [style.--delay]="(i % 3) * 100 + 'ms'">
-          <article
-            class="about-panel flex h-full cursor-pointer flex-col rounded-2xl bg-primary p-7 ring-1 ring-primary-light"
-          >
-            <ng-container [ngTemplateOutlet]="aboutIcon"  [ngTemplateOutletContext]="{ $implicit: value.icon }" />
-            <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">{{ value.title }}</h3>
-            <p class="font-body mt-3 text-lg leading-8 text-gray-200">{{ value.description }}</p>
-            <div class="mt-auto pt-6">
-              <div class="about-panel-line h-0.5 bg-secondary" aria-hidden="true"></div>
-            </div>
-          </article>
+        <li class="about-charter-row about-card" data-about-card [style.--delay]="i * 70 + 'ms'">
+          <span class="about-charter-index" aria-hidden="true">{{ valueIndexes[i] }}</span>
+          <h3 class="about-charter-title">{{ value.title }}</h3>
+          <p class="about-charter-copy">{{ value.description }}</p>
         </li>
       }
     </ol>

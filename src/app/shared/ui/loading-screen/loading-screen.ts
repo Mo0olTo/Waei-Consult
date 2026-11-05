@@ -8,8 +8,11 @@ import {
   NavigationStart,
   Router,
 } from '@angular/router';
-
-const SHOW_DELAY_MS = 150;
+import {
+  isSamePageFragmentChange,
+  LOADING_MIN_VISIBLE_MS,
+  loadingFadeMs,
+} from './loading-navigation';
 
 @Component({
   selector: 'app-loading-screen',
@@ -19,49 +22,116 @@ const SHOW_DELAY_MS = 150;
 export class LoadingScreen {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
-  private showTimer: ReturnType<typeof setTimeout> | null = null;
+  private navigationStartedAt: number | null = null;
+  private hideTimer: ReturnType<typeof setTimeout> | null = null;
+  private removeTimer: ReturnType<typeof setTimeout> | null = null;
+  private session = 0;
 
-  readonly visible = signal(false);
+  readonly present = signal(false);
+  readonly leaving = signal(false);
+  readonly fadeDuration = `${loadingFadeMs()}ms`;
 
   constructor() {
-    this.destroyRef.onDestroy(() => this.clearShowTimer());
+    this.destroyRef.onDestroy(() => {
+      this.session++;
+      this.clearRemoveTimer();
+      this.clearHideTimer();
+    });
 
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       if (event instanceof NavigationStart) {
-        if (this.router.navigated) {
-          this.scheduleShow();
+        if (
+          this.router.navigated &&
+          !isSamePageFragmentChange(this.router.url, event.url)
+        ) {
+          this.show();
         }
+        return;
+      }
+
+      if (event instanceof NavigationSkipped) {
+        this.hideNow();
         return;
       }
 
       if (
         event instanceof NavigationEnd ||
         event instanceof NavigationCancel ||
-        event instanceof NavigationError ||
-        event instanceof NavigationSkipped
+        event instanceof NavigationError
       ) {
-        this.hide();
+        this.scheduleHide();
       }
     });
   }
 
-  private scheduleShow(): void {
-    this.clearShowTimer();
-    this.showTimer = setTimeout(() => {
-      this.showTimer = null;
-      this.visible.set(true);
-    }, SHOW_DELAY_MS);
+  private show(): void {
+    this.clearHideTimer();
+    this.clearRemoveTimer();
+    this.session++;
+    this.navigationStartedAt = Date.now();
+    this.leaving.set(false);
+    this.present.set(true);
   }
 
-  private hide(): void {
-    this.clearShowTimer();
-    this.visible.set(false);
+  private scheduleHide(): void {
+    if (!this.present()) {
+      return;
+    }
+
+    const startedAt = this.navigationStartedAt ?? Date.now();
+    const remaining = Math.max(0, LOADING_MIN_VISIBLE_MS - (Date.now() - startedAt));
+
+    this.clearHideTimer();
+    this.hideTimer = setTimeout(() => {
+      this.hideTimer = null;
+      this.startLeave();
+    }, remaining);
   }
 
-  private clearShowTimer(): void {
-    if (this.showTimer !== null) {
-      clearTimeout(this.showTimer);
-      this.showTimer = null;
+  private startLeave(): void {
+    const session = ++this.session;
+    this.leaving.set(true);
+
+    const wait = loadingFadeMs();
+    if (wait === 0) {
+      this.present.set(false);
+      this.leaving.set(false);
+      this.navigationStartedAt = null;
+      return;
+    }
+
+    this.clearRemoveTimer();
+    this.removeTimer = setTimeout(() => {
+      this.removeTimer = null;
+      if (session !== this.session) {
+        return;
+      }
+      this.present.set(false);
+      this.leaving.set(false);
+      this.navigationStartedAt = null;
+    }, wait);
+  }
+
+  private hideNow(): void {
+    this.session++;
+    this.clearHideTimer();
+    this.clearRemoveTimer();
+    this.navigationStartedAt = null;
+    this.leaving.set(false);
+    this.present.set(false);
+  }
+
+  private clearHideTimer(): void {
+    if (this.hideTimer !== null) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+  }
+
+  private clearRemoveTimer(): void {
+    if (this.removeTimer !== null) {
+      clearTimeout(this.removeTimer);
+      this.removeTimer = null;
     }
   }
 }

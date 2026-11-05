@@ -7,12 +7,13 @@ import {
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CarouselComponent, CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CAROUSEL_HOME_IMAGE, CAROUSEL_HOME_SLIDES } from '../../data/carousel-home.data';
 
 @Component({
   selector: 'app-carousel-home',
-  imports: [CarouselModule],
+  imports: [CarouselModule, RouterLink],
   templateUrl: './carousel-home.html',
   styleUrl: './carousel-home.scss',
   // The library renders its own DOM, so emulated encapsulation cannot style it.
