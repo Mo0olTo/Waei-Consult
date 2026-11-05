@@ -71,9 +71,10 @@ export class HomeHero {
       return;
     }
 
-    // pointerdown fires before click. Removing the anchor here cancels RouterLink.
+    // pointerdown fires before click. Removing the panel or its link here
+    // would cancel the tap on the service details and the RouterLink.
     // Leaving the page unmounts the hero, so the panel does not need to close first.
-    if (target.closest('a, button')) {
+    if (target.closest('.hero__panel, a, button')) {
       return;
     }
 
