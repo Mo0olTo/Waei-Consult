@@ -4,10 +4,12 @@ import {
   serviceDetailTitle,
   serviceExistsGuard,
 } from './features/services/data/services.data';
+import { holdForLoadingScreen } from './shared/ui/loading-screen/loading-navigation';
 
 export const routes: Routes = [
   {
     path: '',
+    canActivateChild: [holdForLoadingScreen],
     loadComponent: () =>
       import('./layouts/main-layout/main-layout').then((m) => m.MainLayout),
     children: [

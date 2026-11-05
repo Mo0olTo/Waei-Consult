@@ -48,7 +48,12 @@
 
     <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       @for (service of services; track service.id; let i = $index) {
-        <li class="service-card h-full" data-service-card [style.--delay]="(i % 3) * 100 + 'ms'">
+        <li
+          [id]="service.id"
+          class="service-card h-full scroll-mt-28"
+          data-service-card
+          [style.--delay]="(i % 3) * 100 + 'ms'"
+        >
           <article
             class="service-panel flex h-full flex-col rounded-2xl bg-primary p-7 ring-1 ring-primary-light"
           >

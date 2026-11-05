@@ -5,7 +5,7 @@
   (focusout)="resumeAutoplay($event)"
 >
   <div
-    class="pointer-events-none absolute inset-0 z-10 shadow-[inset_0_0_120px_var(--color-primary-dark)]"
+    class="pointer-events-none absolute inset-0 z-10 shadow-[inset_0_0_80px_var(--color-primary-dark)]"
     aria-hidden="true"
   ></div>
 
@@ -26,6 +26,7 @@
           [attr.loading]="first ? 'eager' : 'lazy'"
           [attr.fetchpriority]="first ? 'high' : null"
           decoding="async"
+          dir="rtl"
         />
           <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
           <div
@@ -33,15 +34,24 @@
             aria-hidden="true"
           ></div>
           <figcaption
-            class="absolute inset-x-0 top-1/4 -translate-y-1/2 px-4 text-center text-white md:inset-x-auto md:start-0 md:top-0 md:max-w-xl md:translate-y-0 md:p-12 md:text-start"
+            class="absolute inset-x-0 top-4 bottom-16 flex items-center px-4 text-center text-white md:inset-x-auto md:start-0 md:top-0 md:bottom-auto md:block md:max-w-2xl md:p-12 md:text-start"
           >
-            <div class="mx-auto max-w-md text-center md:mx-0 md:max-w-none md:border-s-2 md:border-secondary md:ps-5 md:text-start">
-              <p class="font-heading text-xl leading-snug font-bold md:text-4xl">
+            <div class="mx-auto w-full max-w-md text-center md:mx-0 md:max-w-none md:border-s-2 md:border-secondary md:ps-5 md:text-start">
+              <p class="font-heading text-xl font-bold md:text-4xl">
                 {{ slide.title }}
               </p>
-              <p class="font-body mt-1 text-sm leading-6 md:mt-3 md:text-lg md:leading-8">
+              <p class="font-body mt-1 text-sm leading-6 md:mt-3 md:text-2xl md:leading-8">
                 {{ slide.description }}
               </p>
+              @if (slide.id === 1) {
+                <a
+                  routerLink="/contact"
+                  [queryParams]="{ form: 'diagnosis' }"
+                  class="font-body mt-3 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:mt-6"
+                >
+                  تشخيص أولي مجاني
+                </a>
+              }
             </div>
           </figcaption>
         </figure>

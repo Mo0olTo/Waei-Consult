@@ -7,12 +7,19 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  background:white;
+  background: white;
+  animation: loading-screen-in var(--loading-fade, 350ms) ease;
+
+  &.is-leaving {
+    animation: loading-screen-out var(--loading-fade, 350ms) ease forwards;
+    pointer-events: none;
+  }
 }
 
 .loading-screen img {
   width: min(280px, 70vw);
   height: auto;
+  animation: loading-logo-in 0.4s ease;
 }
 
 .loading-dots {
@@ -36,6 +43,32 @@
   }
 }
 
+@keyframes loading-screen-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loading-screen-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes loading-logo-in {
+  from {
+    transform: scale(0.96);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
 @keyframes loading-dot {
   0%,
   80%,
@@ -51,8 +84,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .loading-screen,
+  .loading-screen img,
   .loading-dots span {
     animation: none;
+    transition: none;
+  }
+
+  .loading-screen img {
+    transform: none;
+  }
+
+  .loading-dots span {
     opacity: 1;
   }
 }

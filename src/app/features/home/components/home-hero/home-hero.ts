@@ -11,12 +11,11 @@ import {
 import { RouterLink } from '@angular/router';
 import { RotatingWheel } from '../../../../shared/Components/rotating-wheel/rotating-wheel';
 import { HOME_WHEEL_ITEMS, HomeWheelItem } from '../../data/home-wheel.data';
-import { GrowthChart } from '../growth-chart/growth-chart';
 import { DecisionRings } from '../decision-rings/decision-rings';
 
 @Component({
   selector: 'app-home-hero',
-  imports: [RouterLink, RotatingWheel, GrowthChart, DecisionRings],
+  imports: [RouterLink, RotatingWheel, DecisionRings],
   templateUrl: './home-hero.html',
   styleUrl: './home-hero.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

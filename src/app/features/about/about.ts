@@ -63,6 +63,8 @@ export class About {
     },
   ];
 
+  protected readonly valueIndexes = ['٠١', '٠٢', '٠٣', '٠٤', '٠٥', '٠٦'] as const;
+
   protected readonly values: CompanyValue[] = [
     {
       title: 'النزاهة',

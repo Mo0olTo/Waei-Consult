@@ -16,6 +16,7 @@ export type ServiceIconName =
 
 export interface WaeiService {
   id: string;
+  img:string;
   title: string;
   icon: ServiceIconName;
   capabilities: ServiceCapability[];
@@ -25,6 +26,7 @@ export interface WaeiService {
 export const SERVICES: WaeiService[] = [
   {
     id: 'business-consulting',
+    img:'/images/services/1.webp',
     title: 'الاستشارات وتطوير الأعمال',
     icon: 'consulting',
     capabilities: [
@@ -59,6 +61,7 @@ export const SERVICES: WaeiService[] = [
   },
   {
     id: 'data-driven-decisions',
+    img:'/images/services/2.webp',
     title: 'دعم اتخاذ القرار المبني على البيانات',
     icon: 'data',
     capabilities: [
@@ -87,6 +90,7 @@ export const SERVICES: WaeiService[] = [
   },
   {
     id: 'governance',
+    img:'/images/services/3.webp',
     title: 'الحوكمة والتدقيق الداخلي',
     icon: 'governance',
     capabilities: [
@@ -120,6 +124,7 @@ export const SERVICES: WaeiService[] = [
   },
   {
     id: 'compliance',
+    img:'/images/services/4.webp',
     title: 'الامتثال والدعم القانوني',
     icon: 'compliance',
     capabilities: [
@@ -148,6 +153,7 @@ export const SERVICES: WaeiService[] = [
   },
   {
     id: 'human-capital',
+    img:'/images/services/5.webp',
     title: 'تطوير رأس المال البشري والهيكلة',
     icon: 'people',
     capabilities: [
@@ -176,6 +182,7 @@ export const SERVICES: WaeiService[] = [
   },
   {
     id: 'business-continuity',
+    img:'/images/services/6.webp',
     title: 'إدارة المخاطر والأزمات واستمرارية الأعمال',
     icon: 'continuity',
     capabilities: [
