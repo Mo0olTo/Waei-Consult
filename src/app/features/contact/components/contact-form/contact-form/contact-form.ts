@@ -2,10 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { NonNullableFormBuilder,ReactiveFormsModule,Validators,} from '@angular/forms';
 import { SERVICES } from '../../../../services/data/services.data';
 import { atLeastOneSelected, ContactField, PHONE_PATTERN } from '../../../../../shared/constants/contact';
-import { Router } from '@angular/router';
-import { DiagnosisAccess } from '../../../models/diagnosis-access';
+import { finalize } from 'rxjs';
+import { EmailService } from '../../../../../core/services/Email-Service/email.service';
+import { ContactReq } from '../../../../../shared/models/contact-req';
 
-
+type SendStatus = 'idle' | 'sent' | 'failed';
 
 @Component({
   selector: 'app-contact-form',
@@ -15,12 +16,12 @@ import { DiagnosisAccess } from '../../../models/diagnosis-access';
 })
 export class ContactForm {
   private readonly formBuilder = inject(NonNullableFormBuilder);
-  private readonly router = inject(Router);
-  private readonly access = inject(DiagnosisAccess);
+  private readonly emailService = inject(EmailService);
 
   protected readonly services = SERVICES;
   protected readonly submitAttempted = signal(false);
   protected readonly loading = signal(false);
+  protected readonly sendStatus = signal<SendStatus>('idle');
 
   protected readonly form = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
@@ -57,7 +58,12 @@ export class ContactForm {
     const control = this.form.controls.services;
     const current = control.value;
     control.setValue(checked ? [...current, id] : current.filter((serviceId) => serviceId !== id));
+    control.markAsDirty();
     control.markAsTouched();
+  }
+
+  hasUnsavedChanges(): boolean {
+    return this.form.dirty;
   }
 
   protected onSubmit(): void {
@@ -67,16 +73,39 @@ export class ContactForm {
       return;
     }
 
-    // No delivery channel exists yet (static site, no backend); wire `payload` to one before launch.
-    const payload = this.form.getRawValue();
-    console.log('Contact form payload', payload);
-    this.loading.set(true)
-    this.access.allow();
-    
-    setTimeout(() => {
-      this.loading.set(false)
-      void this.router.navigate(['/diagnosis-thank-you']);
-    }, 3000);
-    
+    const value = this.form.getRawValue();
+    const contactData: ContactReq = {
+      name: value.name,
+      email: value.email,
+      phone: value.phone,
+      company: value.company || '—',
+      services: this.serviceTitles(value.services),
+      message: value.message,
+    };
+
+    this.loading.set(true);
+    this.sendStatus.set('idle');
+
+    this.emailService
+      .sendContactEmail(contactData)
+      .pipe(finalize(() => this.loading.set(false)))
+      .subscribe({
+        next: () => {
+          this.sendStatus.set('sent');
+          this.form.reset();
+          this.submitAttempted.set(false);
+        },
+        error: (error) => {
+          console.error(error);
+          this.sendStatus.set('failed');
+        },
+      });
+  }
+
+  private serviceTitles(ids: string[]): string {
+    return this.services
+      .filter((service) => ids.includes(service.id))
+      .map((service) => service.title)
+      .join('، ');
   }
 }

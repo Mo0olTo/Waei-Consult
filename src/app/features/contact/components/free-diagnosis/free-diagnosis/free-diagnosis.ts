@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { DiagnosisField, requiredText, WHATSAPP_PATTERN } from '../../../../../shared/constants/contact';
 import { DurationOption } from '../../../models/duration-option.model';
 import { DiagnosisAccess } from '../../../models/diagnosis-access';
+import { finalize } from 'rxjs';
+import { EmailService } from '../../../../../core/services/Email-Service/email.service';
+import { DiagnosisReq } from '../../../../../shared/models/diagnosis-req';
 
 @Component({
   selector: 'app-free-diagnosis',
@@ -15,9 +18,11 @@ export class FreeDiagnosis {
   private readonly formBuilder = inject(NonNullableFormBuilder);
   private readonly router = inject(Router);
   private readonly access = inject(DiagnosisAccess);
+  private readonly emailService = inject(EmailService);
 
   protected readonly submitAttempted = signal(false);
   protected readonly loading = signal(false);
+  protected readonly sendFailed = signal(false);
   protected readonly problemLimit = 500;
 
   protected readonly durations: readonly DurationOption[] = [
@@ -85,6 +90,10 @@ export class FreeDiagnosis {
     return ids.length > 0 ? ids.join(' ') : null;
   }
 
+  hasUnsavedChanges(): boolean {
+    return this.form.dirty;
+  }
+
   protected onSubmit(): void {
     this.submitAttempted.set(true);
     if (this.form.invalid) {
@@ -92,12 +101,39 @@ export class FreeDiagnosis {
       return;
     }
 
-    this.loading.set(true);
-    this.access.allow();
+    const value = this.form.getRawValue();
+    const diagnosisData: DiagnosisReq = {
+      name: value.name,
+      company: value.company || '—',
+      location: value.location,
+      business: value.business,
+      problem: value.problem,
+      duration: this.durationLabel(value.duration),
+      attempted: value.attempted || '—',
+      nextStep: value.nextStep,
+      whatsapp: value.whatsapp,
+    };
 
-    setTimeout(() => {
-      this.loading.set(false);
-      void this.router.navigate(['/diagnosis-thank-you']);
-    }, 3000);
+    this.loading.set(true);
+    this.sendFailed.set(false);
+
+    this.emailService
+      .sendDiagnosisEmail(diagnosisData)
+      .pipe(finalize(() => this.loading.set(false)))
+      .subscribe({
+        next: () => {
+          this.access.allow();
+          this.form.markAsPristine();
+          void this.router.navigate(['/diagnosis-thank-you']);
+        },
+        error: (error) => {
+          console.error(error);
+          this.sendFailed.set(true);
+        },
+      });
+  }
+
+  private durationLabel(id: string): string {
+    return this.durations.find((option) => option.id === id)?.label ?? id;
   }
 }

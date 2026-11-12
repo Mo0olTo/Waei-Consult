@@ -158,7 +158,7 @@
       type="submit"
       [disabled]="form.invalid || loading()"
       [attr.aria-busy]="loading()"
-      class="font-body inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-secondary px-6 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-50"
+      class="font-body cursor-pointer inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-secondary px-6 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-50"
     >
       @if (loading()) {
         <span class="loading-dots" aria-hidden="true">
@@ -171,7 +171,18 @@
         ارسال الرسالة
       }
     </button>
-    @if (form.invalid) {
+    <div aria-live="polite">
+      @if (sendStatus() === 'sent') {
+        <p class="font-body mt-3 text-base font-bold leading-7 text-primary">
+          تم إرسال رسالتك بنجاح، وسيتواصل معك فريق "واعي".
+        </p>
+      } @else if (sendStatus() === 'failed') {
+        <p class="font-body mt-3 text-sm leading-6 text-error" role="alert">
+          تعذّر إرسال الرسالة. يرجى المحاولة مرة أخرى أو مراسلتنا على info&#64;waei-consult.com.
+        </p>
+      }
+    </div>
+    @if (form.invalid && sendStatus() !== 'sent') {
       <p class="font-body mt-3 text-sm leading-6 text-muted">
         يُفعَّل الإرسال بعد إكمال الحقول المطلوبة .
       </p>
