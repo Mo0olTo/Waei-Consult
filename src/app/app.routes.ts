@@ -5,6 +5,7 @@ import {
   serviceExistsGuard,
 } from './features/services/data/services.data';
 import { holdForLoadingScreen } from './shared/ui/loading-screen/loading-navigation';
+import { unsavedFormGuard } from './core/guards/unsaved-form-guard';
 
 export const routes: Routes = [
   {
@@ -93,6 +94,7 @@ export const routes: Routes = [
       {
         path: 'contact',
         title: 'تواصل معنا | واعي',
+        canDeactivate: [unsavedFormGuard],
         data: {
           description:
             'أرسل طلب استشارة إلى واعي في الاستشارات، الحوكمة، أو دعم اتخاذ القرار.',

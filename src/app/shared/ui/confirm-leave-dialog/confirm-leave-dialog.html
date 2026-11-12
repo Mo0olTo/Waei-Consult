@@ -1,0 +1,49 @@
+<dialog
+  #dialog
+  (close)="onClose()"
+  aria-labelledby="leave-dialog-title"
+  aria-describedby="leave-dialog-description"
+  class="m-auto w-[calc(100%-2rem)] max-w-md rounded-2xl border-t-4 border-red-600 bg-white p-6 shadow-xl backdrop:bg-primary/70 md:p-8"
+>
+  <form method="dialog" class="flex flex-col items-center  gap-4 text-center">
+    <span class="flex size-14 items-center justify-center rounded-full bg-red-500/15 text-red-600" aria-hidden="true">
+      <svg
+        class="size-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        focusable="false"
+      >
+        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </svg>
+    </span>
+
+    <h2 id="leave-dialog-title" class="font-heading text-2xl font-extrabold text-primary">
+      لم يتم إرسال النموذج بعد
+    </h2>
+    <p id="leave-dialog-description" class="font-body text-base leading-7 text-gray-700">
+      البيانات التي أدخلتها لم تُرسل بعد، وستُفقد إذا غادرت الآن. هل أنت متأكد من المغادرة؟
+    </p>
+
+    <div class="mt-2 flex w-full flex-col gap-3 sm:flex-row">
+      <button
+        value="stay"
+        autofocus
+        class="min-h-11 flex-1 cursor-pointer rounded-md bg-primary px-5 font-bold text-inverse hover:bg-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        متابعة النموذج
+      </button>
+      <button
+        value="leave"
+        class="min-h-11 flex-1 cursor-pointer rounded-md border-2 border-primary/20 bg-white px-5 font-bold text-primary hover:border-secondary hover:bg-background-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        مغادرة دون إرسال
+      </button>
+    </div>
+  </form>
+</dialog>
