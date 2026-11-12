@@ -35,6 +35,24 @@
   fill: var(--color-tertiary-light);
 }
 
+.strategy-flow__shine {
+  fill: var(--color-secondary);
+  opacity: 0;
+  animation: strategy-shine 15s ease-out infinite;
+}
+
+.strategy-flow__node--2 .strategy-flow__shine {
+  animation-delay: 5s;
+}
+
+.strategy-flow__node--3 .strategy-flow__shine {
+  animation-delay: 10s;
+}
+
+.strategy-flow__node--growth .strategy-flow__shine {
+  animation-delay: 15s;
+}
+
 .strategy-flow__halo {
   fill: var(--color-secondary);
   opacity: 0.18;
@@ -115,25 +133,25 @@
   animation: strategy-travel-y 15s linear infinite;
 }
 
-.strategy-flow__dot {
+.strategy-flow__logo {
   position: absolute;
   left: 0;
   top: 0;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 999px;
-  background: var(--color-secondary);
+  width: 1.75rem;
+  height: 1.75rem;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 50%;
   transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-secondary) 65%, transparent));
   animation: strategy-dot 15s linear infinite;
 }
 
-.strategy-flow__dot::before {
-  content: "";
-  position: absolute;
-  inset: -0.4rem;
-  border-radius: inherit;
-  background: var(--color-secondary);
-  opacity: 0.35;
+@media (min-width: 768px) {
+  .strategy-flow__logo {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
 }
 
 @keyframes strategy-travel-x {
@@ -165,23 +183,41 @@
   }
 }
 
+@keyframes strategy-shine {
+  0% {
+    opacity: 0.55;
+  }
+  12%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes strategy-node {
   0% {
     transform: scale(1.18);
+    filter:
+      drop-shadow(0 0 4px var(--color-secondary))
+      drop-shadow(0 0 12px var(--color-secondary));
   }
   8%,
   100% {
     transform: scale(1);
+    filter: drop-shadow(0 0 0 transparent);
   }
 }
 
 @keyframes strategy-growth {
   0% {
     transform: scale(1.28);
+    filter:
+      drop-shadow(0 0 6px var(--color-secondary))
+      drop-shadow(0 0 16px var(--color-secondary));
   }
   12%,
   100% {
     transform: scale(1);
+    filter: drop-shadow(0 0 0 transparent);
   }
 }
 
@@ -197,13 +233,15 @@
 
 @media (prefers-reduced-motion: reduce) {
   .strategy-flow__runner,
-  .strategy-flow__dot,
+  .strategy-flow__logo,
+  .strategy-flow__shine,
   .strategy-flow__node,
   .strategy-flow__label {
     animation: none;
   }
 
-  .strategy-flow__dot {
+  .strategy-flow__logo,
+  .strategy-flow__shine {
     opacity: 0;
   }
 }

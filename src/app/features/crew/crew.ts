@@ -6,12 +6,11 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
 import { TEAM } from './data/crew.data';
 
 @Component({
   selector: 'app-crew',
-  imports: [RouterLink, WaeiLogo],
+  imports: [RouterLink],
   templateUrl: './crew.html',
   styleUrl: './crew.scss',
 })

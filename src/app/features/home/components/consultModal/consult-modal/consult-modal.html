@@ -1,0 +1,104 @@
+<section class="bg-background-soft" aria-labelledby="consult-modal-title">
+  <div class="site-container px-4 py-16 md:py-20">
+    <div
+      class="mx-auto flex max-w-3xl flex-col items-center rounded-2xl bg-primary px-6 py-10 text-center md:px-12 md:py-14"
+    > 
+    <h1>
+      <span class="font-body inline-flex items-center gap-3 text-xl md:text-3xl font-bold text-secondary">
+        <svg class="size-10 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M6 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M3 22h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M14 22a7 7 0 1 0 0-14h-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9 14h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        مـجـهـر  واعــي
+      </span>
+    </h1>
+      <h2
+        id="consult-modal-title"
+        class="mt-5 font-heading text-2xl font-extrabold leading-snug text-inverse md:text-4xl"
+      >
+        تشخيص مجاني لمشكلتك
+      </h2>
+      <button
+        type="button"
+        class="font-body mt-8 inline-flex min-h-11 cursor-pointer items-center rounded-md bg-secondary px-6 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        routerLink="/contact"
+          [queryParams]="{ form: 'diagnosis' }"
+      >
+        إضغط هنا
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- @if (isOpen()) {
+  <div class="fixed inset-0 z-[70] flex items-center justify-center p-4">
+    <button
+      type="button"
+      class="absolute inset-0 cursor-pointer bg-primary-dark/75"
+      aria-label="إغلاق النافذة"
+      (click)="close()"
+    ></button>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consult-dialog-title"
+      class="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-lg ring-1 ring-border md:p-10"
+    >
+      <button
+        type="button"
+        class="absolute top-3 end-3 inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-primary hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        aria-label="إغلاق"
+        (click)="close()"
+      >
+        <svg class="size-5" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path
+            d="M5 5l10 10M15 5L5 15"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <h2
+        id="consult-dialog-title"
+        class="pe-12 font-heading text-xl font-extrabold leading-snug text-primary md:text-2xl"
+      >
+        خبراء واعي يقدمون لك تشخيص مجاني لمشكلتك
+      </h2>
+      <p class="font-body mt-4 text-lg font-[500] leading-8 text-text-secondary md:text-lg">
+        شاركنا التحديات التي تواجه أعمالك، وسيقوم خبراء واعي بمراجعة طلبك والتواصل معك لمناقشة الحلول والتوصيات المناسبة
+      </p>
+      <p class="font-body mt-6 text-base font-bold text-primary">يرجى إرسال:</p>
+        <ul class="font-body mt-3 list-disc space-y-2 ps-5 text-base font-[500] leading-8 text-text-secondary">
+          <li>الاسم</li>
+          <li>اسم المنشأة (اختياري)</li>
+          <li>البريد الإلكتروني أو رقم الهاتف</li>
+          <li>وصف مختصر للمشكلة</li>
+        </ul>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          routerLink="/contact"
+          [queryParams]="{ form: 'diagnosis' }"
+          class="cursor-pointer font-body inline-flex min-h-11 flex-1 items-center justify-center rounded-md bg-secondary px-5 text-sm font-bold text-primary transition-colors hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          استشارة مجانية
+        </a>
+        <button
+          type="button"
+          class="font-body inline-flex min-h-11 flex-1 cursor-pointer items-center justify-center rounded-md border border-primary px-5 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-inverse focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          (click)="close()"
+        >
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
+} -->

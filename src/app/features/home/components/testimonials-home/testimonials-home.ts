@@ -78,7 +78,8 @@ export class TestimonialsHome {
       touchDrag: true,
       pullDrag: false,
       nav: true,
-      navText: ['&rarr;', '&larr;'],
+      // Icons are drawn in CSS. Text arrows are missing from the Arabic fonts and sit off-center on phones.
+      navText: ['', ''],
       dots: true,
       responsive: {
         0: { items: 1 },

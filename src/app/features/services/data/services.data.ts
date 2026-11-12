@@ -16,14 +16,17 @@ export type ServiceIconName =
 
 export interface WaeiService {
   id: string;
+  img:string;
   title: string;
   icon: ServiceIconName;
   capabilities: ServiceCapability[];
+  desc:string;
 }
 
 export const SERVICES: WaeiService[] = [
   {
     id: 'business-consulting',
+    img:'/images/services/1.webp',
     title: 'الاستشارات وتطوير الأعمال',
     icon: 'consulting',
     capabilities: [
@@ -53,9 +56,12 @@ export const SERVICES: WaeiService[] = [
           'يقدم فريق "واعي" دعماً استشارياً لتمكين إدارتك الحالية من إدارة المشروعات باحترافية، عبر بناء نظام متابعة يضبط المهام والتكاليف والوقت، وتزويدكم بحلول فورية للمعوقات التشغيلية، سعياً لتسليم الأهداف في موعدها، وتعظيم صافي الربحية وتقليل الهدر، حتى يصل المشروع إلى مساره الأمثل ويحقق نتائجه بثبات.',
       },
     ],
+    desc:'نبدأ معك من بداية التأسيس بخبرة اقتصادية وقانونية، ونستمر معك بتخطيط سليم يساعدك على التشغيل والنمو والاستدامة؛ فنحن شركاؤك وليس فقط مستشاروك.'
+    
   },
   {
     id: 'data-driven-decisions',
+    img:'/images/services/2.webp',
     title: 'دعم اتخاذ القرار المبني على البيانات',
     icon: 'data',
     capabilities: [
@@ -80,9 +86,11 @@ export const SERVICES: WaeiService[] = [
           'نوفر لك مستشاراً تنفيذياً بجانبك يحلل أي قرار قبل اتخاذه: هل أفتح فرعاً جديداً؟ هل أوقف منتجاً؟ هل أرفع السعر؟ بقرار مبني على الأرقام وتحليل التكلفة والعائد، وليس على التخمين أو الشعور.',
       },
     ],
+    desc:'نستقبل بياناتك، ونقوم بتحليلها وإعادة تبويبها، ثم نعيدها إليك في صورة تقارير وتوصيات واضحة ودقيقة تمهد لك طريق القرار السليم في الوقت المناسب.'
   },
   {
     id: 'governance',
+    img:'/images/services/3.webp',
     title: 'الحوكمة والتدقيق الداخلي',
     icon: 'governance',
     capabilities: [
@@ -112,9 +120,11 @@ export const SERVICES: WaeiService[] = [
           'نبني لك نظام تقارير ومتابعة سعياً لجعل كل شيء واضحاً وشفافاً، يشمل تقارير مالية شهرية دقيقة، وتقارير أداء للموظفين، ونظام التزام يضمن تطبيق القوانين واللوائح وحماية الشركة من المخالفات القانونية والضريبية.',
       },
     ],
+    desc:'فصل المال عن الإدارة، والتنظيم الداخلي وتوزيع الأدوار والمهام بوضوح، ووضع نظام تقارير شفاف ومعايير رقابية واضحة، مع تحليل دقيق للمخاطر؛ مما يحمي استثماراتك من الخسائر والمخالفات القانونية.'
   },
   {
     id: 'compliance',
+    img:'/images/services/4.webp',
     title: 'الامتثال والدعم القانوني',
     icon: 'compliance',
     capabilities: [
@@ -139,9 +149,11 @@ export const SERVICES: WaeiService[] = [
           'يصيغ فريقنا القانوني كافة عقودك: عقود الشراكة، عقود الموردين والعملاء، عقود الامتياز والاستثمار، عقود العمل والمقاولات، بعبارات قانونية محكمة تحمي حقوقك وتعضد تنفيذ التزامات الطرف الآخر وتغلق أي ثغرة للتلاعب.',
       },
     ],
+    desc:'نراجع قوانين دولة الاستثمار، ثم نوضح لك الشكل القانوني الأمثل لاستثماراتك عند التأسيس، ونساعدك في استخراج التراخيص والأوراق القانونية، مع وضع لوائح داخلية دقيقة، وصياغة العقود والاتفاقيات.'
   },
   {
     id: 'human-capital',
+    img:'/images/services/5.webp',
     title: 'تطوير رأس المال البشري والهيكلة',
     icon: 'people',
     capabilities: [
@@ -166,9 +178,11 @@ export const SERVICES: WaeiService[] = [
           'نساعدك على بناء ثقافة عمل واضحة وقيم مؤسسية يلتزم بها الجميع، تقوم على الانضباط والالتزام والشفافية وخدمة العميل، لتصبح شركتك بيئة جاذبة للكفاءات وداعمة للنمو بدلاً من أن تعيقه.',
       },
     ],
+    desc:'تطوير فريق العمل الحالي بخطط تدريبية وُضعت بعد تقييم الفريق، ومراجعة الوصف الوظيفي وتعديله، بالإضافة إلى تصميم نظام متابعة وتحفيز مناسب يضمن بيئة عمل جاذبة للكفاءات وداعمة للنمو.'
   },
   {
     id: 'business-continuity',
+    img:'/images/services/6.webp',
     title: 'إدارة المخاطر والأزمات واستمرارية الأعمال',
     icon: 'continuity',
     capabilities: [
@@ -193,6 +207,7 @@ export const SERVICES: WaeiService[] = [
           'نبني لك خطة استمرارية أعمال تتيح لشركتك ألا تتوقف أبداً، حتى في أسوأ الظروف: انقطاع السيولة، أو فقدان عميل أساسي، أو توقف النظام، أو خروج شريك، من خلال توفير بدائل تشغيلية وخطط طوارئ مالية وتقنية تحافظ على استمرار الخدمة والربحية.',
       },
     ],
+    desc:'في ظل مخاطر وتحديات بيئة العمل المحلية والعالمية، نقوم بمسح شامل للمخاطر التي قد تواجه استثماراتك، ونضع خطط المواجهة والاستجابة والطوارئ، بالإضافة إلى إدارة الأزمة عند حدوثها.'
   },
 ];
 
@@ -203,6 +218,16 @@ export function findService(id: string | null): WaeiService | undefined {
 export const serviceDetailTitle: ResolveFn<string> = (route) => {
   const service = findService(route.paramMap.get('id'));
   return service ? `${service.title} | واعي` : 'خدماتنا | واعي';
+};
+
+export const serviceDetailDescription: ResolveFn<string> = (route) => {
+  const service = findService(route.paramMap.get('id'));
+  if (!service) {
+    return 'خدمات واعي في الاستشارات والحوكمة ودعم اتخاذ القرار.';
+  }
+
+  const points = service.capabilities.map((capability) => capability.title).join('، ');
+  return `${service.title} من واعي: ${points}.`;
 };
 
 export const serviceExistsGuard: CanActivateFn = (route) => {

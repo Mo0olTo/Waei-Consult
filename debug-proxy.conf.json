@@ -1,0 +1,8 @@
+{
+  "/__agent-debug": {
+    "target": "http://127.0.0.1:7738",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": { "^/__agent-debug": "" }
+  }
+}

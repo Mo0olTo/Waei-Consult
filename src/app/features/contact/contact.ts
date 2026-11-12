@@ -1,83 +1,74 @@
-import { Component, inject, signal } from '@angular/core';
-import {
-  AbstractControl,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
-import { SERVICES } from '../services/data/services.data';
-import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
+import { afterNextRender, Component, inject, Injector, signal, viewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
+import { ContactForm } from './components/contact-form/contact-form/contact-form';
+import { FreeDiagnosis } from './components/free-diagnosis/free-diagnosis/free-diagnosis';
+import { ConfirmLeaveDialog } from '../../shared/ui/confirm-leave-dialog/confirm-leave-dialog';
+import { LeaveConfirmable } from '../../core/guards/unsaved-form-guard';
 
-type ContactField = 'name' | 'email' | 'phone' | 'company' | 'services' | 'message';
-
-const PHONE_PATTERN = /^\+?[0-9\s-]{8,15}$/;
-
-function atLeastOneSelected(control: AbstractControl<string[]>): ValidationErrors | null {
-  return control.value.length > 0 ? null : { required: true };
-}
+type ContactIntent = 'message' | 'diagnosis' | '';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, WaeiLogo],
+  imports: [ContactForm, FreeDiagnosis, ConfirmLeaveDialog],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
+  host: { '(window:beforeunload)': 'onBeforeUnload($event)' },
 })
-export class Contact {
-  private readonly formBuilder = inject(NonNullableFormBuilder);
+export class Contact implements LeaveConfirmable {
+  private readonly injector = inject(Injector);
+  private readonly contactForm = viewChild(ContactForm);
+  private readonly diagnosisForm = viewChild(FreeDiagnosis);
+  private readonly leaveDialog = viewChild.required(ConfirmLeaveDialog);
 
-  protected readonly services = SERVICES;
-  protected readonly submitAttempted = signal(false);
+  protected readonly intent = signal<ContactIntent>('');
 
-  protected readonly form = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
-    phone: ['', [Validators.required, Validators.pattern(PHONE_PATTERN)]],
-    company: ['', [Validators.maxLength(120)]],
-    services: this.formBuilder.control<string[]>([], atLeastOneSelected),
-    message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(2000)]],
-  });
+  constructor() {
+    inject(ActivatedRoute)
+      .queryParamMap.pipe(takeUntilDestroyed())
+      .subscribe(async (params) => {
+        if (params.get('form') !== 'diagnosis' || this.intent() === 'diagnosis') {
+          return;
+        }
+        if (!(await this.confirmLeave())) {
+          return;
+        }
 
-  protected isInvalid(field: ContactField): boolean {
-    const control = this.form.controls[field];
-    return control.invalid && (control.touched || this.submitAttempted());
+        this.intent.set('diagnosis');
+        afterNextRender(() => this.scrollToForm(), { injector: this.injector });
+      });
   }
 
-  protected errorMessage(field: ContactField): string {
-    const errors = this.form.controls[field].errors;
-    if (!errors) return '';
-    if (errors['required']) {
-      return field === 'services' ? 'يرجى اختيار خدمة واحدة على الأقل' : 'هذا الحقل مطلوب';
-    }
-    if (errors['email']) return 'يرجى إدخال بريد إلكتروني صحيح';
-    if (errors['pattern']) return 'يرجى إدخال رقم هاتف صحيح';
-    if (errors['minlength']) return `يجب ألا يقل عن ${errors['minlength'].requiredLength} أحرف`;
-    if (errors['maxlength']) return `يجب ألا يزيد عن ${errors['maxlength'].requiredLength} حرفاً`;
-    return '';
+  async confirmLeave(): Promise<boolean> {
+    return !this.hasUnsavedChanges() || this.leaveDialog().open();
   }
 
-  protected isServiceSelected(id: string): boolean {
-    return this.form.controls.services.value.includes(id);
-  }
-
-  protected toggleService(id: string, checked: boolean): void {
-    const control = this.form.controls.services;
-    const current = control.value;
-    control.setValue(checked ? [...current, id] : current.filter((serviceId) => serviceId !== id));
-    control.markAsTouched();
-  }
-
-  protected onSubmit(): void {
-    this.submitAttempted.set(true);
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      console.log(this.form);
-      
+  protected async showForm(intent: ContactIntent): Promise<void> {
+    if (intent !== this.intent() && !(await this.confirmLeave())) {
       return;
     }
+    this.intent.set(intent);
+    this.scrollToForm();
+  }
 
-    // No delivery channel exists yet (static site, no backend); wire `payload` to one before launch.
-    const payload = this.form.getRawValue();
-    console.info('Contact form payload', payload);
+  protected onBeforeUnload(event: BeforeUnloadEvent): void {
+    if (this.hasUnsavedChanges()) {
+      event.preventDefault();
+    }
+  }
+
+  private hasUnsavedChanges(): boolean {
+    return (
+      (this.contactForm()?.hasUnsavedChanges() ?? false) ||
+      (this.diagnosisForm()?.hasUnsavedChanges() ?? false)
+    );
+  }
+
+  private scrollToForm(): void {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById('contact-form')?.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
   }
 }

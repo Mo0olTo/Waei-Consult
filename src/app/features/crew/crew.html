@@ -1,6 +1,4 @@
-<section
-  class="relative flex min-h-[calc(100dvh-4.8125rem)] flex-col overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
->
+<section class="relative flex flex-col overflow-hidden bg-primary">
   <img
     src="/images/aboutSection/employees.webp"
     alt=""
@@ -13,22 +11,25 @@
     class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
     aria-hidden="true"
   ></div>
-  <div class="relative flex flex-1 items-center justify-center">
-    <app-waei-logo size="lg" tone="inverse" />
-  </div>
-  <div class="site-container relative w-full pb-16 md:pb-20 px-4 md:px-0">
-    <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
-    <h1
-      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
-    >
-      فريق عمل "واعي"
-    </h1>
-    <a
-      href="/crew#crew-team"
-      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-    >
-      تعرّف على الفريق
-    </a>
+  <div class="site-container relative mt-6 flex w-full items-center justify-around px-4 pb-16 md:mt-12 md:px-0 md:pb-20">
+    <div class="w-1/2">
+      <p class="font-body text-xl font-bold tracking-wide text-secondary">مختبر الشركات</p>
+      <h1
+        class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-2xl md:text-4xl font-extrabold leading-tight text-inverse md:text-7xl"
+      >
+       خـبراء واعــــي
+      </h1>
+      <a
+        href="/crew#crew-team"
+        class=" mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        تعرّف على خبرائنا
+      </a>
+    </div>
+    <div class="mt-10 flex w-1/2 flex-col items-end justify-center">
+      <img src="/images/logo/waei_logo_black.PNG" class="w-[110px] invert md:w-[180px]" alt="" />
+      <img src="/images/logo/waei_title_black.PNG" class="w-[110px] invert md:w-[180px]" alt="" />
+    </div>
   </div>
 </section>
 
@@ -36,10 +37,10 @@
   id="crew-team"
   class="relative scroll-mt-6 overflow-hidden border-t border-border bg-surface"
 >
-  <div class="site-container relative py-16 md:py-20">
+  <div class="site-container relative py-16 md:py-20 px-3 md:px-0">
     <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
       <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
-      فريق عمل "واعي"
+      فريق خبراء "واعي"
     </h2>
 
     <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -57,25 +58,25 @@
                   height="280"
                   loading="lazy"
                   decoding="async"
-                  class="aspect-square size-36 object-cover md:size-40"
+                  class="aspect-square size-36 object-center object-cover  md:size-40"
                 />
               </div>
               <h3 class="font-heading mt-5 text-2xl font-extrabold text-inverse">
                 {{ member.name }}
               </h3>
-              <p class="font-body mt-2 text-sm font-medium leading-7 text-secondary">
-                {{ member.role }}
+              <p class="font-body mt-2 flex flex-col text-base font-bold leading-7 text-secondary">
+                @for (line of member.role; track line) {
+                  <span>{{ line }}</span>
+                }
               </p>
-              <p class="font-body mt-1 text-sm text-gray-300">{{ member.category }}</p>
+              <!-- <p class="font-body mt-1 text-base text-gray-300">{{ member.category }}</p> -->
             </div>
-            <div class="font-body mt-4 flex flex-col gap-3 text-base leading-8 text-gray-200">
+            <div class="font-body mt-4 flex flex-col gap-3 text-lg leading-8 text-gray-200">
               @for (paragraph of member.paragraphs; track paragraph) {
                 <p>{{ paragraph }}</p>
               }
             </div>
-            <div class="mt-auto pt-6">
-              <div class="crew-panel-line h-0.5 bg-secondary" aria-hidden="true"></div>
-            </div>
+           
           </article>
         </li>
       }
@@ -84,13 +85,13 @@
 </section>
 
 <section class="bg-primary">
-  <div class="site-container py-16 md:py-20">
+  <div class="site-container py-16 md:py-20 px-4 md:px-0">
     <h2 class="border-s-4 border-secondary ps-4 font-heading text-3xl font-extrabold text-inverse">
-      نحن لا نقدم تقارير... نحن نبني قرارات.
+      نحـلل صــــح ... تقـرر صــــح 
     </h2>
     <a
       routerLink="/contact"
-      class="font-body mt-8 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      class="font-body mt-8 mr-4 md:mr-0 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
     >
       تواصل معنا
     </a>

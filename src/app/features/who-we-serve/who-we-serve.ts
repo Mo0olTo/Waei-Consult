@@ -6,12 +6,11 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { WaeiLogo } from '../../shared/ui/waei-logo/waei-logo';
 import { TARGET_CLIENT_SEGMENTS } from './data/who-we-serve.data';
 
 @Component({
   selector: 'app-who-we-serve',
-  imports: [RouterLink, WaeiLogo],
+  imports: [RouterLink],
   templateUrl: './who-we-serve.html',
   styleUrl: './who-we-serve.scss',
 })

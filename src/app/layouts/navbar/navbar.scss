@@ -21,7 +21,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mobile-nav {
+  .mobile-nav,
+  :host header,
+  :host header img,
+  :host .site-container {
     transition: none;
   }
 }

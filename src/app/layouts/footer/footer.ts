@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MAIN_NAVIGATION } from '../../core/navigation';
 
 interface SocialLink {
@@ -11,7 +11,7 @@ interface SocialLink {
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, NgTemplateOutlet],
+  imports: [RouterLink, RouterLinkActive, NgTemplateOutlet],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
@@ -22,9 +22,9 @@ export class Footer {
   protected readonly currentYear = new Date().getFullYear();
   // URLs are placeholders until the official profile links are provided.
   protected readonly socialLinks: SocialLink[] = [
-    { icon: 'instagram', href: '#', label: 'إنستغرام' },
-    { icon: 'facebook', href: '#', label: 'فيسبوك' },
-    { icon: 'linkedin', href: '#', label: 'لينكدإن' },
+    { icon: 'instagram', href: 'https://www.instagram.com/waei.consult/', label: 'إنستغرام' },
+    { icon: 'facebook', href: 'https://www.facebook.com/WaeiConsult', label: 'فيسبوك' },
+    // { icon: 'linkedin', href: '#', label: 'لينكدإن' },
     { icon: 'whatsapp', href: 'https://wa.me/201061510041', label: 'واتساب' },
 
   ];

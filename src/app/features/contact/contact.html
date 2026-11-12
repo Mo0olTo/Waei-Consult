@@ -1,6 +1,4 @@
-<section
-  class="relative flex min-h-[calc(100dvh-4.8125rem)] flex-col overflow-hidden bg-primary md:min-h-[calc(100dvh-4.3125rem)]"
->
+<section class="relative flex flex-col overflow-hidden bg-primary">
   <img
     src="/images/contactUs/contact-us.webp"
     alt=""
@@ -13,196 +11,115 @@
     class="pointer-events-none absolute inset-0 bg-linear-to-t from-primary via-primary/80 to-primary/55"
     aria-hidden="true"
   ></div>
-  <div class="relative flex flex-1 items-center justify-center">
-    <app-waei-logo size="lg" tone="inverse" />
-  </div>
-  <div class="site-container relative w-full pb-16 md:pb-20 px-4 md:px-0">
-    <p class="font-body text-sm font-medium tracking-wide text-secondary">مختبر الشركات</p>
-    <h1
-      class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-5xl font-extrabold leading-tight text-inverse md:text-7xl"
-    >
-      تواصل معنا
-    </h1>
-    <p class="font-body mt-6 max-w-2xl text-lg leading-8 text-gray-200 md:text-xl">
-      نحن لا نقدم تقارير... نحن نبني قرارات.
-    </p>
-    <a
-      href="/contact#contact-form"
-      class="font-body mt-10 inline-flex min-h-11 items-center rounded-md bg-secondary px-5 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-    >
-      أرسل رسالتك
-    </a>
+  <div class="site-container relative mt-6 flex w-full items-center justify-around px-4 pb-16 md:mt-12 md:px-0 md:pb-20">
+    <div class="w-3/4 md:w-1/2">
+      <p class="font-body text-xl font-bold tracking-wide text-secondary">مختبر الشركات</p>
+      <h1
+        class="mt-4 max-w-4xl border-s-4 border-secondary ps-5 font-heading text-2xl font-extrabold leading-tight text-inverse md:text-7xl"
+      >
+        تواصل معنا
+      </h1>
+      <button
+        type="button"
+        (click)="showForm('message')"
+        class="mt-10 inline-flex min-h-11 cursor-pointer items-center rounded-md bg-secondary px-5 text-base font-bold text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        ارسل رسالتك
+      </button>
+    </div>
+    <div class="mt-10 flex w-1/4 flex-col items-end justify-center md:w-1/2">
+      <img src="/images/logo/waei_logo_black.PNG" class="w-[110px] invert md:w-[180px]" alt="" />
+      <img src="/images/logo/waei_title_black.PNG" class="w-[110px] invert md:w-[180px]" alt="" />
+    </div>
   </div>
 </section>
 
-<section
-  id="contact-form"
-  class="relative scroll-mt-6 overflow-hidden border-t border-border bg-surface"
->
-  <div class="site-container py-16 md:py-20">
-    <h2 class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary">
-      <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
-      أرسل لنا رسالتك
-    </h2>
-    <p class="font-body mt-3 text-sm text-muted">
-      الحقول المميزة بعلامة <span class="text-error" aria-hidden="true">*</span> مطلوبة.
-    </p>
-
-    <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-      class="mt-10 grid max-w-4xl gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-border md:grid-cols-2 md:p-10"
-    >
-      <div>
-        <label for="contact-name" class="font-body block text-sm font-medium text-primary">
-          الاسم <span class="text-error" aria-hidden="true">*</span>
-        </label>
-        <input
-          id="contact-name"
-          type="text"
-          formControlName="name"
-          autocomplete="name"
-          required
-          [attr.aria-invalid]="isInvalid('name')"
-          [attr.aria-describedby]="isInvalid('name') ? 'contact-name-error' : null"
-          [class.border-error]="isInvalid('name')"
-          class="font-body mt-2 block min-h-11 w-full rounded-md border border-border bg-white px-4 py-2.5 text-base text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        />
-        @if (isInvalid('name')) {
-          <p id="contact-name-error" class="font-body mt-2 text-sm text-error">
-            {{ errorMessage('name') }}
-          </p>
-        }
-      </div>
-
-      <div>
-        <label for="contact-email" class="font-body block text-sm font-medium text-primary">
-          البريد الإلكتروني <span class="text-error" aria-hidden="true">*</span>
-        </label>
-        <input
-          id="contact-email"
-          type="email"
-          formControlName="email"
-          autocomplete="email"
-          dir="ltr"
-          required
-          [attr.aria-invalid]="isInvalid('email')"
-          [attr.aria-describedby]="isInvalid('email') ? 'contact-email-error' : null"
-          [class.border-error]="isInvalid('email')"
-          class="font-body mt-2 block min-h-11 w-full rounded-md border border-border bg-white px-4 py-2.5 text-end text-base text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        />
-        @if (isInvalid('email')) {
-          <p id="contact-email-error" class="font-body mt-2 text-sm text-error">
-            {{ errorMessage('email') }}
-          </p>
-        }
-      </div>
-
-      <div>
-        <label for="contact-phone" class="font-body block text-sm font-medium text-primary">
-          رقم الهاتف <span class="text-error" aria-hidden="true">*</span>
-        </label>
-        <input
-          id="contact-phone"
-          type="tel"
-          formControlName="phone"
-          autocomplete="tel"
-          inputmode="tel"
-          dir="ltr"
-          required
-          [attr.aria-invalid]="isInvalid('phone')"
-          [attr.aria-describedby]="isInvalid('phone') ? 'contact-phone-error' : null"
-          [class.border-error]="isInvalid('phone')"
-          class="font-body mt-2 block min-h-11 w-full rounded-md border border-border bg-white px-4 py-2.5 text-end text-base text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        />
-        @if (isInvalid('phone')) {
-          <p id="contact-phone-error" class="font-body mt-2 text-sm text-error">
-            {{ errorMessage('phone') }}
-          </p>
-        }
-      </div>
-
-      <div>
-        <label for="contact-company" class="font-body block text-sm font-medium text-primary">
-          اسم الشركة
-        </label>
-        <input
-          id="contact-company"
-          type="text"
-          formControlName="company"
-          autocomplete="organization"
-          [attr.aria-invalid]="isInvalid('company')"
-          [attr.aria-describedby]="isInvalid('company') ? 'contact-company-error' : null"
-          [class.border-error]="isInvalid('company')"
-          class="font-body mt-2 block min-h-11 w-full rounded-md border border-border bg-white px-4 py-2.5 text-base text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        />
-        @if (isInvalid('company')) {
-          <p id="contact-company-error" class="font-body mt-2 text-sm text-error">
-            {{ errorMessage('company') }}
-          </p>
-        }
-      </div>
-
-      <fieldset
-        class="md:col-span-2"
-        [attr.aria-describedby]="isInvalid('services') ? 'contact-services-error' : null"
+<section class="relative border-t border-border bg-surface" aria-labelledby="contact-choice-heading">
+  <div class="site-container px-3 py-16 md:px-0 md:py-20">
+    <div class="lg:mx-auto lg:max-w-4xl">
+      <h2
+        id="contact-choice-heading"
+        class="flex items-center gap-4 font-heading text-3xl font-extrabold text-primary"
       >
-        <legend class="font-body text-sm font-medium text-primary">
-          الخدمات المطلوبة <span class="text-error" aria-hidden="true">*</span>
-        </legend>
-        <div class="mt-3 grid gap-3 sm:grid-cols-2">
-          @for (service of services; track service.id) {
-            <label
-              class="font-body flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-border px-4 py-2.5 text-gray-700 hover:border-secondary has-checked:border-secondary has-checked:bg-secondary/10"
-            >
-              <input
-                #serviceBox
-                type="checkbox"
-                [value]="service.id"
-                [checked]="isServiceSelected(service.id)"
-                (change)="toggleService(service.id, serviceBox.checked)"
-                class="size-4 shrink-0 accent-primary"
-              />
-              {{ service.title }}
-            </label>
-          }
-        </div>
-        @if (isInvalid('services')) {
-          <p id="contact-services-error" class="font-body mt-2 text-sm text-error">
-            {{ errorMessage('services') }}
-          </p>
-        }
-      </fieldset>
+        <span class="size-2.5 shrink-0 rotate-45 bg-secondary" aria-hidden="true"></span>
+        كيف يمكننا مساعدتك؟
+      </h2>
+      <p class="font-body mt-3 text-lg leading-8 text-muted md:text-xl">
+        اختر الطريقة الأنسب للتواصل مع فريق واعي.
+      </p>
 
-      <div class="md:col-span-2">
-        <label for="contact-message" class="font-body block text-sm font-medium text-primary">
-          رسالتك <span class="text-error" aria-hidden="true">*</span>
-        </label>
-        <textarea
-          id="contact-message"
-          formControlName="message"
-          rows="6"
-          required
-          [attr.aria-invalid]="isInvalid('message')"
-          [attr.aria-describedby]="isInvalid('message') ? 'contact-message-error' : null"
-          [class.border-error]="isInvalid('message')"
-          class="font-body mt-2 block w-full resize-y rounded-md border border-border bg-white px-4 py-2.5 text-base leading-7 text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        ></textarea>
-        @if (isInvalid('message')) {
-          <p id="contact-message-error" class="font-body mt-2 text-sm text-error">
-            {{ errorMessage('message') }}
-          </p>
-        }
-      </div>
-
-      <div class="md:col-span-2">
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
         <button
-          type="submit"
-          class="font-body inline-flex min-h-11 items-center rounded-md bg-secondary px-6 text-sm font-medium text-primary hover:bg-secondary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          type="button"
+          (click)="showForm('diagnosis')"
+          [attr.aria-pressed]="intent() === 'diagnosis'"
+          class="flex min-h-44 cursor-pointer flex-col items-start rounded-2xl border-2 border-secondary/40 bg-primary p-6 text-start text-inverse
+                 shadow-sm transition hover:-translate-y-0.5 hover:border-secondary hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary
+                  motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-8 focus:shadow-secondary-light focus:shadow-lg"
+          [class.border-secondary]="intent() === 'diagnosis'"
+          [class.shadow-md]="intent() === 'diagnosis'"
         >
-          إرسال الرسالة
+          <span class="font-body inline-flex items-center gap-3 text-lg font-bold text-secondary">
+            <svg class="size-10 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M6 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M3 22h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M14 22a7 7 0 1 0 0-14h-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M9 14h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            مجهر واعي
+          </span>
+          <span class="mt-3 font-heading text-2xl font-extrabold">تشخيص أولي مجاني</span>
+          <span class="font-body mt-3 text-base leading-7 text-gray-200">
+            لديك مشكلة في شركتك وتحتاج إلى فهم طبيعتها؟
+          </span>
+          <span class="font-body mt-6 inline-flex items-center gap-2 text-base font-bold text-secondary">
+            تشخيص أولي مجاني
+            <span aria-hidden="true">←</span>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          (click)="showForm('message')"
+          [attr.aria-pressed]="intent() === 'message'"
+          class="flex min-h-44 cursor-pointer flex-col items-start rounded-2xl border-2 border-border bg-white p-6 text-start text-primary 
+                shadow-sm transition hover:-translate-y-0.5 hover:border-secondary hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 
+                focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-8 focus:shadow-secondary-light focus:shadow-lg"
+          [class.border-primary]="intent() === 'message'"
+          [class.shadow-md]="intent() === 'message'"
+        >
+          <span class="font-body inline-flex items-center gap-3 text-lg font-bold text-secondary">
+            <svg class="size-10 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            تواصل مباشر
+          </span>
+          <span class="mt-3 font-heading text-2xl font-extrabold">تواصل معنا</span>
+          <span class="font-body mt-3 text-base leading-7 text-gray-700">
+            لديك استفسار أو ترغب في طلب إحدى خدماتنا؟
+          </span>
+          <span class="font-body mt-6 inline-flex items-center gap-2 text-base font-bold text-primary">
+            أرسل رسالتك
+            <span aria-hidden="true">←</span>
+          </span>
         </button>
       </div>
-    </form>
+    </div>
+
+    <div id="contact-form" class="scroll-mt-6 mt-7  lg:mx-auto lg:mt-16 lg:max-w-4xl">
+      @switch (intent()) {
+        @case ('message') {
+          <app-contact-form />
+        }
+        @case ('diagnosis') {
+          <app-free-diagnosis />
+        }
+      }
+    </div>
   </div>
 </section>
+
+<app-confirm-leave-dialog />

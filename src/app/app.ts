@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PageMeta } from './core/page-meta';
 import { LoadingScreen } from './shared/ui/loading-screen/loading-screen';
 
 @Component({
@@ -8,4 +9,9 @@ import { LoadingScreen } from './shared/ui/loading-screen/loading-screen';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  constructor() {
+    // Must be constructed at startup so prerender writes the description into the HTML.
+    inject(PageMeta);
+  }
+}

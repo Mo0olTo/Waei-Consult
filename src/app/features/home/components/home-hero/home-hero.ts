@@ -4,18 +4,18 @@ import {
   Component,
   computed,
   DestroyRef,
+  ElementRef,
   inject,
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RotatingWheel } from '../../../../shared/Components/rotating-wheel/rotating-wheel';
 import { HOME_WHEEL_ITEMS, HomeWheelItem } from '../../data/home-wheel.data';
-import { GrowthChart } from '../growth-chart/growth-chart';
 import { DecisionRings } from '../decision-rings/decision-rings';
 
 @Component({
   selector: 'app-home-hero',
-  imports: [RouterLink, RotatingWheel, GrowthChart, DecisionRings],
+  imports: [RouterLink, RotatingWheel, DecisionRings],
   templateUrl: './home-hero.html',
   styleUrl: './home-hero.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,6 +38,8 @@ export class HomeHero {
     return index === null ? [] : [this.items[index]];
   });
 
+  private readonly host = inject(ElementRef<HTMLElement>);
+
   constructor() {
     const destroyRef = inject(DestroyRef);
 
@@ -46,8 +48,41 @@ export class HomeHero {
       const sync = (): void => this.canHover.set(query.matches);
       sync();
       query.addEventListener('change', sync);
-      destroyRef.onDestroy(() => query.removeEventListener('change', sync));
+
+      // A phone tap does not blur the sector, so pause stays on until an outside tap.
+      const release = (event: PointerEvent): void => this.releaseIfOutside(event);
+      document.addEventListener('pointerdown', release);
+
+      destroyRef.onDestroy(() => {
+        query.removeEventListener('change', sync);
+        document.removeEventListener('pointerdown', release);
+      });
     });
+  }
+
+  private releaseIfOutside(event: PointerEvent): void {
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const wheel = this.host.nativeElement.querySelector('app-rotating-wheel');
+    if (wheel?.contains(target)) {
+      return;
+    }
+
+    // pointerdown fires before click. Removing the panel or its link here
+    // would cancel the tap on the service details and the RouterLink.
+    // Leaving the page unmounts the hero, so the panel does not need to close first.
+    if (target.closest('.hero__panel, a, button')) {
+      return;
+    }
+
+    this.activeIndex.set(null);
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && wheel?.contains(active)) {
+      active.blur();
+    }
   }
 
   protected onFocusIn(): void {
